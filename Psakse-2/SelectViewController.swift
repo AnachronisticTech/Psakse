@@ -13,6 +13,7 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	var numberOfPuzzles = 2
 	var puzzleSelected = -1
 	var table: UITableView? = nil
+//	var puzzleArray:[Puzzle]? = nil
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return numberOfPuzzles
@@ -39,8 +40,39 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	@objc func goToHome() {
 		performSegue(withIdentifier: "ToHome", sender: self)
 	}
+
+//	struct Puzzle: Codable {
+//		let solved: Bool
+//		let board: Board
+//
+//		struct Board: Codable {
+//			let deck: [AnyObject]
+//			let locked: [AnyObject]
+//		}
+//	}
+	struct Puzzle: Decodable {
+		let solved: Bool
+		let cardArray: [GameViewController.Card]
+		let fixedArray: [Int]
+		
+		init(from decoder: Decoder) throws {
+			var container = try decoder.unkeyedContainer()
+			solved = try container.decode(Bool.self)
+			var cardArrayTmp = [GameViewController.Card]()
+			cardArrayTmp.append(try container.decode(GameViewController.Card.self))
+			cardArray = cardArrayTmp
+			fixedArray = try container.decode([Int].self)
+		}
+	}
 	
 	override func viewDidLoad() {
+		
+//		let debug = true
+//		if debug {
+//			let domain = Bundle.main.bundleIdentifier!
+//			UserDefaults.standard.removePersistentDomain(forName: domain)
+//			UserDefaults.standard.synchronize()
+//		}
 		
 		let x = (Int)(UIScreen.main.bounds.width / 2) - 100
 		let y = (Int)(UIScreen.main.bounds.height) - 200
@@ -55,6 +87,17 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		button.layer.borderWidth = 3
 		button.layer.cornerRadius = 10
 		self.view.addSubview(button)
+		
+//		let url = Bundle.main.url(forResource: "puzzles", withExtension: "json")
+//		let data = NSData(contentsOf: url!)
+//		let json = try? JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments)
+//		
+//		if let recipe = json as? [String: Any] {
+//			if let yield = recipe["yield"] as? Int {
+//				recipeObject.yield = yield
+//			}
+//		}
+		
 		
 		let width = (Int)(UIScreen.main.bounds.width) - 40
 		let height = (Int)(UIScreen.main.bounds.height) - 300
