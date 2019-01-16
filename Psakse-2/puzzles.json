@@ -1,0 +1,39 @@
+{
+	"puzzles": [
+		{
+			"solved":false
+			"board":[
+				"deck":[
+					".Normal(.Xi, .Orange)",
+					".Normal(.A, .Orange)",
+					".Normal(.Psi, .Purple)",
+					".Normal(.Psi, .Green)",
+					".Normal(.E, .Green)",
+					".Normal(.A, .Green)",
+					".Normal(.Xi, .Green)",
+					".Normal(.Xi, .Yellow)",
+					".Normal(.E, .Green)",
+					".Normal(.Psi, .Green)",
+					".Normal(.A, .Green)",
+					".Wild",
+					".Normal(.E, .Yellow)",
+					".Wild",
+					".Normal(.Psi, .Orange)",
+					".Normal(.Psi, .Orange)",
+					".Normal(.Psi, .Yellow)",
+					".Normal(.A, .Yellow)",
+					".Normal(.A, .Purple)",
+					".Normal(.Psi, .Purple)",
+					".Normal(.Psi, .Yellow)",
+					".Normal(.A, .Yellow)",
+					".Normal(.A, .Purple)",
+					".Normal(.E, .Purple)",
+					".Normal(.E, .Purple)"
+				]
+				"locked":[
+					9, 12, 18
+				]
+			]
+		}
+	]
+}
