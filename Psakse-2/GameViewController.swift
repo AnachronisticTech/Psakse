@@ -326,7 +326,8 @@ class GameViewController: UIViewController {
 			self.view.sendSubviewToBack(sgbg)
 			
 			var x = (Int)(UIScreen.main.bounds.width / 2) + 10
-			let y = (Int)(UIScreen.main.bounds.height) - 200
+//			let y = (Int)(UIScreen.main.bounds.height) - 200
+			let y = ((Int)((Double)(UIScreen.main.bounds.height) + ((Double)(UIScreen.main.bounds.width) * 0.9)) / 2) + 40
 			var button = UIButton(frame: CGRect(x: x, y: y, width: 80, height: 80))
 			button.backgroundColor = GameViewController.Colors.Purple.getColor()
 			button.adjustsImageWhenDisabled = false

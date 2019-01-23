@@ -23,8 +23,8 @@ class HomeViewController: UIViewController {
 		let options = ["Tutorial", "Challenge Mode", "Random Puzzle"]
 		for i in 0..<options.count {
 			let x = (Int)(UIScreen.main.bounds.width / 2) - 100
-			let y = (Int)(UIScreen.main.bounds.height) - (100 * (i + 2))
-			let button = UIButton(frame: CGRect(x: x, y: y, width: 200, height: 80))
+			let y = ((i + 3) * (Int)(UIScreen.main.bounds.height) / (options.count + 3)) - 30
+			let button = UIButton(frame: CGRect(x: x, y: y, width: 200, height: 60))
 			button.adjustsImageWhenDisabled = false
 			button.setTitle(options[i], for: .normal)
 			switch i {
@@ -48,11 +48,12 @@ class HomeViewController: UIViewController {
 			button.setTitleColor(UIColor.darkGray, for: .normal)
 			button.layer.borderColor = UIColor.darkGray.cgColor
 			button.layer.borderWidth = 3
-			button.layer.cornerRadius = 10
+			button.layer.cornerRadius = 30
 			self.view.addSubview(button)
 		}
 		let width = (Int)(UIScreen.main.bounds.width) - 60
-		let logo = UIImageView(frame: CGRect(x: 30, y: 130, width: width, height: 150))
+		let y = ((Int)(UIScreen.main.bounds.height) / (options.count + 3)) - 30
+		let logo = UIImageView(frame: CGRect(x: 30, y: y, width: width, height: 150))
 		logo.image = UIImage(named: "logo_large_alt.png")
 		logo.contentMode = UIView.ContentMode.scaleAspectFit
 		self.view.addSubview(logo)
