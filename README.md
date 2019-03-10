@@ -8,8 +8,6 @@ Psakse is a tile-based single-player puzzle game. The object of the game is to f
 
 A solved game of Psakse. Yellow-bordered tiles are fixed. Pink dot tiles are wild. Notice, each tile must match _all_ its adjacent tiles excepting diagonals.
 
-![](https://github.com/AnachronisticTech/Psakse/blob/master/images/20181005_114603008_iOS.jpg)
-
 There are four slots apart from the main grid where a player can store tiles until later; these spaces don't require tiles to match their neighbours, but they are few compared to the number of spaces on the main board.
 
 ## Installation
