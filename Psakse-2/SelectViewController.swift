@@ -40,20 +40,11 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	@objc func goToHome() {
 		performSegue(withIdentifier: "ToHome", sender: self)
 	}
-
-//	struct Puzzle: Codable {
-//		let solved: Bool
-//		let board: Board
-//
-//		struct Board: Codable {
-//			let deck: [AnyObject]
-//			let locked: [AnyObject]
-//		}
-//	}
+	
 	struct Puzzle: Decodable {
-		let solved: Bool
-		let cardArray: [GameViewController.Card]
-		let fixedArray: [Int]
+		var solved: Bool
+		var cardArray: [GameViewController.Card]
+		var fixedArray: [Int]
 		
 		init(from decoder: Decoder) throws {
 			var container = try decoder.unkeyedContainer()
@@ -63,16 +54,21 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			cardArray = cardArrayTmp
 			fixedArray = try container.decode([Int].self)
 		}
+		
+		let decoder = JSONDecoder()
+		
+		struct JSONCard: Codable {
+			var symbol: String
+			var color: String
+		}
+		
+		func cardFromJSON(card: JSONCard) -> GameViewController.Card {
+			let newCard = try! decoder.decode(JSONCard.self, from: <#T##Data#>)
+			return newCard
+		}
 	}
 	
 	override func viewDidLoad() {
-		
-//		let debug = true
-//		if debug {
-//			let domain = Bundle.main.bundleIdentifier!
-//			UserDefaults.standard.removePersistentDomain(forName: domain)
-//			UserDefaults.standard.synchronize()
-//		}
 		
 		let x = (Int)(UIScreen.main.bounds.width / 2) - 100
 		let y = (Int)(UIScreen.main.bounds.height) - 200
@@ -88,15 +84,7 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		button.layer.cornerRadius = 10
 		self.view.addSubview(button)
 		
-//		let url = Bundle.main.url(forResource: "puzzles", withExtension: "json")
-//		let data = NSData(contentsOf: url!)
-//		let json = try? JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments)
-//		
-//		if let recipe = json as? [String: Any] {
-//			if let yield = recipe["yield"] as? Int {
-//				recipeObject.yield = yield
-//			}
-//		}
+		
 		
 		
 		let width = (Int)(UIScreen.main.bounds.width) - 40
