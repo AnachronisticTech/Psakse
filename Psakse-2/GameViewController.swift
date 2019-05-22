@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
 	var puzzleID = -1
 	var overrideDeck:[Card]? = nil
 	var overrideRandArray:[Int]? = nil
+	let impact = UIImpactFeedbackGenerator()
 	
 	class Grid: NSObject {
 		var gridSize = 5
@@ -461,6 +462,7 @@ class GameViewController: UIViewController {
 					} else {
 						let alert = UIAlertController(title: nil, message: "That tile can't be placed there.", preferredStyle: .alert)
 						alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+						impact.impactOccurred()
 						self.present(alert, animated: true)
 					}
 					deselect()
@@ -506,6 +508,7 @@ class GameViewController: UIViewController {
 						} else {
 							let alert = UIAlertController(title: nil, message: "Those tiles can't be swapped.", preferredStyle: .alert)
 							alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+							impact.impactOccurred()
 							self.present(alert, animated: true)
 						}
 					}
@@ -642,6 +645,7 @@ class GameViewController: UIViewController {
 				self.resetGame()
 			}))
 			alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+			impact.impactOccurred()
 			self.present(alert, animated: true)
 		}
 	}
@@ -655,6 +659,7 @@ class GameViewController: UIViewController {
 				self.performSegue(withIdentifier: "ToHome", sender: self)
 			}))
 			alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+			impact.impactOccurred()
 			self.present(alert, animated: true)
 		}
 	}
@@ -668,6 +673,7 @@ class GameViewController: UIViewController {
 				self.performSegue(withIdentifier: "ToSelect", sender: self)
 			}))
 			alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+			impact.impactOccurred()
 			self.present(alert, animated: true)
 		}
 	}
