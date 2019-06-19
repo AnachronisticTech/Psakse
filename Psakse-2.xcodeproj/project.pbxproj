@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9144BED222BA962400AF670A /* puzzleTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 9144BED122BA962400AF670A /* puzzleTemplate.json */; };
 		915E877121D0F96D007867D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915E877021D0F96D007867D3 /* AppDelegate.swift */; };
 		915E877321D0F96D007867D3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915E877221D0F96D007867D3 /* GameViewController.swift */; };
 		915E877621D0F96D007867D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915E877421D0F96D007867D3 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9144BED122BA962400AF670A /* puzzleTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzleTemplate.json; sourceTree = "<group>"; };
 		915E876D21D0F96D007867D3 /* Psakse-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Psakse-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		915E877021D0F96D007867D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		915E877221D0F96D007867D3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				915E879021E63EA2007867D3 /* HomeViewController.swift */,
 				915E879421E6D618007867D3 /* SelectViewController.swift */,
 				915E879621E6E0CB007867D3 /* puzzles.json */,
+				9144BED122BA962400AF670A /* puzzleTemplate.json */,
 				915E877421D0F96D007867D3 /* Main.storyboard */,
 				915E877721D0F96F007867D3 /* Assets.xcassets */,
 				915E879221E6D296007867D3 /* LaunchScreen.storyboard */,
@@ -170,6 +173,7 @@
 				915E878B21D0F99C007867D3 /* xi.png in Resources */,
 				915E878721D0F99C007867D3 /* e.png in Resources */,
 				915E877821D0F96F007867D3 /* Assets.xcassets in Resources */,
+				9144BED222BA962400AF670A /* puzzleTemplate.json in Resources */,
 				915E879921E6F04D007867D3 /* logo_large.png in Resources */,
 				915E878921D0F99C007867D3 /* a.png in Resources */,
 				915E878821D0F99C007867D3 /* psi.png in Resources */,

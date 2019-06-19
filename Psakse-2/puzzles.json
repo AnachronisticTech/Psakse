@@ -1,39 +1,90 @@
-{
-	"puzzles": [
-		{
-			"solved":false
-			"board":[
-				"deck":[
-					{"Xi": "Orange"},
-					{"A": "Orange"},
-					{"Psi": "Purple"},
-					{"Psi": "Green"},
-					{"E": "Green"},
-					{"A": "Green"},
-					{"Xi": "Green"},
-					{"Xi": "Yellow"},
-					{"E": "Green"},
-					{"Psi": "Green"},
-					{"A": "Green"},
-					{"Wild": ""},
-					{"E": "Yellow"},
-					{"Wild": ""},
-					{"Psi": "Orange"},
-					{"Psi": "Orange"},
-					{"Psi": "Yellow"},
-					{"A": "Yellow"},
-					{"A": "Purple"},
-					{"Psi": "Purple"},
-					{"Psi": "Yellow"},
-					{"A": "Yellow"},
-					{"A": "Purple"},
-					{"E": "Purple"},
-					{"E": "Purple"}
-				]
-				"locked":[
-					9, 12, 18
-				]
-			]
-		}
-	]
-}
+[
+    {
+        "id":0,
+        "wild":2,
+        "deck":[
+            {"col":"orange", "sym":"Xi", "locked":9},
+            {"col":"orange", "sym":"A", "locked":12},
+            {"col":"purple", "sym":"Psi", "locked":18},
+            {"col":"green", "sym":"Psi", "locked":-1},
+            {"col":"green", "sym":"E", "locked":-1},
+            {"col":"green", "sym":"A", "locked":-1},
+            {"col":"green", "sym":"Xi", "locked":-1},
+            {"col":"yellow", "sym":"Xi", "locked":-1},
+            {"col":"green", "sym":"E", "locked":-1},
+            {"col":"green", "sym":"Psi", "locked":-1},
+            {"col":"green", "sym":"A", "locked":-1},
+            {"col":"yellow", "sym":"E", "locked":-1},
+            {"col":"orange", "sym":"Psi", "locked":-1},
+            {"col":"orange", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"E", "locked":-1},
+            {"col":"purple", "sym":"E", "locked":-1},
+        ]
+    },
+    {
+        "id":1,
+        "wild":2,
+        "deck":[
+            {"col":"green", "sym":"Xi", "locked":6},
+            {"col":"purple", "sym":"A", "locked":13},
+            {"col":"yellow", "sym":"E", "locked":16},
+            {"col":"green", "sym":"Psi", "locked":-1},
+            {"col":"green", "sym":"Psi", "locked":-1},
+            {"col":"orange", "sym":"Psi", "locked":-1},
+            {"col":"orange", "sym":"A", "locked":-1},
+            {"col":"green", "sym":"A", "locked":-1},
+            {"col":"green", "sym":"Xi", "locked":-1},
+            {"col":"orange", "sym":"Xi", "locked":-1},
+            {"col":"orange", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"A", "locked":-1},
+            {"col":"green", "sym":"E", "locked":-1},
+            {"col":"purple", "sym":"Xi", "locked":-1},
+            {"col":"purple", "sym":"E", "locked":-1},
+            {"col":"yellow", "sym":"Xi", "locked":-1},
+            {"col":"purple", "sym":"Xi", "locked":-1},
+            {"col":"purple", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"A", "locked":-1},
+            {"col":"yellow", "sym":"Xi", "locked":-1},
+            {"col":"yellow", "sym":"E", "locked":-1},
+            {"col":"purple", "sym":"E", "locked":-1},
+            {"col":"purple", "sym":"Psi", "locked":-1},
+        ]
+    },
+    {
+        "id":2,
+        "wild":2,
+        "deck":[
+            {"col":"purple", "sym":"E", "locked":1},
+            {"col":"orange", "sym":"Psi", "locked":5},
+            {"col":"green", "sym":"A", "locked":16},
+            {"col":"purple", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"E", "locked":-1},
+            {"col":"green", "sym":"E", "locked":-1},
+            {"col":"green", "sym":"Xi", "locked":-1},
+            {"col":"orange", "sym":"E", "locked":-1},
+            {"col":"purple", "sym":"E", "locked":-1},
+            {"col":"yellow", "sym":"E", "locked":-1},
+            {"col":"green", "sym":"E", "locked":-1},
+            {"col":"orange", "sym":"Psi", "locked":-1},
+            {"col":"orange", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"A", "locked":-1},
+            {"col":"orange", "sym":"E", "locked":-1},
+            {"col":"green", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"A", "locked":-1},
+            {"col":"purple", "sym":"A", "locked":-1},
+            {"col":"yellow", "sym":"Psi", "locked":-1},
+            {"col":"yellow", "sym":"A", "locked":-1},
+            {"col":"yellow", "sym":"Xi", "locked":-1},
+            {"col":"purple", "sym":"Xi", "locked":-1},
+            {"col":"orange", "sym":"Xi", "locked":-1},
+        ]
+    },
+
+]

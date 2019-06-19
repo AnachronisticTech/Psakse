@@ -10,18 +10,17 @@ import UIKit
 
 class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
-	var numberOfPuzzles = 2
 	var puzzleSelected = -1
 	var table: UITableView? = nil
-//	var puzzleArray:[Puzzle]? = nil
+    var tableData = [Puzzle]()
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return numberOfPuzzles
+		return tableData.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-		let solved = UserDefaults.standard.bool(forKey: "\(indexPath.row)")
+        let solved = UserDefaults.standard.bool(forKey: "\(tableData[indexPath.row].id)")
 		if solved {
 			cell.textLabel?.text = "Puzzle \(indexPath.row + 1) - Solved"
 		} else {
@@ -32,7 +31,7 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		puzzleSelected = indexPath.row
-		for _ in 0..<numberOfPuzzles {
+		for _ in 0..<tableData.count {
 			performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
 		}
 	}
@@ -40,39 +39,24 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	@objc func goToHome() {
 		performSegue(withIdentifier: "ToHome", sender: self)
 	}
-	
-	struct Puzzle: Decodable {
-		var solved: Bool
-		var cardArray: [GameViewController.Card]
-		var fixedArray: [Int]
-		
-		init(from decoder: Decoder) throws {
-			var container = try decoder.unkeyedContainer()
-			solved = try container.decode(Bool.self)
-			var cardArrayTmp = [GameViewController.Card]()
-			cardArrayTmp.append(try container.decode(GameViewController.Card.self))
-			cardArray = cardArrayTmp
-			fixedArray = try container.decode([Int].self)
-		}
-		
-		let decoder = JSONDecoder()
-		
-		struct JSONCard: Codable {
-			var symbol: String
-			var color: String
-		}
-		
-		func cardFromJSON(card: JSONCard) -> GameViewController.Card {
-			let newCard = try! decoder.decode(JSONCard.self, from: <#T##Data#>)
-			return newCard
-		}
-	}
+    
+    struct Card: Decodable {
+        var col: String
+        var sym: String
+        var locked: Int
+    }
+    
+    struct Puzzle: Decodable {
+        var id: Int
+        var wild: Int
+        var deck: [Card]
+    }
 	
 	override func viewDidLoad() {
 		
 		let x = (Int)(UIScreen.main.bounds.width / 2) - 100
 		let y = (Int)(UIScreen.main.bounds.height) - 200
-		let button = UIButton(frame: CGRect(x: x, y: y, width: 200, height: 80))
+		let button = UIButton(frame: CGRect(x: x, y: y, width: 200, height: 60))
 		button.backgroundColor = GameViewController.Colors.Green.getColor()
 		button.adjustsImageWhenDisabled = false
 		button.setTitle("Home", for: .normal)
@@ -81,11 +65,8 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		button.setTitleColor(UIColor.darkGray, for: .normal)
 		button.layer.borderColor = UIColor.darkGray.cgColor
 		button.layer.borderWidth = 3
-		button.layer.cornerRadius = 10
+		button.layer.cornerRadius = 30
 		self.view.addSubview(button)
-		
-		
-		
 		
 		let width = (Int)(UIScreen.main.bounds.width) - 40
 		let height = (Int)(UIScreen.main.bounds.height) - 300
@@ -94,6 +75,15 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		table!.dataSource = self
 		table!.delegate = self
 		self.view.addSubview(table!)
+        
+        if let path = Bundle.main.path(forResource: "puzzles", ofType: "json") {
+            do {
+                let decoder = JSONDecoder()
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                tableData = try! decoder.decode([Puzzle].self, from: data)
+                table!.reloadData()
+            } catch {}
+        }
 		
 	}
 	
@@ -106,76 +96,71 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		if segue.identifier == "ToScriptedPuzzle" {
 			let destinationViewController = segue.destination as! GameViewController
 			let modeOverride = "Scripted"
-			var overrideDeck = [GameViewController.Card]()
-			var overrideRandArray = [Int]()
-			switch puzzleSelected {
-			case 0:
-				//			let numberSymbols = 4
-				//			let numberColors = 4
-				overrideDeck = [.Normal(.Xi, .Orange),
-								.Normal(.A, .Orange),
-								.Normal(.Psi, .Purple),
-								.Normal(.Psi, .Green),
-								.Normal(.E, .Green),
-								.Normal(.A, .Green),
-								.Normal(.Xi, .Green),
-								.Normal(.Xi, .Yellow),
-								.Normal(.E, .Green),
-								.Normal(.Psi, .Green),
-								.Normal(.A, .Green),
-								.Wild,
-								.Normal(.E, .Yellow),
-								.Wild,
-								.Normal(.Psi, .Orange),
-								.Normal(.Psi, .Orange),
-								.Normal(.Psi, .Yellow),
-								.Normal(.A, .Yellow),
-								.Normal(.A, .Purple),
-								.Normal(.Psi, .Purple),
-								.Normal(.Psi, .Yellow),
-								.Normal(.A, .Yellow),
-								.Normal(.A, .Purple),
-								.Normal(.E, .Purple),
-								.Normal(.E, .Purple)]
-				overrideRandArray = [9, 12, 18]
-				break
-			case 1:
-				overrideDeck = [.Normal(.Xi, .Green),
-								.Normal(.A, .Purple),
-								.Normal(.E, .Yellow),
-								.Normal(.Psi, .Green),
-								.Normal(.Psi, .Green),
-								.Normal(.Psi, .Orange),
-								.Normal(.A, .Orange),
-								.Normal(.A, .Green),
-								.Normal(.Xi, .Green),
-								.Normal(.Xi, .Orange),
-								.Normal(.A, .Orange),
-								.Wild,
-								.Normal(.A, .Purple),
-								.Wild,
-								.Normal(.E, .Green),
-								.Normal(.Xi, .Purple),
-								.Normal(.E, .Purple),
-								.Normal(.Xi, .Yellow),
-								.Normal(.Xi, .Purple),
-								.Normal(.Psi, .Purple),
-								.Normal(.A, .Yellow),
-								.Normal(.Xi, .Yellow),
-								.Normal(.E, .Yellow),
-								.Normal(.E, .Purple),
-								.Normal(.Psi, .Purple)]
-				overrideRandArray = [6, 13, 16]
-			default:
-				break
-			}
-			//			destinationViewController.numberSymbols = numberSymbols
-			//			destinationViewController.numberColors = numberColors
+            let puzzle = tableData[puzzleSelected]
+			let overrideDeck = convertToGameDeck(jsonDeck: puzzle.deck, wildcards: puzzle.wild)
 			destinationViewController.overrideDeck = overrideDeck
-			destinationViewController.overrideRandArray = overrideRandArray
+			destinationViewController.overrideRandArray = [puzzle.deck[0].locked, puzzle.deck[1].locked, puzzle.deck[2].locked]
 			destinationViewController.mode = modeOverride
-			destinationViewController.puzzleID = puzzleSelected
+			destinationViewController.puzzleID = puzzle.id
 		}
 	}
+    
+    func convertToGameDeck(jsonDeck: [Card], wildcards: Int) -> [GameViewController.Card] {
+        var deck = [GameViewController.Card]()
+        for i in jsonDeck {
+            var card: GameViewController.Card
+            switch i.col {
+            case "green":
+                switch i.sym {
+                    case "Psi":
+                        card = .Normal(.Psi, .Green)
+                    case "A":
+                        card = .Normal(.A, .Green)
+                    case "Xi":
+                        card = .Normal(.Xi, .Green)
+                    default:
+                        card = .Normal(.E, .Green)
+                }
+            case "yellow":
+                switch i.sym {
+                    case "Psi":
+                        card = .Normal(.Psi, .Yellow)
+                    case "A":
+                        card = .Normal(.A, .Yellow)
+                    case "Xi":
+                        card = .Normal(.Xi, .Yellow)
+                    default:
+                        card = .Normal(.E, .Yellow)
+                }
+            case "purple":
+                switch i.sym {
+                    case "Psi":
+                        card = .Normal(.Psi, .Purple)
+                    case "A":
+                        card = .Normal(.A, .Purple)
+                    case "Xi":
+                        card = .Normal(.Xi, .Purple)
+                    default:
+                        card = .Normal(.E, .Purple)
+                }
+            default:
+                switch i.sym {
+                    case "Psi":
+                        card = .Normal(.Psi, .Orange)
+                    case "A":
+                        card = .Normal(.A, .Orange)
+                    case "Xi":
+                        card = .Normal(.Xi, .Orange)
+                    default:
+                        card = .Normal(.E, .Orange)
+                }
+            }
+            deck.append(card)
+        }
+        for _ in 0..<wildcards {
+            deck.append(.Wild)
+        }
+        return deck
+    }
 	
 }
