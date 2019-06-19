@@ -67,8 +67,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         createMenu()
-//        UserDefaults.standard.set(false, forKey: "0")
-//        UserDefaults.standard.set(false, forKey: "1")
     }
-    
+
 }

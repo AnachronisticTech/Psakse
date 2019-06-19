@@ -684,5 +684,4 @@ class GameViewController: UIViewController {
         resetGame()
     }
     
-    
 }
