@@ -7,20 +7,82 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914F56DA22CA8CEA0099A5F1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D122CA8CE90099A5F1 /* Colors.swift */; };
+		914F56DB22CA8CEA0099A5F1 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D222CA8CE90099A5F1 /* Symbols.swift */; };
+		914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D322CA8CE90099A5F1 /* SelectViewController.swift */; };
+		914F56DD22CA8CEA0099A5F1 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D422CA8CE90099A5F1 /* GameViewController.swift */; };
+		914F56DE22CA8CEA0099A5F1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D522CA8CE90099A5F1 /* Deck.swift */; };
+		914F56DF22CA8CEA0099A5F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D622CA8CE90099A5F1 /* HomeViewController.swift */; };
+		914F56E022CA8CEA0099A5F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D722CA8CEA0099A5F1 /* Extensions.swift */; };
+		914F56E122CA8CEA0099A5F1 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D822CA8CEA0099A5F1 /* Grid.swift */; };
+		914F56E222CA8CEA0099A5F1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D922CA8CEA0099A5F1 /* Card.swift */; };
+		914F56EC22CA8D6B0099A5F1 /* playstore-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E422CA8D6B0099A5F1 /* playstore-icon.jpg */; };
+		914F56ED22CA8D6B0099A5F1 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E522CA8D6B0099A5F1 /* dot.png */; };
+		914F56EE22CA8D6B0099A5F1 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E622CA8D6B0099A5F1 /* a.png */; };
+		914F56EF22CA8D6B0099A5F1 /* logo_large_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E722CA8D6B0099A5F1 /* logo_large_alt.png */; };
+		914F56F022CA8D6B0099A5F1 /* xi.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E822CA8D6B0099A5F1 /* xi.png */; };
+		914F56F122CA8D6B0099A5F1 /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E922CA8D6B0099A5F1 /* none.png */; };
+		914F56F222CA8D6B0099A5F1 /* e.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56EA22CA8D6B0099A5F1 /* e.png */; };
+		914F56F322CA8D6B0099A5F1 /* psi.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56EB22CA8D6B0099A5F1 /* psi.png */; };
+		914F56F522CA8D990099A5F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914F56F422CA8D990099A5F1 /* Main.storyboard */; };
+		914F56F722CA8DAC0099A5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */; };
+		914F570722CA8FEF0099A5F1 /* Icon-App-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56F922CA8FEE0099A5F1 /* Icon-App-76x76@2x.png */; };
+		914F570822CA8FEF0099A5F1 /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56FA22CA8FEE0099A5F1 /* Icon-App-40x40@2x.png */; };
+		914F570922CA8FEF0099A5F1 /* Icon-App-29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56FB22CA8FEE0099A5F1 /* Icon-App-29x29@3x.png */; };
+		914F570A22CA8FEF0099A5F1 /* Icon-App-40x40@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56FC22CA8FEE0099A5F1 /* Icon-App-40x40@1x.png */; };
+		914F570B22CA8FEF0099A5F1 /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56FD22CA8FEE0099A5F1 /* Icon-App-20x20@3x.png */; };
+		914F570C22CA8FEF0099A5F1 /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56FE22CA8FEE0099A5F1 /* Icon-App-60x60@3x.png */; };
+		914F570D22CA8FEF0099A5F1 /* Icon-App-76x76@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56FF22CA8FEE0099A5F1 /* Icon-App-76x76@1x.png */; };
+		914F570E22CA8FEF0099A5F1 /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570022CA8FEE0099A5F1 /* Icon-App-29x29@1x.png */; };
+		914F570F22CA8FEF0099A5F1 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570122CA8FEE0099A5F1 /* Icon-App-83.5x83.5@2x.png */; };
+		914F571022CA8FEF0099A5F1 /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570222CA8FEE0099A5F1 /* Icon-App-20x20@2x.png */; };
+		914F571122CA8FEF0099A5F1 /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570322CA8FEF0099A5F1 /* Icon-App-40x40@3x.png */; };
+		914F571222CA8FEF0099A5F1 /* Icon-App-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570422CA8FEF0099A5F1 /* Icon-App-60x60@2x.png */; };
+		914F571322CA8FEF0099A5F1 /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570522CA8FEF0099A5F1 /* Icon-App-29x29@2x.png */; };
+		914F571422CA8FEF0099A5F1 /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570622CA8FEF0099A5F1 /* Icon-App-20x20@1x.png */; };
+		914F571622CA90130099A5F1 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */; };
 		91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */; };
-		91F9C6F422CA8B54000A5F2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F9C6F322CA8B54000A5F2F /* ViewController.swift */; };
-		91F9C6F722CA8B54000A5F2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F9C6F522CA8B54000A5F2F /* Main.storyboard */; };
 		91F9C6F922CA8B57000A5F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F9C6F822CA8B57000A5F2F /* Assets.xcassets */; };
-		91F9C6FC22CA8B57000A5F2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F9C6FA22CA8B57000A5F2F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		914F56D122CA8CE90099A5F1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		914F56D222CA8CE90099A5F1 /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		914F56D322CA8CE90099A5F1 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		914F56D422CA8CE90099A5F1 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		914F56D522CA8CE90099A5F1 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		914F56D622CA8CE90099A5F1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		914F56D722CA8CEA0099A5F1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		914F56D822CA8CEA0099A5F1 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		914F56D922CA8CEA0099A5F1 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		914F56E422CA8D6B0099A5F1 /* playstore-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "playstore-icon.jpg"; sourceTree = "<group>"; };
+		914F56E522CA8D6B0099A5F1 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
+		914F56E622CA8D6B0099A5F1 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
+		914F56E722CA8D6B0099A5F1 /* logo_large_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_large_alt.png; sourceTree = "<group>"; };
+		914F56E822CA8D6B0099A5F1 /* xi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xi.png; sourceTree = "<group>"; };
+		914F56E922CA8D6B0099A5F1 /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
+		914F56EA22CA8D6B0099A5F1 /* e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e.png; sourceTree = "<group>"; };
+		914F56EB22CA8D6B0099A5F1 /* psi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = psi.png; sourceTree = "<group>"; };
+		914F56F422CA8D990099A5F1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		914F56F922CA8FEE0099A5F1 /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
+		914F56FA22CA8FEE0099A5F1 /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		914F56FB22CA8FEE0099A5F1 /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
+		914F56FC22CA8FEE0099A5F1 /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
+		914F56FD22CA8FEE0099A5F1 /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
+		914F56FE22CA8FEE0099A5F1 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
+		914F56FF22CA8FEE0099A5F1 /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
+		914F570022CA8FEE0099A5F1 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
+		914F570122CA8FEE0099A5F1 /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
+		914F570222CA8FEE0099A5F1 /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
+		914F570322CA8FEF0099A5F1 /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
+		914F570422CA8FEF0099A5F1 /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
+		914F570522CA8FEF0099A5F1 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
+		914F570622CA8FEF0099A5F1 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
+		914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		91F9C6EE22CA8B54000A5F2F /* Psakse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psakse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		91F9C6F322CA8B54000A5F2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		91F9C6F622CA8B54000A5F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91F9C6F822CA8B57000A5F2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		91F9C6FB22CA8B57000A5F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91F9C6FD22CA8B58000A5F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +97,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		914F56E322CA8D3E0099A5F1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				914F56F822CA8F620099A5F1 /* Icons */,
+				914F56E422CA8D6B0099A5F1 /* playstore-icon.jpg */,
+				914F56E722CA8D6B0099A5F1 /* logo_large_alt.png */,
+				914F56EB22CA8D6B0099A5F1 /* psi.png */,
+				914F56E622CA8D6B0099A5F1 /* a.png */,
+				914F56E822CA8D6B0099A5F1 /* xi.png */,
+				914F56EA22CA8D6B0099A5F1 /* e.png */,
+				914F56E522CA8D6B0099A5F1 /* dot.png */,
+				914F56E922CA8D6B0099A5F1 /* none.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		914F56F822CA8F620099A5F1 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				914F570622CA8FEF0099A5F1 /* Icon-App-20x20@1x.png */,
+				914F570222CA8FEE0099A5F1 /* Icon-App-20x20@2x.png */,
+				914F56FD22CA8FEE0099A5F1 /* Icon-App-20x20@3x.png */,
+				914F570022CA8FEE0099A5F1 /* Icon-App-29x29@1x.png */,
+				914F570522CA8FEF0099A5F1 /* Icon-App-29x29@2x.png */,
+				914F56FB22CA8FEE0099A5F1 /* Icon-App-29x29@3x.png */,
+				914F56FC22CA8FEE0099A5F1 /* Icon-App-40x40@1x.png */,
+				914F56FA22CA8FEE0099A5F1 /* Icon-App-40x40@2x.png */,
+				914F570322CA8FEF0099A5F1 /* Icon-App-40x40@3x.png */,
+				914F570422CA8FEF0099A5F1 /* Icon-App-60x60@2x.png */,
+				914F56FE22CA8FEE0099A5F1 /* Icon-App-60x60@3x.png */,
+				914F56FF22CA8FEE0099A5F1 /* Icon-App-76x76@1x.png */,
+				914F56F922CA8FEE0099A5F1 /* Icon-App-76x76@2x.png */,
+				914F570122CA8FEE0099A5F1 /* Icon-App-83.5x83.5@2x.png */,
+				914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		91F9C6E522CA8B54000A5F2F = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +154,20 @@
 		91F9C6F022CA8B54000A5F2F /* Psakse */ = {
 			isa = PBXGroup;
 			children = (
+				914F56E322CA8D3E0099A5F1 /* Assets */,
 				91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */,
-				91F9C6F322CA8B54000A5F2F /* ViewController.swift */,
-				91F9C6F522CA8B54000A5F2F /* Main.storyboard */,
+				914F56D422CA8CE90099A5F1 /* GameViewController.swift */,
+				914F56D622CA8CE90099A5F1 /* HomeViewController.swift */,
+				914F56D322CA8CE90099A5F1 /* SelectViewController.swift */,
+				914F56D722CA8CEA0099A5F1 /* Extensions.swift */,
+				914F56D822CA8CEA0099A5F1 /* Grid.swift */,
+				914F56D522CA8CE90099A5F1 /* Deck.swift */,
+				914F56D922CA8CEA0099A5F1 /* Card.swift */,
+				914F56D122CA8CE90099A5F1 /* Colors.swift */,
+				914F56D222CA8CE90099A5F1 /* Symbols.swift */,
+				914F56F422CA8D990099A5F1 /* Main.storyboard */,
 				91F9C6F822CA8B57000A5F2F /* Assets.xcassets */,
-				91F9C6FA22CA8B57000A5F2F /* LaunchScreen.storyboard */,
+				914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */,
 				91F9C6FD22CA8B58000A5F2F /* Info.plist */,
 			);
 			path = Psakse;
@@ -122,9 +231,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91F9C6FC22CA8B57000A5F2F /* LaunchScreen.storyboard in Resources */,
+				914F570A22CA8FEF0099A5F1 /* Icon-App-40x40@1x.png in Resources */,
+				914F56F322CA8D6B0099A5F1 /* psi.png in Resources */,
+				914F570E22CA8FEF0099A5F1 /* Icon-App-29x29@1x.png in Resources */,
+				914F571122CA8FEF0099A5F1 /* Icon-App-40x40@3x.png in Resources */,
+				914F56EF22CA8D6B0099A5F1 /* logo_large_alt.png in Resources */,
+				914F570B22CA8FEF0099A5F1 /* Icon-App-20x20@3x.png in Resources */,
+				914F571222CA8FEF0099A5F1 /* Icon-App-60x60@2x.png in Resources */,
+				914F56F122CA8D6B0099A5F1 /* none.png in Resources */,
+				914F571422CA8FEF0099A5F1 /* Icon-App-20x20@1x.png in Resources */,
+				914F56F022CA8D6B0099A5F1 /* xi.png in Resources */,
+				914F56F522CA8D990099A5F1 /* Main.storyboard in Resources */,
+				914F571022CA8FEF0099A5F1 /* Icon-App-20x20@2x.png in Resources */,
 				91F9C6F922CA8B57000A5F2F /* Assets.xcassets in Resources */,
-				91F9C6F722CA8B54000A5F2F /* Main.storyboard in Resources */,
+				914F56F222CA8D6B0099A5F1 /* e.png in Resources */,
+				914F570C22CA8FEF0099A5F1 /* Icon-App-60x60@3x.png in Resources */,
+				914F56EC22CA8D6B0099A5F1 /* playstore-icon.jpg in Resources */,
+				914F570D22CA8FEF0099A5F1 /* Icon-App-76x76@1x.png in Resources */,
+				914F570722CA8FEF0099A5F1 /* Icon-App-76x76@2x.png in Resources */,
+				914F570F22CA8FEF0099A5F1 /* Icon-App-83.5x83.5@2x.png in Resources */,
+				914F570922CA8FEF0099A5F1 /* Icon-App-29x29@3x.png in Resources */,
+				914F56EE22CA8D6B0099A5F1 /* a.png in Resources */,
+				914F571322CA8FEF0099A5F1 /* Icon-App-29x29@2x.png in Resources */,
+				914F56F722CA8DAC0099A5F1 /* LaunchScreen.storyboard in Resources */,
+				914F571622CA90130099A5F1 /* iTunesArtwork@2x.png in Resources */,
+				914F570822CA8FEF0099A5F1 /* Icon-App-40x40@2x.png in Resources */,
+				914F56ED22CA8D6B0099A5F1 /* dot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,31 +267,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91F9C6F422CA8B54000A5F2F /* ViewController.swift in Sources */,
+				914F56DE22CA8CEA0099A5F1 /* Deck.swift in Sources */,
+				914F56E022CA8CEA0099A5F1 /* Extensions.swift in Sources */,
+				914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */,
+				914F56E122CA8CEA0099A5F1 /* Grid.swift in Sources */,
+				914F56DF22CA8CEA0099A5F1 /* HomeViewController.swift in Sources */,
+				914F56DB22CA8CEA0099A5F1 /* Symbols.swift in Sources */,
+				914F56DA22CA8CEA0099A5F1 /* Colors.swift in Sources */,
+				914F56DD22CA8CEA0099A5F1 /* GameViewController.swift in Sources */,
 				91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */,
+				914F56E222CA8CEA0099A5F1 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		91F9C6F522CA8B54000A5F2F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				91F9C6F622CA8B54000A5F2F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		91F9C6FA22CA8B57000A5F2F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				91F9C6FB22CA8B57000A5F2F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		91F9C6FE22CA8B58000A5F2F /* Debug */ = {
