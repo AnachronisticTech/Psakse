@@ -158,22 +158,29 @@ class GameViewController: UIViewController {
     
     func sendToServer(puzzle: String) {
         if let location = Bundle.main.url(forResource: "link", withExtension: "txt") {
-            let tmp = try! String(contentsOf: location)
-            print(tmp)
-            let url = URL(string: tmp.trimmingCharacters(in: CharacterSet.newlines))!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            let session = URLSession.shared
-            let data = "string=" + puzzleSig
-            request.httpBody = data.data(using: .utf8)
-            let task = session.dataTask(with: request) {data, response, error in
-                if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print(dataString)
+            do {
+                let tmp = try String(contentsOf: location)
+                print(tmp)
+                if tmp == "" {
+                    return
                 }
+                let url = URL(string: tmp.trimmingCharacters(in: CharacterSet.newlines))!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                let session = URLSession.shared
+                let data = "string=" + puzzleSig
+                request.httpBody = data.data(using: .utf8)
+                let task = session.dataTask(with: request) {data, response, error in
+                    if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                        print(dataString)
+                    }
+                }
+                task.resume()
+            } catch {
+                return
             }
-            task.resume()
         }
     }
     

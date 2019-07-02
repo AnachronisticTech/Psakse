@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9126B41622CB63880073E583 /* link.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9126B41522CB63880073E583 /* link.txt */; };
 		914F56DA22CA8CEA0099A5F1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D122CA8CE90099A5F1 /* Colors.swift */; };
 		914F56DB22CA8CEA0099A5F1 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D222CA8CE90099A5F1 /* Symbols.swift */; };
 		914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D322CA8CE90099A5F1 /* SelectViewController.swift */; };
@@ -41,12 +42,12 @@
 		914F571322CA8FEF0099A5F1 /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570522CA8FEF0099A5F1 /* Icon-App-29x29@2x.png */; };
 		914F571422CA8FEF0099A5F1 /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F570622CA8FEF0099A5F1 /* Icon-App-20x20@1x.png */; };
 		914F571622CA90130099A5F1 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */; };
-		917802F722CA980000337618 /* link.txt in Resources */ = {isa = PBXBuildFile; fileRef = 917802F622CA980000337618 /* link.txt */; };
 		91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */; };
 		91F9C6F922CA8B57000A5F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F9C6F822CA8B57000A5F2F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9126B41522CB63880073E583 /* link.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = link.txt; sourceTree = "<group>"; };
 		914F56D122CA8CE90099A5F1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		914F56D222CA8CE90099A5F1 /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		914F56D322CA8CE90099A5F1 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		914F570522CA8FEF0099A5F1 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
 		914F570622CA8FEF0099A5F1 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		917802F622CA980000337618 /* link.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = link.txt; sourceTree = "<group>"; };
 		91F9C6EE22CA8B54000A5F2F /* Psakse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psakse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91F9C6F822CA8B57000A5F2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 				91F9C6F822CA8B57000A5F2F /* Assets.xcassets */,
 				914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */,
 				91F9C6FD22CA8B58000A5F2F /* Info.plist */,
-				917802F622CA980000337618 /* link.txt */,
+				9126B41522CB63880073E583 /* link.txt */,
 			);
 			path = Psakse;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 				914F56F722CA8DAC0099A5F1 /* LaunchScreen.storyboard in Resources */,
 				914F571622CA90130099A5F1 /* iTunesArtwork@2x.png in Resources */,
 				914F570822CA8FEF0099A5F1 /* Icon-App-40x40@2x.png in Resources */,
-				917802F722CA980000337618 /* link.txt in Resources */,
+				9126B41622CB63880073E583 /* link.txt in Resources */,
 				914F56ED22CA8D6B0099A5F1 /* dot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
