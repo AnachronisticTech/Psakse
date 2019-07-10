@@ -17,7 +17,6 @@
 		914F56E022CA8CEA0099A5F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D722CA8CEA0099A5F1 /* Extensions.swift */; };
 		914F56E122CA8CEA0099A5F1 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D822CA8CEA0099A5F1 /* Grid.swift */; };
 		914F56E222CA8CEA0099A5F1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D922CA8CEA0099A5F1 /* Card.swift */; };
-		914F56EC22CA8D6B0099A5F1 /* playstore-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E422CA8D6B0099A5F1 /* playstore-icon.jpg */; };
 		914F56ED22CA8D6B0099A5F1 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E522CA8D6B0099A5F1 /* dot.png */; };
 		914F56EE22CA8D6B0099A5F1 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E622CA8D6B0099A5F1 /* a.png */; };
 		914F56EF22CA8D6B0099A5F1 /* logo_large_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E722CA8D6B0099A5F1 /* logo_large_alt.png */; };
@@ -57,7 +56,6 @@
 		914F56D722CA8CEA0099A5F1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		914F56D822CA8CEA0099A5F1 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		914F56D922CA8CEA0099A5F1 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		914F56E422CA8D6B0099A5F1 /* playstore-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "playstore-icon.jpg"; sourceTree = "<group>"; };
 		914F56E522CA8D6B0099A5F1 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
 		914F56E622CA8D6B0099A5F1 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		914F56E722CA8D6B0099A5F1 /* logo_large_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_large_alt.png; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				914F56F822CA8F620099A5F1 /* Icons */,
-				914F56E422CA8D6B0099A5F1 /* playstore-icon.jpg */,
 				914F56E722CA8D6B0099A5F1 /* logo_large_alt.png */,
 				914F56EB22CA8D6B0099A5F1 /* psi.png */,
 				914F56E622CA8D6B0099A5F1 /* a.png */,
@@ -249,7 +246,6 @@
 				91F9C6F922CA8B57000A5F2F /* Assets.xcassets in Resources */,
 				914F56F222CA8D6B0099A5F1 /* e.png in Resources */,
 				914F570C22CA8FEF0099A5F1 /* Icon-App-60x60@3x.png in Resources */,
-				914F56EC22CA8D6B0099A5F1 /* playstore-icon.jpg in Resources */,
 				914F570D22CA8FEF0099A5F1 /* Icon-App-76x76@1x.png in Resources */,
 				914F570722CA8FEF0099A5F1 /* Icon-App-76x76@2x.png in Resources */,
 				914F570F22CA8FEF0099A5F1 /* Icon-App-83.5x83.5@2x.png in Resources */,
