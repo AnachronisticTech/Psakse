@@ -67,11 +67,11 @@
 		91034F9C237481EA00AFFFA3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		91034F9F237481EA00AFFFA3 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		91034FA0237481EA00AFFFA3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		91034FA1237481EA00AFFFA3 /* Psakse_for_MacOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Psakse_for_MacOS.entitlements; sourceTree = "<group>"; };
 		91034FA3237481EB00AFFFA3 /* AppKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppKitExtensions.swift; sourceTree = "<group>"; };
 		91034FA4237481EB00AFFFA3 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		91034FA5237481EB00AFFFA3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		91034FBB2374833300AFFFA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Psakse for macOS.entitlements"; sourceTree = "<group>"; };
 		914F56D122CA8CE90099A5F1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		914F56D222CA8CE90099A5F1 /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		914F56D322CA8CE90099A5F1 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 		91034F8023747D1E00AFFFA3 /* Psakse for macOS */ = {
 			isa = PBXGroup;
 			children = (
+				91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */,
 				91034FA0237481EA00AFFFA3 /* AppDelegate.swift */,
 				91034F9F237481EA00AFFFA3 /* WindowController.swift */,
 				91034F9C237481EA00AFFFA3 /* GameViewController.swift */,
@@ -128,7 +129,6 @@
 				91034FA4237481EB00AFFFA3 /* Grid.swift */,
 				91034F96237481EA00AFFFA3 /* Main.storyboard */,
 				91034F98237481EA00AFFFA3 /* Info.plist */,
-				91034FA1237481EA00AFFFA3 /* Psakse_for_MacOS.entitlements */,
 			);
 			path = "Psakse for macOS";
 			sourceTree = "<group>";
@@ -248,6 +248,11 @@
 					91034F7E23747D1E00AFFFA3 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					91F9C6ED22CA8B54000A5F2F = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -361,7 +366,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Psakse for macOS/Psakse_for_macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -385,7 +389,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Psakse for macOS/Psakse_for_macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
