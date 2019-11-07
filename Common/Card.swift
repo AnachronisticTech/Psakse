@@ -1,12 +1,10 @@
 //
 //  Card.swift
-//  Psakse-2
+//  Psakse
 //
 //  Created by Daniel Marriner on 29/06/2019.
 //  Copyright © 2019 Daniel Marriner. All rights reserved.
 //
-
-import UIKit
 
 enum Card {
     
@@ -22,10 +20,10 @@ enum Card {
         }
     }
     
-    func getColor() -> UIColor {
+    func getColor() -> Color {
         switch self {
         case .Wild:
-            return UIColor(red: 255/255, green: 180/255, blue: 188/255, alpha: 1)
+            return Color(red: 255/255, green: 180/255, blue: 188/255, alpha: 1)
         case .Normal(_, let color):
             return color.getColor()
         }

@@ -11,13 +11,15 @@
 		91034F8423747D1E00AFFFA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F8323747D1E00AFFFA3 /* ViewController.swift */; };
 		91034F8623747D1F00AFFFA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91034F8523747D1F00AFFFA3 /* Assets.xcassets */; };
 		91034F8923747D1F00AFFFA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91034F8723747D1F00AFFFA3 /* Main.storyboard */; };
+		91034F9123747E0100AFFFA3 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9023747E0100AFFFA3 /* Aliases.swift */; };
+		91034F9523747F7900AFFFA3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9423747F7900AFFFA3 /* Extensions.swift */; };
 		914F56DA22CA8CEA0099A5F1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D122CA8CE90099A5F1 /* Colors.swift */; };
 		914F56DB22CA8CEA0099A5F1 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D222CA8CE90099A5F1 /* Symbols.swift */; };
 		914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D322CA8CE90099A5F1 /* SelectViewController.swift */; };
 		914F56DD22CA8CEA0099A5F1 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D422CA8CE90099A5F1 /* GameViewController.swift */; };
 		914F56DE22CA8CEA0099A5F1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D522CA8CE90099A5F1 /* Deck.swift */; };
 		914F56DF22CA8CEA0099A5F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D622CA8CE90099A5F1 /* HomeViewController.swift */; };
-		914F56E022CA8CEA0099A5F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D722CA8CEA0099A5F1 /* Extensions.swift */; };
+		914F56E022CA8CEA0099A5F1 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D722CA8CEA0099A5F1 /* UIKitExtensions.swift */; };
 		914F56E122CA8CEA0099A5F1 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D822CA8CEA0099A5F1 /* Grid.swift */; };
 		914F56E222CA8CEA0099A5F1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D922CA8CEA0099A5F1 /* Card.swift */; };
 		914F56ED22CA8D6B0099A5F1 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F56E522CA8D6B0099A5F1 /* dot.png */; };
@@ -57,13 +59,15 @@
 		91034F8823747D1F00AFFFA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91034F8A23747D1F00AFFFA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91034F8B23747D1F00AFFFA3 /* Psakse_for_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Psakse_for_macOS.entitlements; sourceTree = "<group>"; };
+		91034F9023747E0100AFFFA3 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
+		91034F9423747F7900AFFFA3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		914F56D122CA8CE90099A5F1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		914F56D222CA8CE90099A5F1 /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		914F56D322CA8CE90099A5F1 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		914F56D422CA8CE90099A5F1 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		914F56D522CA8CE90099A5F1 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		914F56D622CA8CE90099A5F1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		914F56D722CA8CEA0099A5F1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		914F56D722CA8CEA0099A5F1 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		914F56D822CA8CEA0099A5F1 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		914F56D922CA8CEA0099A5F1 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		914F56E522CA8D6B0099A5F1 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
@@ -131,6 +135,12 @@
 		91034F8F23747D3300AFFFA3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				914F56D522CA8CE90099A5F1 /* Deck.swift */,
+				914F56D922CA8CEA0099A5F1 /* Card.swift */,
+				914F56D222CA8CE90099A5F1 /* Symbols.swift */,
+				914F56D122CA8CE90099A5F1 /* Colors.swift */,
+				91034F9423747F7900AFFFA3 /* Extensions.swift */,
+				917245E0230C9E2700FAAE4A /* link.txt */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -175,6 +185,7 @@
 		91F9C6E522CA8B54000A5F2F = {
 			isa = PBXGroup;
 			children = (
+				91034F8F23747D3300AFFFA3 /* Common */,
 				91F9C6F022CA8B54000A5F2F /* Psakse */,
 				91034F8023747D1E00AFFFA3 /* Psakse for macOS */,
 				91F9C6EF22CA8B54000A5F2F /* Products */,
@@ -193,19 +204,14 @@
 		91F9C6F022CA8B54000A5F2F /* Psakse */ = {
 			isa = PBXGroup;
 			children = (
-				91034F8F23747D3300AFFFA3 /* Common */,
 				914F56E322CA8D3E0099A5F1 /* Assets */,
 				91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */,
-				917245E0230C9E2700FAAE4A /* link.txt */,
 				914F56D422CA8CE90099A5F1 /* GameViewController.swift */,
 				914F56D622CA8CE90099A5F1 /* HomeViewController.swift */,
 				914F56D322CA8CE90099A5F1 /* SelectViewController.swift */,
-				914F56D722CA8CEA0099A5F1 /* Extensions.swift */,
+				914F56D722CA8CEA0099A5F1 /* UIKitExtensions.swift */,
 				914F56D822CA8CEA0099A5F1 /* Grid.swift */,
-				914F56D522CA8CE90099A5F1 /* Deck.swift */,
-				914F56D922CA8CEA0099A5F1 /* Card.swift */,
-				914F56D122CA8CE90099A5F1 /* Colors.swift */,
-				914F56D222CA8CE90099A5F1 /* Symbols.swift */,
+				91034F9023747E0100AFFFA3 /* Aliases.swift */,
 				914F56F422CA8D990099A5F1 /* Main.storyboard */,
 				91F9C6F822CA8B57000A5F2F /* Assets.xcassets */,
 				914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */,
@@ -348,11 +354,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				914F56DE22CA8CEA0099A5F1 /* Deck.swift in Sources */,
-				914F56E022CA8CEA0099A5F1 /* Extensions.swift in Sources */,
+				914F56E022CA8CEA0099A5F1 /* UIKitExtensions.swift in Sources */,
 				914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */,
+				91034F9123747E0100AFFFA3 /* Aliases.swift in Sources */,
 				914F56E122CA8CEA0099A5F1 /* Grid.swift in Sources */,
 				914F56DF22CA8CEA0099A5F1 /* HomeViewController.swift in Sources */,
 				914F56DB22CA8CEA0099A5F1 /* Symbols.swift in Sources */,
+				91034F9523747F7900AFFFA3 /* Extensions.swift in Sources */,
 				914F56DA22CA8CEA0099A5F1 /* Colors.swift in Sources */,
 				914F56DD22CA8CEA0099A5F1 /* GameViewController.swift in Sources */,
 				91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */,

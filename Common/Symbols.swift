@@ -1,6 +1,6 @@
 //
 //  Symbols.swift
-//  Psakse-2
+//  Psakse
 //
 //  Created by Daniel Marriner on 29/06/2019.
 //  Copyright © 2019 Daniel Marriner. All rights reserved.

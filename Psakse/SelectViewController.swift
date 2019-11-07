@@ -1,6 +1,6 @@
 //
 //  SelectViewController.swift
-//  Psakse-2
+//  Psakse
 //
 //  Created by Daniel Marriner on 10/01/2019.
 //  Copyright © 2019 Daniel Marriner. All rights reserved.
@@ -44,7 +44,7 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getJson() {
-        let x = URL(string: "https://anachronistic-tech.co.uk/psakse/get_puzzles.php")!
+        let x = URL(string: "https://anachronistic-tech.co.uk/projects/psakse/get_puzzles.php")!
         let request = NSMutableURLRequest(url: x)
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             data, response, error in

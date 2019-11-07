@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Psakse-2
+//  Psakse
 //
 //  Created by Daniel Marriner on 24/12/2018.
 //  Copyright © 2018 Daniel Marriner. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  Psakse-2
+//  Psakse
 //
 //  Created by Daniel Marriner on 09/01/2019.
 //  Copyright © 2019 Daniel Marriner. All rights reserved.
