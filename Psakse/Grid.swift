@@ -9,30 +9,20 @@
 import Foundation
 import UIKit
 
-class Grid: NSObject {
-    let dWidth = UIScreen.main.bounds.width
-    var gridSize = 5
+class Grid {
+    let gridSize: Int
+    let tileMargin = 5
     var grid:[Card?] = Array(repeating: nil, count:30)
     var buttonGrid = [UIButton]()
     
-    init(gridSize: Int) {
+    init(gridSize: Int, mainGrid: UIView, subGrid: UIView) {
         self.gridSize = gridSize
-        self.grid = Array(repeating: nil, count:((gridSize * gridSize) + gridSize))
+        drawMainGrid(gridUI: mainGrid)
+        drawSubGrid(gridUI: subGrid)
     }
     
-    func create(view: UIView) {
-        let gridMargin = 20
-        let tileMargin = 5
-        let mainGrid = drawMainGrid(gridMargin: gridMargin, tileMargin: tileMargin)
-        view.addSubview(mainGrid)
-        let sideGrid = drawSideGrid(gridMargin: gridMargin, tileMargin: tileMargin)
-        view.addSubview(sideGrid)
-    }
-    
-    private func drawMainGrid(gridMargin: Int, tileMargin: Int) -> UIView {
-        let gridHeight = Int(dWidth) - (2 * gridMargin)
-        let gridView = UIView(frame: CGRect(x: gridMargin, y: (3 * gridMargin), width: gridHeight, height: gridHeight))
-        gridView.backgroundColor = .black
+    private func drawMainGrid(gridUI: UIView) {
+        let gridHeight = Int(gridUI.frame.width)
         let tileHeight = (gridHeight - ((gridSize - 1) * tileMargin)) / gridSize
         for i in 0..<(gridSize * gridSize) {
             let gridX = i % gridSize
@@ -41,24 +31,25 @@ class Grid: NSObject {
             let y = gridY * (tileHeight + tileMargin)
             let button = createButton(x: x, y: y, height: tileHeight, tag: i)
             buttonGrid.append(button)
-            gridView.addSubview(button)
+            gridUI.addSubview(button)
         }
-        return gridView
     }
-    
-    private func drawSideGrid(gridMargin: Int, tileMargin: Int) -> UIView {
-        let gridWidth = Int(dWidth) - (2 * gridMargin)
+    private func drawSubGrid(gridUI: UIView) {
+        let gridWidth = Int(gridUI.frame.width)
         let tileHeight = (gridWidth - ((gridSize - 1) * tileMargin)) / gridSize
-        let gridView = UIView(frame: CGRect(x: gridMargin, y: ((gridMargin * 5) + gridWidth), width: gridWidth, height: tileHeight + (2 * tileMargin)))
-        gridView.backgroundColor = .black
+        setHeight(gridUI, height: CGFloat(tileHeight))
         for i in 0..<5 {
             let gridX = i % gridSize
             let x = gridX * (tileHeight + tileMargin)
             let button = createButton(x: x, y: 5, height: tileHeight, tag: i + (gridSize * gridSize))
             buttonGrid.append(button)
-            gridView.addSubview(button)
+            gridUI.addSubview(button)
         }
-        return gridView
+    }
+    
+    private func setHeight(_ gridUI: UIView, height: CGFloat) {
+        gridUI.translatesAutoresizingMaskIntoConstraints = false
+        gridUI.heightAnchor.constraint(equalToConstant: CGFloat(height + 10)).isActive = true
     }
     
     private func createButton(x: Int, y: Int, height: Int, tag: Int) -> UIButton {
@@ -68,13 +59,17 @@ class Grid: NSObject {
         button.setTitle("\(tag)", for: .normal)
         button.tag = tag
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 0
+        button.setBorder(width: 0, color: .black)
         return button
     }
     
-    func drawControls() {
-        
+    func reset() {
+        for i in 0..<buttonGrid.count {
+            grid[i] = nil
+            buttonGrid[i].reset()
+            buttonGrid[i].setAttrs(image: nil, bgColor: .white)
+            buttonGrid[i].setBorder(width: 0, color: .black)
+            buttonGrid[i].isEnabled = true
+        }
     }
-    
 }

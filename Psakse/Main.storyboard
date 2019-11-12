@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,9 +13,9 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Psakse_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Psakse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -31,14 +32,37 @@
         <!--Game View Controller-->
         <scene sceneID="zJz-PH-98F">
             <objects>
-                <viewController id="swd-rU-l3e" customClass="GameViewController" customModule="Psakse_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="swd-rU-l3e" customClass="GameViewController" customModule="Psakse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4w0-cJ-J2B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="640-ij-XCu" userLabel="MainGrid">
+                                <rect key="frame" x="20" y="64" width="335" height="335"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="640-ij-XCu" secondAttribute="height" multiplier="1:1" id="BCN-yE-hNF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crk-HZ-Wav" userLabel="SubGrid">
+                                <rect key="frame" x="20" y="419" width="335" height="75"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="640-ij-XCu" firstAttribute="top" secondItem="PRu-KA-f0h" secondAttribute="top" constant="20" id="b2e-K5-LQl"/>
+                            <constraint firstItem="crk-HZ-Wav" firstAttribute="width" secondItem="640-ij-XCu" secondAttribute="width" id="bx5-Nk-a87"/>
+                            <constraint firstItem="crk-HZ-Wav" firstAttribute="centerX" secondItem="4w0-cJ-J2B" secondAttribute="centerX" id="hZi-O6-wk3"/>
+                            <constraint firstItem="PRu-KA-f0h" firstAttribute="trailing" secondItem="640-ij-XCu" secondAttribute="trailing" constant="20" id="qEC-y9-z8X"/>
+                            <constraint firstItem="640-ij-XCu" firstAttribute="leading" secondItem="PRu-KA-f0h" secondAttribute="leading" constant="20" id="xwe-Tr-kKd"/>
+                            <constraint firstItem="crk-HZ-Wav" firstAttribute="top" secondItem="640-ij-XCu" secondAttribute="bottom" constant="20" id="yFd-Ng-bhG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PRu-KA-f0h"/>
                     </view>
                     <connections>
+                        <outlet property="mainGrid" destination="640-ij-XCu" id="Nj2-fM-1jK"/>
+                        <outlet property="subGrid" destination="crk-HZ-Wav" id="AOd-h3-9i7"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToHome" id="z3K-N7-uSu"/>
                         <segue destination="hUZ-VG-IMd" kind="show" identifier="ToSelect" id="mhQ-hY-bkb"/>
                     </connections>
@@ -50,9 +74,9 @@
         <!--Select View Controller-->
         <scene sceneID="bmS-yB-2Hh">
             <objects>
-                <viewController id="hUZ-VG-IMd" customClass="SelectViewController" customModule="Psakse_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hUZ-VG-IMd" customClass="SelectViewController" customModule="Psakse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nen-ZM-Awm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="213-5m-90A"/>
@@ -68,7 +92,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YOD-PB-Scx"/>
+        <segue reference="mhQ-hY-bkb"/>
         <segue reference="vI8-ki-mIF"/>
         <segue reference="z3K-N7-uSu"/>
     </inferredMetricsTieBreakers>

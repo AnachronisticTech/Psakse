@@ -28,6 +28,9 @@ class GameViewController: UIViewController {
     let dHeight = UIScreen.main.bounds.height
     let impact = UIImpactFeedbackGenerator()
     
+    @IBOutlet weak var mainGrid: UIView!
+    @IBOutlet weak var subGrid: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,22 +42,12 @@ class GameViewController: UIViewController {
         deck = Deck()
         if let grid = grid {
             // Reset all buttons in main and side grids
-            for i in 0..<grid.buttonGrid.count {
-                grid.grid[i] = nil
-                grid.buttonGrid[i].reset()
-                grid.buttonGrid[i].setAttrs(image: nil, bgColor: .white)
-                grid.buttonGrid[i].setBorder(width: 0, color: .black)
-                grid.buttonGrid[i].isEnabled = true
-            }
+            grid.reset()
         } else {
             // Create main and side grids with all buttons
-            grid = Grid(gridSize: gridSize)
-            grid!.create(view: self.view)
+            grid = Grid(gridSize: gridSize, mainGrid: mainGrid, subGrid: subGrid)
             for button in grid!.buttonGrid {
-                button.reset()
                 button.addTarget(self, action: #selector(select), for: .touchUpInside)
-                button.setAttrs(image: nil, bgColor: .white)
-                button.isEnabled = true
             }
             
             // Create in game controls (TODO: Improve and tidy)
