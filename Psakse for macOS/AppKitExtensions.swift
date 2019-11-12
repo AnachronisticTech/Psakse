@@ -11,9 +11,11 @@ import AppKit
 public extension NSButton {
     func reset() {
         self.title = ""
-        self.layer?.backgroundColor = .white
+        self.setBackgroundColor(color: .white)
         self.setBorder(width: 0, color: .white)
+        self.setAttrs(image: nil, bgColor: .white)
         self.imageScaling = .scaleProportionallyUpOrDown
+        self.isEnabled = true
     }
     
     func setAttrs(image: NSImage?, bgColor: NSColor) {
@@ -26,5 +28,9 @@ public extension NSButton {
     func setBorder(width: CGFloat, color: NSColor) {
         self.layer?.borderWidth = width
         self.layer?.borderColor = color.cgColor
+    }
+    
+    func setBackgroundColor(color: NSColor) {
+        self.layer?.backgroundColor = color.cgColor
     }
 }

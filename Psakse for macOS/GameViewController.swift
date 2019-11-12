@@ -27,16 +27,22 @@ class GameViewController: NSViewController {
     var width = 0
     var height = 0
     
+    @IBOutlet weak var mainGrid: NSView!
+    @IBOutlet weak var subGrid: NSView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TRY REMOVE
         let width = 500
         let height = 750
-        self.view = FlippedView()
+        
         self.view.window?.setFrame(NSRect(x: 0, y: 0, width: width, height: height), display: true)
-        let layer = CALayer()
-        layer.backgroundColor = NSColor.white.cgColor
-        self.view.layer = layer
-        self.view.setFrameSize(NSSize(width: width, height: height))
+        // KEEP
+//        let layer = CALayer()
+//        layer.backgroundColor = NSColor.white.cgColor
+//        self.view.layer = layer
+        
+        // TRY REMOVE
         self.width = width
         self.height = height
         // Do any additional setup after loading the view, typically from a nib.
@@ -48,22 +54,16 @@ class GameViewController: NSViewController {
         deck = Deck()
         if let grid = grid {
             // Reset all buttons in main and side grids
-            for i in 0..<grid.buttonGrid.count {
-                grid.grid[i] = nil
-                grid.buttonGrid[i].reset()
-                grid.buttonGrid[i].setAttrs(image: nil, bgColor: .white)
-                grid.buttonGrid[i].setBorder(width: 0, color: .black)
-                grid.buttonGrid[i].isEnabled = true
-            }
+            grid.reset()
         } else {
             // Create main and side grids with all buttons
-            grid = Grid(gridSize: gridSize, dWidth: width)
-            grid!.create(view: self.view)
+            grid = Grid(gridSize: gridSize, mainGrid: mainGrid, subGrid: subGrid)
+            mainGrid.layer = CALayer()
+            mainGrid.layer?.backgroundColor = .black
+            subGrid.layer = CALayer()
+            subGrid.layer?.backgroundColor = .black
             for button in grid!.buttonGrid {
-                button.reset()
                 button.action = #selector(select(sender:))
-                button.setAttrs(image: nil, bgColor: .white)
-                button.isEnabled = true
             }
             
             // Create in game controls (TODO: Improve and tidy)

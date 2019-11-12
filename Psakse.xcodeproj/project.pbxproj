@@ -16,7 +16,6 @@
 		91034FAF237481EB00AFFFA3 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9F237481EA00AFFFA3 /* WindowController.swift */; };
 		91034FB0237481EB00AFFFA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034FA0237481EA00AFFFA3 /* AppDelegate.swift */; };
 		91034FB2237481EB00AFFFA3 /* AppKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034FA3237481EB00AFFFA3 /* AppKitExtensions.swift */; };
-		91034FB3237481EB00AFFFA3 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034FA4237481EB00AFFFA3 /* Grid.swift */; };
 		91034FB4237481EB00AFFFA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034FA5237481EB00AFFFA3 /* HomeViewController.swift */; };
 		91034FB52374828B00AFFFA3 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D522CA8CE90099A5F1 /* Deck.swift */; };
 		91034FB62374828B00AFFFA3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D922CA8CEA0099A5F1 /* Card.swift */; };
@@ -54,6 +53,7 @@
 		914F56F722CA8DAC0099A5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */; };
 		914F571622CA90130099A5F1 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */; };
 		917245E1230C9E2700FAAE4A /* link.txt in Resources */ = {isa = PBXBuildFile; fileRef = 917245E0230C9E2700FAAE4A /* link.txt */; };
+		91F7DE68237B6F0A0065B4B5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D822CA8CEA0099A5F1 /* Grid.swift */; };
 		91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,6 @@
 		91034F9F237481EA00AFFFA3 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		91034FA0237481EA00AFFFA3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91034FA3237481EB00AFFFA3 /* AppKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppKitExtensions.swift; sourceTree = "<group>"; };
-		91034FA4237481EB00AFFFA3 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		91034FA5237481EB00AFFFA3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		91034FBB2374833300AFFFA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Psakse for macOS.entitlements"; sourceTree = "<group>"; };
@@ -118,7 +117,6 @@
 		91034F8023747D1E00AFFFA3 /* Psakse for macOS */ = {
 			isa = PBXGroup;
 			children = (
-				91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */,
 				91034FA0237481EA00AFFFA3 /* AppDelegate.swift */,
 				91034F9F237481EA00AFFFA3 /* WindowController.swift */,
 				91034F9C237481EA00AFFFA3 /* GameViewController.swift */,
@@ -126,9 +124,9 @@
 				91034F9A237481EA00AFFFA3 /* SelectViewController.swift */,
 				91034FA3237481EB00AFFFA3 /* AppKitExtensions.swift */,
 				91034F9B237481EA00AFFFA3 /* FlippedView.swift */,
-				91034FA4237481EB00AFFFA3 /* Grid.swift */,
 				91034F96237481EA00AFFFA3 /* Main.storyboard */,
 				91034F98237481EA00AFFFA3 /* Info.plist */,
+				91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */,
 			);
 			path = "Psakse for macOS";
 			sourceTree = "<group>";
@@ -139,6 +137,7 @@
 				91034FBB2374833300AFFFA3 /* Assets.xcassets */,
 				914F56E322CA8D3E0099A5F1 /* Assets */,
 				914F56D522CA8CE90099A5F1 /* Deck.swift */,
+				914F56D822CA8CEA0099A5F1 /* Grid.swift */,
 				914F56D922CA8CEA0099A5F1 /* Card.swift */,
 				914F56D222CA8CE90099A5F1 /* Symbols.swift */,
 				914F56D122CA8CE90099A5F1 /* Colors.swift */,
@@ -190,7 +189,6 @@
 				914F56D622CA8CE90099A5F1 /* HomeViewController.swift */,
 				914F56D322CA8CE90099A5F1 /* SelectViewController.swift */,
 				914F56D722CA8CEA0099A5F1 /* UIKitExtensions.swift */,
-				914F56D822CA8CEA0099A5F1 /* Grid.swift */,
 				914F56F422CA8D990099A5F1 /* Main.storyboard */,
 				914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */,
 				91F9C6FD22CA8B58000A5F2F /* Info.plist */,
@@ -331,7 +329,7 @@
 				91034FBA2374828B00AFFFA3 /* link.txt in Sources */,
 				91034FB0237481EB00AFFFA3 /* AppDelegate.swift in Sources */,
 				91034FAC237481EB00AFFFA3 /* GameViewController.swift in Sources */,
-				91034FB3237481EB00AFFFA3 /* Grid.swift in Sources */,
+				91F7DE68237B6F0A0065B4B5 /* Grid.swift in Sources */,
 				91034FAB237481EB00AFFFA3 /* FlippedView.swift in Sources */,
 				91034FB2237481EB00AFFFA3 /* AppKitExtensions.swift in Sources */,
 				91034FAF237481EB00AFFFA3 /* WindowController.swift in Sources */,

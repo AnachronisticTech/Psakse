@@ -674,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Psakse_for_MacOS" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Psakse_for_macOS" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -683,7 +683,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="WindowController" customModule="Psakse_for_MacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="WindowController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -699,30 +699,51 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="230"/>
+            <point key="canvasLocation" x="74" y="229"/>
         </scene>
         <!--Game-->
         <scene sceneID="fkq-wq-wu1">
             <objects>
                 <customObject id="T92-Km-iQa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="GameViewController" customModule="Psakse_for_MacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="GameViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="HI4-BM-WQG">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-Db-bHD">
+                                <rect key="frame" x="20" y="82" width="400" height="96"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTB-KA-Asd">
+                                <rect key="frame" x="20" y="198" width="400" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="4NO-Wv-XdM"/>
+                                    <constraint firstAttribute="width" secondItem="WTB-KA-Asd" secondAttribute="height" multiplier="1:1" id="8BD-VC-6SB"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WTB-KA-Asd" secondAttribute="trailing" constant="20" id="8cu-81-vGe"/>
+                            <constraint firstItem="WTB-KA-Asd" firstAttribute="top" secondItem="HI4-BM-WQG" secondAttribute="top" constant="20" id="ATI-Cw-411"/>
+                            <constraint firstItem="PK5-Db-bHD" firstAttribute="top" secondItem="WTB-KA-Asd" secondAttribute="bottom" constant="20" id="D1Z-yX-B4U"/>
+                            <constraint firstItem="WTB-KA-Asd" firstAttribute="leading" secondItem="HI4-BM-WQG" secondAttribute="leading" constant="20" id="PcO-oK-Tqo"/>
+                            <constraint firstItem="PK5-Db-bHD" firstAttribute="width" secondItem="WTB-KA-Asd" secondAttribute="width" id="bGa-am-Q6R"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="mainGrid" destination="WTB-KA-Asd" id="SY1-wE-htM"/>
+                        <outlet property="subGrid" destination="PK5-Db-bHD" id="g0R-S3-OfG"/>
                         <segue destination="40q-VO-Cru" kind="show" identifier="ToHome" id="uVH-lz-uJo"/>
                         <segue destination="H4Y-vq-2ls" kind="show" identifier="ToSelect" id="K2m-u3-jpH"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="634" y="224"/>
+            <point key="canvasLocation" x="838" y="383"/>
         </scene>
         <!--Select-->
         <scene sceneID="1RU-dK-yrl">
             <objects>
                 <customObject id="frT-Vb-xZ5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Select" showSeguePresentationStyle="single" id="H4Y-vq-2ls" customClass="SelectViewController" customModule="Psakse_for_MacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Select" showSeguePresentationStyle="single" id="H4Y-vq-2ls" customClass="SelectViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vzm-0H-3kw">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -733,13 +754,13 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="634" y="670"/>
+            <point key="canvasLocation" x="74" y="1526"/>
         </scene>
         <!--Home-->
         <scene sceneID="fb5-y7-mhw">
             <objects>
                 <customObject id="gay-TA-BZw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Home" showSeguePresentationStyle="single" id="40q-VO-Cru" customClass="HomeViewController" customModule="Psakse_for_MacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" showSeguePresentationStyle="single" id="40q-VO-Cru" customClass="HomeViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="SYk-3c-lSi">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -750,12 +771,12 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="74" y="670"/>
+            <point key="canvasLocation" x="-64" y="961"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QSX-YT-9HD"/>
-        <segue reference="fKA-Yf-VHe"/>
-        <segue reference="muG-2U-3bb"/>
+        <segue reference="uVH-lz-uJo"/>
+        <segue reference="K2m-u3-jpH"/>
+        <segue reference="0qp-cD-w45"/>
     </inferredMetricsTieBreakers>
 </document>
