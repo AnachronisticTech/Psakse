@@ -13,9 +13,8 @@ class GameViewController: UIViewController {
     
     let gridSize = 5
     let wildcards = 2
-    var numberSymbols = 4
-    var numberColors = 4
-    var gridExists = false
+//    var numberSymbols = 4
+//    var numberColors = 4
     var grid:Grid? = nil
     var deck:Deck? = nil
     var activeCard:Card? = nil
@@ -24,8 +23,6 @@ class GameViewController: UIViewController {
     var puzzleID: String? = nil
     var override: String? = nil
     var puzzleSig: String = ""
-    let dWidth = UIScreen.main.bounds.width
-    let dHeight = UIScreen.main.bounds.height
     let impact = UIImpactFeedbackGenerator()
     
     @IBOutlet weak var mainGrid: UIView!
