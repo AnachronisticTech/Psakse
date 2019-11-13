@@ -205,16 +205,10 @@ class GameViewController: NSViewController {
                         alertView.runModal()
                     }
                     deselect()
-                    var finishedArray = [Bool]()
                     if deck!.arr.count == 0 {
-                        for i in 0..<((gridSize * gridSize) + gridSize) {
-                            if i < (gridSize * gridSize) {
-                                finishedArray.append(grid!.grid[i] != nil)
-                            } else {
-                                finishedArray.append(grid!.grid[i] == nil)
-                            }
-                        }
-                        if !finishedArray.contains(false)  {
+                        var arr: [Bool] = grid!.grid.map({ $0 != nil })
+                        arr.removeLast(5)
+                        if !arr.contains(false)  {
                             gameComplete = true
                             if let id = puzzleID {
                                 UserDefaults.standard.set(true, forKey: "\(id)")
