@@ -13,9 +13,8 @@ class GameViewController: NSViewController {
     
     let gridSize = 5
     let wildcards = 2
-    var numberSymbols = 4
-    var numberColors = 4
-    var gridExists = false
+//    var numberSymbols = 4
+//    var numberColors = 4
     var grid:Grid? = nil
     var deck:Deck? = nil
     var activeCard:Card? = nil
@@ -24,29 +23,41 @@ class GameViewController: NSViewController {
     var puzzleID: String? = nil
     var override: String? = nil
     var puzzleSig: String = ""
-    var width = 0
-    var height = 0
     
     @IBOutlet weak var mainGrid: NSView!
     @IBOutlet weak var subGrid: NSView!
+    @IBOutlet weak var backView: NSButton!
+    @IBOutlet weak var newView: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TRY REMOVE
+        
         let width = 500
         let height = 750
-        
         self.view.window?.setFrame(NSRect(x: 0, y: 0, width: width, height: height), display: true)
-        // KEEP
-//        let layer = CALayer()
-//        layer.backgroundColor = NSColor.white.cgColor
-//        self.view.layer = layer
+        let layer = CALayer()
+        layer.backgroundColor = NSColor.white.cgColor
+        self.view.layer = layer
         
-        // TRY REMOVE
-        self.width = width
-        self.height = height
         // Do any additional setup after loading the view, typically from a nib.
         resetGame()
+    }
+    
+    func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
+        let layer = CALayer()
+        layer.backgroundColor = color.getColor().cgColor
+        let text = CATextLayer()
+        text.string = title
+        text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)
+        let CGR = NSClickGestureRecognizer(target: self, action: action)
+        button.addGestureRecognizer(CGR)
+        text.foregroundColor = NSColor.darkGray.cgColor
+        text.fontSize = 16
+        text.alignmentMode = .center
+        layer.addSublayer(text)
+        layer.cornerRadius = 10
+        button.layer = layer
+        button.setBorder(width: 3, color: .darkGray)
     }
     
     func resetGame() {
@@ -66,52 +77,14 @@ class GameViewController: NSViewController {
                 button.action = #selector(select(sender:))
             }
             
-            // Create in game controls (TODO: Improve and tidy)
-            var x = (Int)(width / 2) + 10
-            let y = ((Int)((Double)(height) + ((Double)(width) * 0.9)) / 2) + 40
-            var button = NSButton(frame: CGRect(x: x, y: y, width: 80, height: 80))
-            var layer = CALayer()
-            layer.backgroundColor = Colors.Purple.getColor().cgColor
-            var text = CATextLayer()
+            // Create in game controls
             if let _ = puzzleID {
-                text.string = "Reset"
-                text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height / 2)
+                setupButtonView(button: backView, title: "Back", color: .Orange, action: #selector(goToSelect))
+                setupButtonView(button: newView, title: "Reset", color: .Purple, action: #selector(newGame))
             } else {
-                text.string = "New\nGame"
-                text.frame = CGRect(x: 0, y: button.bounds.height / 4, width: button.bounds.width, height: button.bounds.height / 2)
+                setupButtonView(button: backView, title: "Home", color: .Orange, action: #selector(goToHome))
+                setupButtonView(button: newView, title: "New Game", color: .Purple, action: #selector(newGame))
             }
-            button.action = #selector(newGame)
-            text.foregroundColor = NSColor.darkGray.cgColor
-            text.fontSize = 16
-            text.alignmentMode = .center
-            layer.addSublayer(text)
-            layer.cornerRadius = 10
-            button.layer = layer
-            button.setBorder(width: 3, color: .darkGray)
-            self.view.addSubview(button)
-            
-            x = (Int)(width / 2) - 90
-            button = NSButton(frame: CGRect(x: x, y: y, width: 80, height: 80))
-            layer = CALayer()
-            text = CATextLayer()
-            layer.backgroundColor = Colors.Orange.getColor().cgColor
-            if let _ = puzzleID {
-                text.string = "Back"
-                button.action = #selector(goToSelect)
-            } else {
-                text.string = "Home"
-                button.action = #selector(goToHome)
-            }
-            text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height / 2)
-            text.foregroundColor = NSColor.darkGray.cgColor
-            text.fontSize = 16
-            text.alignmentMode = .center
-            layer.addSublayer(text)
-            layer.cornerRadius = 10
-            button.layer = layer
-            button.setBorder(width: 3, color: .darkGray)
-            self.view.addSubview(button)
-            //
         }
         
         // Create deck from override or procedurally
