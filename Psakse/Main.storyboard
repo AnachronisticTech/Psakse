@@ -44,24 +44,66 @@
                                     <constraint firstAttribute="width" secondItem="640-ij-XCu" secondAttribute="height" multiplier="1:1" id="BCN-yE-hNF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crk-HZ-Wav" userLabel="SubGrid">
-                                <rect key="frame" x="20" y="419" width="335" height="75"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crk-HZ-Wav" userLabel="SubGrid">
+                                <rect key="frame" x="20" y="419" width="335" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VF9-Lz-qSh">
+                                <rect key="frame" x="20" y="490" width="167.66666666666666" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9f-93-hAb">
+                                        <rect key="frame" x="106.66666666666669" y="8" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="W9f-93-hAb" secondAttribute="height" multiplier="1:1" id="kJW-lC-Tvt"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="W9f-93-hAb" secondAttribute="trailing" constant="15" id="1Cz-NT-0MI"/>
+                                    <constraint firstItem="W9f-93-hAb" firstAttribute="height" secondItem="VF9-Lz-qSh" secondAttribute="height" id="xRx-8U-vcb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXK-7U-Nb5">
+                                <rect key="frame" x="187.66666666666663" y="490" width="167.33333333333337" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMY-ye-lEq">
+                                        <rect key="frame" x="15" y="8" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="xMY-ye-lEq" secondAttribute="height" multiplier="1:1" id="7CL-n9-W3y"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xMY-ye-lEq" firstAttribute="leading" secondItem="IXK-7U-Nb5" secondAttribute="leading" constant="15" id="4m2-bl-T0v"/>
+                                    <constraint firstItem="xMY-ye-lEq" firstAttribute="height" secondItem="IXK-7U-Nb5" secondAttribute="height" id="v5P-ao-5yz"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VF9-Lz-qSh" firstAttribute="width" secondItem="IXK-7U-Nb5" secondAttribute="width" id="1d8-ei-OlP"/>
+                            <constraint firstItem="IXK-7U-Nb5" firstAttribute="top" secondItem="crk-HZ-Wav" secondAttribute="bottom" constant="35" id="Hka-OD-uWo"/>
+                            <constraint firstItem="IXK-7U-Nb5" firstAttribute="height" secondItem="crk-HZ-Wav" secondAttribute="height" constant="10" id="SIs-rg-dI9"/>
+                            <constraint firstItem="VF9-Lz-qSh" firstAttribute="leading" secondItem="PRu-KA-f0h" secondAttribute="leading" constant="20" id="TH6-Zn-QJd"/>
                             <constraint firstItem="640-ij-XCu" firstAttribute="top" secondItem="PRu-KA-f0h" secondAttribute="top" constant="20" id="b2e-K5-LQl"/>
                             <constraint firstItem="crk-HZ-Wav" firstAttribute="width" secondItem="640-ij-XCu" secondAttribute="width" id="bx5-Nk-a87"/>
+                            <constraint firstItem="VF9-Lz-qSh" firstAttribute="top" secondItem="crk-HZ-Wav" secondAttribute="bottom" constant="35" id="edL-Tm-rbk"/>
                             <constraint firstItem="crk-HZ-Wav" firstAttribute="centerX" secondItem="4w0-cJ-J2B" secondAttribute="centerX" id="hZi-O6-wk3"/>
                             <constraint firstItem="PRu-KA-f0h" firstAttribute="trailing" secondItem="640-ij-XCu" secondAttribute="trailing" constant="20" id="qEC-y9-z8X"/>
+                            <constraint firstItem="VF9-Lz-qSh" firstAttribute="height" secondItem="crk-HZ-Wav" secondAttribute="height" constant="10" id="tdd-JV-Haj"/>
+                            <constraint firstItem="PRu-KA-f0h" firstAttribute="trailing" secondItem="IXK-7U-Nb5" secondAttribute="trailing" constant="20" id="tvF-w3-kmb"/>
                             <constraint firstItem="640-ij-XCu" firstAttribute="leading" secondItem="PRu-KA-f0h" secondAttribute="leading" constant="20" id="xwe-Tr-kKd"/>
                             <constraint firstItem="crk-HZ-Wav" firstAttribute="top" secondItem="640-ij-XCu" secondAttribute="bottom" constant="20" id="yFd-Ng-bhG"/>
+                            <constraint firstItem="IXK-7U-Nb5" firstAttribute="leading" secondItem="VF9-Lz-qSh" secondAttribute="trailing" id="yFh-0c-lf2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PRu-KA-f0h"/>
                     </view>
                     <connections>
+                        <outlet property="backView" destination="W9f-93-hAb" id="kst-G2-hfw"/>
                         <outlet property="mainGrid" destination="640-ij-XCu" id="Nj2-fM-1jK"/>
+                        <outlet property="newView" destination="xMY-ye-lEq" id="AeK-9N-BJb"/>
                         <outlet property="subGrid" destination="crk-HZ-Wav" id="AOd-h3-9i7"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToHome" id="z3K-N7-uSu"/>
                         <segue destination="hUZ-VG-IMd" kind="show" identifier="ToSelect" id="mhQ-hY-bkb"/>
@@ -69,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQQ-nd-OKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="-264"/>
+            <point key="canvasLocation" x="1384.8" y="-264.53201970443348"/>
         </scene>
         <!--Select View Controller-->
         <scene sceneID="bmS-yB-2Hh">

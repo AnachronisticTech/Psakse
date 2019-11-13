@@ -30,11 +30,24 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var mainGrid: UIView!
     @IBOutlet weak var subGrid: UIView!
+    @IBOutlet weak var backView: UIButton!
+    @IBOutlet weak var newView: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resetGame()
+    }
+    
+    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
+        button.backgroundColor = color.getColor()
+        button.adjustsImageWhenDisabled = false
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.setBorder(width: 3, color: .darkGray)
+        button.layer.cornerRadius = 10
     }
     
     func resetGame() {
@@ -50,41 +63,14 @@ class GameViewController: UIViewController {
                 button.addTarget(self, action: #selector(select), for: .touchUpInside)
             }
             
-            // Create in game controls (TODO: Improve and tidy)
-            var x = (Int)(dWidth / 2) + 10
-            let y = ((Int)((Double)(dHeight) + ((Double)(dWidth) * 0.9)) / 2) + 40
-            var button = UIButton(frame: CGRect(x: x, y: y, width: 80, height: 80))
-            button.backgroundColor = Colors.Purple.getColor()
-            button.adjustsImageWhenDisabled = false
+            // Create in game controls
             if let _ = puzzleID {
-                button.setTitle("Reset", for: .normal)
+                setupButtonView(button: backView, title: "Back", color: .Orange, action: #selector(goToSelect))
+                setupButtonView(button: newView, title: "Reset", color: .Purple, action: #selector(newGame))
             } else {
-                button.setTitle("New Game", for: .normal)
+                setupButtonView(button: backView, title: "Home", color: .Orange, action: #selector(goToHome))
+                setupButtonView(button: newView, title: "New Game", color: .Purple, action: #selector(newGame))
             }
-            button.addTarget(self, action: #selector(newGame), for: .touchUpInside)
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.setTitleColor(UIColor.darkGray, for: .normal)
-            button.setBorder(width: 3, color: .darkGray)
-            button.layer.cornerRadius = 10
-            self.view.addSubview(button)
-            
-            x = (Int)(dWidth / 2) - 90
-            button = UIButton(frame: CGRect(x: x, y: y, width: 80, height: 80))
-            button.backgroundColor = Colors.Orange.getColor()
-            button.adjustsImageWhenDisabled = false
-            if let _ = puzzleID {
-                button.setTitle("Back", for: .normal)
-                button.addTarget(self, action: #selector(goToSelect), for: .touchUpInside)
-            } else {
-                button.setTitle("Home", for: .normal)
-                button.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
-            }
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.setTitleColor(UIColor.darkGray, for: .normal)
-            button.setBorder(width: 3, color: .darkGray)
-            button.layer.cornerRadius = 10
-            self.view.addSubview(button)
-            //
         }
         
         // Create deck from override or procedurally
