@@ -143,10 +143,7 @@ class GameViewController: NSViewController {
         
         // Shuffle deck and set draw tile
         deck!.finalShuffle()
-        let image = deck!.arr[0].getFilename()
-        let bgcolor = deck!.arr[0].getColor()
-        grid!.grid[(gridSize * gridSize)] = deck!.arr[0]
-        grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: NSImage(named: image), bgColor: bgcolor)
+        setCard(atLocation: (gridSize * gridSize), card: deck?.arr[0])
     }
     
     func sendToServer(puzzle: String) {
@@ -178,7 +175,6 @@ class GameViewController: NSViewController {
     }
     
     @objc func select(sender: NSButton!) {
-        let btnsender: NSButton = sender
         if let currentActiveCard = activeCard {
             // if sender == gridSize^2 or sender == lastSelected
             // deselect
@@ -186,18 +182,20 @@ class GameViewController: NSViewController {
             // try move()
             // else
             // try swap()
-            if btnsender.tag == (gridSize * gridSize) || btnsender.tag == lastSelected {
+            if sender.tag == (gridSize * gridSize) || sender.tag == lastSelected {
+                // If location is card location or deck location deselect
                 deselect()
             } else {
-                let location = btnsender.tag
+                let location = sender.tag
                 if grid!.grid[location] == nil {
-                    // try move
+                    // If location empty try move
                     if checker(position: location, card: currentActiveCard) || location > (gridSize * gridSize) {
-                        grid!.grid[location] = activeCard
-                        grid!.buttonGrid[location].setAttrs(image: NSImage(named: currentActiveCard.getFilename()), bgColor: currentActiveCard.getColor())
-                        // clear previous
+                        // If no tile conflicts place card
+                        setCard(atLocation: location, card: currentActiveCard)
+                        // clear previous location
                         clearTile(position: lastSelected)
                     } else {
+                        // Warn of tile move conflict
                         let alertView = NSAlert()
                         alertView.alertStyle = .warning
                         alertView.messageText = "That tile can't be placed there"
@@ -206,9 +204,11 @@ class GameViewController: NSViewController {
                     }
                     deselect()
                     if deck!.arr.count == 0 {
+                        // If deck empty check grid full
                         var arr: [Bool] = grid!.grid.map({ $0 != nil })
                         arr.removeLast(5)
-                        if !arr.contains(false)  {
+                        if !arr.contains(false) {
+                            // If grid full, game is complete
                             gameComplete = true
                             if let id = puzzleID {
                                 UserDefaults.standard.set(true, forKey: "\(id)")
@@ -233,20 +233,15 @@ class GameViewController: NSViewController {
                         }
                     }
                 } else {
-                    // try swap
+                    // If location not empty try swap
                     if lastSelected != (gridSize * gridSize) {
-                        if (checker(position: lastSelected, card: grid!.grid[location]!) || lastSelected > (gridSize * gridSize)) && (checker(position: location, card: activeCard!) ||  location > (gridSize * gridSize)) {
-                            grid!.grid[lastSelected] = grid!.grid[location]
-                            var image = grid!.grid[lastSelected]!.getFilename()
-                            var color = grid!.grid[lastSelected]!.getColor()
-                            grid!.buttonGrid[lastSelected].setAttrs(image: NSImage(named: image), bgColor: color)
-                            grid!.buttonGrid[lastSelected].setBorder(width: 0, color: .black)
-                            grid!.grid[location] = activeCard
-                            image = grid!.grid[location]!.getFilename()
-                            color = grid!.grid[location]!.getColor()
-                            grid!.buttonGrid[location].setAttrs(image: NSImage(named: image), bgColor: color)
-                            grid!.buttonGrid[location].setBorder(width: 0, color: .black)
+                        // If last selected card was not from the deck
+                        if (checker(position: lastSelected, card: grid!.grid[location]!) || lastSelected > (gridSize * gridSize)) && (checker(position: location, card: currentActiveCard) ||  location > (gridSize * gridSize)) {
+                            // If cards won't conflict when swapped, swap cards
+                            setCard(atLocation: lastSelected, card: grid?.grid[location])
+                            setCard(atLocation: location, card: currentActiveCard)
                         } else {
+                            // Warn of tile swap conflict
                             let alertView = NSAlert()
                             alertView.alertStyle = .warning
                             alertView.messageText = "Those tiles can't be swapped."
@@ -261,12 +256,12 @@ class GameViewController: NSViewController {
             // set card to active
             // set border
             // lastSelected = tag
-            let location = btnsender.tag
+            let location = sender.tag
             if let selectedCard = grid!.grid[location] {
                 activeCard = selectedCard
                 grid!.buttonGrid[location].setBorder(width: 3, color: .black)
             }
-            lastSelected = btnsender.tag
+            lastSelected = location
         }
     }
     
@@ -276,101 +271,95 @@ class GameViewController: NSViewController {
         lastSelected = -1
     }
     
+    func setCard(atLocation location: Int, card: Card?) {
+        if let card = card {
+            grid?.grid[location] = card
+            grid?.buttonGrid[location].setAttrs(image: NSImage(named: card.getFilename()), bgColor: card.getColor())
+            grid?.buttonGrid[location].setBorder(width: 0, color: .black)
+        } else {
+            grid?.grid[location] = nil
+            grid?.buttonGrid[location].setAttrs(image: nil, bgColor: .white)
+            grid?.buttonGrid[location].setBorder(width: 0, color: .black)
+        }
+    }
+    
     func clearTile(position: Int) {
         if position == (gridSize * gridSize) {
             deck!.arr.removeFirst()
             if deck!.arr.count >= 1 {
-                let image = deck!.arr[0].getFilename()
-                let color = deck!.arr[0].getColor()
-                grid!.grid[(gridSize * gridSize)] = deck!.arr[0]
-                grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: NSImage(named: image), bgColor: color)
+                setCard(atLocation: (gridSize * gridSize), card: deck?.arr[0])
             } else {
                 grid!.grid[(gridSize * gridSize)] = nil
                 grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: NSImage(named: "none.png"), bgColor: .white)
                 grid!.buttonGrid[(gridSize * gridSize)].isEnabled = false
             }
         } else {
-            grid!.grid[position] = nil
-            grid!.buttonGrid[position].setAttrs(image: nil, bgColor: .white)
+            setCard(atLocation: position, card: nil)
         }
     }
     
-    func left(x: Int) -> Int {
-        return x + 1
-    }
-    func right(x: Int) -> Int {
-        return x - 1
-    }
-    func up(x: Int) -> Int {
-        return x + gridSize
-    }
-    func down(x: Int) -> Int {
-        return x - gridSize
-    }
-    
     func checker(position: Int, card: Card) -> Bool {
-        var validArray = [Bool]()
+        func checkTile(position: Int, card: Card) -> Bool {
+            if position > (gridSize * gridSize) { return true }
+            if let placedCard = grid!.grid[position] {
+                return card.matches(other: placedCard)
+            } else { return true }
+        }
+        func left(x: Int) -> Int { return x + 1 }
+        func right(x: Int) -> Int { return x - 1 }
+        func up(x: Int) -> Int { return x + gridSize }
+        func down(x: Int) -> Int { return x - gridSize }
+        
         if position < gridSize {
             if position == 0 {
                 // Bottom right corner; check tiles left and above
-                validArray.append(checkTile(position: left(x: position), card: card))
-                validArray.append(checkTile(position: up(x: position), card: card))
+                if !checkTile(position: left(x: position), card: card) { return false }
+                if !checkTile(position: up(x: position), card: card) { return false }
             } else if position == gridSize - 1 {
                 // Bottom left corner; check tiles right and above
-                validArray.append(checkTile(position: right(x: position), card: card))
-                validArray.append(checkTile(position: up(x: position), card: card))
+                if !checkTile(position: right(x: position), card: card) { return false }
+                if !checkTile(position: up(x: position), card: card) { return false }
             } else {
                 // Bottom edge; check tiles left, right and above
-                validArray.append(checkTile(position: left(x: position), card: card))
-                validArray.append(checkTile(position: right(x: position), card: card))
-                validArray.append(checkTile(position: up(x: position), card: card))
+                if !checkTile(position: left(x: position), card: card) { return false }
+                if !checkTile(position: right(x: position), card: card) { return false }
+                if !checkTile(position: up(x: position), card: card) { return false }
             }
         } else if position % gridSize == 0 {
             if position == gridSize * (gridSize - 1) {
                 // Top right corner; check tiles left and below
-                validArray.append(checkTile(position: left(x: position), card: card))
-                validArray.append(checkTile(position: down(x: position), card: card))
+                if !checkTile(position: left(x: position), card: card) { return false }
+                if !checkTile(position: down(x: position), card: card) { return false }
             } else {
                 // Right edge; check tiles left, above and below
-                validArray.append(checkTile(position: left(x: position), card: card))
-                validArray.append(checkTile(position: up(x: position), card: card))
-                validArray.append(checkTile(position: down(x: position), card: card))
+                if !checkTile(position: left(x: position), card: card) { return false }
+                if !checkTile(position: up(x: position), card: card) { return false }
+                if !checkTile(position: down(x: position), card: card) { return false }
             }
         } else if position % gridSize == gridSize - 1 {
             if position == (gridSize * gridSize) - 1 {
                 // Top left corner; check tiles right and below
-                validArray.append(checkTile(position: right(x: position), card: card))
-                validArray.append(checkTile(position: down(x: position), card: card))
+                if !checkTile(position: right(x: position), card: card) { return false }
+                if !checkTile(position: down(x: position), card: card) { return false }
             } else {
                 // Left edge; check tiles right, above and below
-                validArray.append(checkTile(position: right(x: position), card: card))
-                validArray.append(checkTile(position: up(x: position), card: card))
-                validArray.append(checkTile(position: down(x: position), card: card))
+                if !checkTile(position: right(x: position), card: card) { return false }
+                if !checkTile(position: up(x: position), card: card) { return false }
+                if !checkTile(position: down(x: position), card: card) { return false }
             }
         } else if position > gridSize * (gridSize - 1) {
             // Top edge; check tiles left, right and below
-            validArray.append(checkTile(position: left(x: position), card: card))
-            validArray.append(checkTile(position: right(x: position), card: card))
-            validArray.append(checkTile(position: down(x: position), card: card))
+            if !checkTile(position: left(x: position), card: card) { return false }
+            if !checkTile(position: right(x: position), card: card) { return false }
+            if !checkTile(position: down(x: position), card: card) { return false }
         } else {
             // Central tile; check tiles left, right, above and below
-            validArray.append(checkTile(position: left(x: position), card: card))
-            validArray.append(checkTile(position: right(x: position), card: card))
-            validArray.append(checkTile(position: up(x: position), card: card))
-            validArray.append(checkTile(position: down(x: position), card: card))
+            if !checkTile(position: left(x: position), card: card) { return false }
+            if !checkTile(position: right(x: position), card: card) { return false }
+            if !checkTile(position: up(x: position), card: card) { return false }
+            if !checkTile(position: down(x: position), card: card) { return false }
         }
-        return !validArray.contains(false)
-    }
-    
-    func checkTile(position: Int, card: Card) -> Bool {
-        if position > (gridSize * gridSize) {
-            return true
-        }
-        if let placedCard = grid!.grid[position] {
-            return card.matches(other: placedCard)
-        } else {
-            return true
-        }
+        return true
     }
     
     @objc func newGame() {
