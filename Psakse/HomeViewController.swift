@@ -10,6 +10,20 @@ import UIKit
 import CoreGraphics
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var tutorialView: UIButton!
+    @IBOutlet weak var challengeView: UIButton!
+    @IBOutlet weak var randomView: UIButton!
+    
+    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
+        button.backgroundColor = color.getColor()
+        button.adjustsImageWhenDisabled = false
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.setBorder(width: 3, color: .darkGray)
+        button.layer.cornerRadius = button.frame.height / 2
+    }
     
     @objc func goToGame() {
         performSegue(withIdentifier: "ToGame", sender: self)
@@ -19,43 +33,6 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "ToPuzzleSelect", sender: self)
     }
     
-    func createMenu() {
-        let options = ["Tutorial", "Challenge Mode", "Random Puzzle"]
-        for i in 0..<options.count {
-            let x = (Int)(UIScreen.main.bounds.width / 2) - 100
-            let y = ((i + 3) * (Int)(UIScreen.main.bounds.height) / (options.count + 3)) - 30
-            let button = UIButton(frame: CGRect(x: x, y: y, width: 200, height: 60))
-            button.adjustsImageWhenDisabled = false
-            button.setTitle(options[i], for: .normal)
-            switch i {
-            case 0:
-                button.backgroundColor = Colors.Green.getColor()
-                button.addTarget(self, action: #selector(comingSoon), for: .touchUpInside)
-                break
-            case 1:
-                button.backgroundColor = Colors.Yellow.getColor()
-                button.addTarget(self, action: #selector(goToPuzzleSelect), for: .touchUpInside)
-                break
-            case 2:
-                button.backgroundColor = Colors.Purple.getColor()
-                button.addTarget(self, action: #selector(goToGame), for: .touchUpInside)
-            default:
-                break
-            }
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.setTitleColor(UIColor.darkGray, for: .normal)
-            button.setBorder(width: 3, color: .darkGray)
-            button.layer.cornerRadius = 30
-            self.view.addSubview(button)
-        }
-        let width = (Int)(UIScreen.main.bounds.width) - 60
-        let y = ((Int)(UIScreen.main.bounds.height) / (options.count + 3)) - 30
-        let logo = UIImageView(frame: CGRect(x: 30, y: y, width: width, height: 150))
-        logo.image = UIImage(named: "logo_large_alt.png")
-        logo.contentMode = UIView.ContentMode.scaleAspectFit
-        self.view.addSubview(logo)
-    }
-    
     @objc func comingSoon() {
         let alert = UIAlertController(title: nil, message: "This feature is coming soon!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yay!", style: .cancel, handler: nil))
@@ -63,7 +40,9 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        createMenu()
+        setupButtonView(button: tutorialView, title: "Tutorial", color: .Green, action: #selector(comingSoon))
+        setupButtonView(button: challengeView, title: "Challenge Mode", color: .Yellow, action: #selector(goToPuzzleSelect))
+        setupButtonView(button: randomView, title: "Random Puzzle", color: .Purple, action: #selector(goToGame))
     }
     
 }

@@ -17,17 +17,69 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_large_alt.png" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-4m-HyW">
+                                <rect key="frame" x="25" y="124" width="325" height="124.66666666666669"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QQW-4m-HyW" secondAttribute="height" multiplier="1722:660" id="i1o-um-UuF"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBY-VX-TtX">
+                                <rect key="frame" x="60" y="368.66666666666674" width="255" height="349.33333333333326"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfB-NM-st9">
+                                        <rect key="frame" x="0.0" y="8" width="255" height="69.666666666666671"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjU-gb-qN9">
+                                        <rect key="frame" x="0.0" y="271.33333333333331" width="255" height="70"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3Q-c5-XpI">
+                                        <rect key="frame" x="0.0" y="139.66666666666663" width="255" height="70"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Q3Q-c5-XpI" firstAttribute="centerY" secondItem="gBY-VX-TtX" secondAttribute="centerY" id="1ah-7T-ifV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q3Q-c5-XpI" secondAttribute="trailing" id="Bas-6N-mAx"/>
+                                    <constraint firstItem="pfB-NM-st9" firstAttribute="leading" secondItem="gBY-VX-TtX" secondAttribute="leading" id="DC0-SL-jsT"/>
+                                    <constraint firstItem="Q3Q-c5-XpI" firstAttribute="leading" secondItem="gBY-VX-TtX" secondAttribute="leading" id="E4w-NN-FtR"/>
+                                    <constraint firstItem="Q3Q-c5-XpI" firstAttribute="height" secondItem="pfB-NM-st9" secondAttribute="height" id="FqK-Oa-Bud"/>
+                                    <constraint firstAttribute="trailing" secondItem="JjU-gb-qN9" secondAttribute="trailing" id="IZ3-G8-zoj"/>
+                                    <constraint firstItem="Q3Q-c5-XpI" firstAttribute="height" secondItem="gBY-VX-TtX" secondAttribute="height" multiplier="0.2" id="JSG-3p-xAk"/>
+                                    <constraint firstItem="JjU-gb-qN9" firstAttribute="leading" secondItem="gBY-VX-TtX" secondAttribute="leading" id="LiR-HY-Dpt"/>
+                                    <constraint firstItem="Q3Q-c5-XpI" firstAttribute="height" secondItem="JjU-gb-qN9" secondAttribute="height" id="gvi-bo-1lp"/>
+                                    <constraint firstItem="pfB-NM-st9" firstAttribute="top" secondItem="gBY-VX-TtX" secondAttribute="top" constant="8" id="h54-Jn-mCk"/>
+                                    <constraint firstItem="Q3Q-c5-XpI" firstAttribute="centerX" secondItem="gBY-VX-TtX" secondAttribute="centerX" id="k4w-tB-OiJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="JjU-gb-qN9" secondAttribute="bottom" constant="8" id="lVQ-9U-3TU"/>
+                                    <constraint firstAttribute="trailing" secondItem="pfB-NM-st9" secondAttribute="trailing" id="v99-Uk-ZnV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QQW-4m-HyW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="8NG-Yl-xds"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QQW-4m-HyW" secondAttribute="trailing" constant="25" id="RxY-Cv-9kO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gBY-VX-TtX" secondAttribute="trailing" constant="60" id="SWj-eb-cbo"/>
+                            <constraint firstItem="gBY-VX-TtX" firstAttribute="top" secondItem="QQW-4m-HyW" secondAttribute="bottom" constant="120" id="XKr-9s-bxv"/>
+                            <constraint firstItem="gBY-VX-TtX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="drx-lS-xNh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gBY-VX-TtX" secondAttribute="bottom" constant="60" id="gdA-I6-NKU"/>
+                            <constraint firstItem="QQW-4m-HyW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="ld9-AE-pZH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="challengeView" destination="Q3Q-c5-XpI" id="qy9-bW-2dg"/>
+                        <outlet property="randomView" destination="JjU-gb-qN9" id="x5h-D6-Bru"/>
+                        <outlet property="tutorialView" destination="pfB-NM-st9" id="rf0-0w-Pxd"/>
                         <segue destination="swd-rU-l3e" kind="show" identifier="ToGame" id="gTy-ZD-Bdv"/>
                         <segue destination="hUZ-VG-IMd" kind="show" identifier="ToPuzzleSelect" id="YOD-PB-Scx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="-40"/>
+            <point key="canvasLocation" x="104.8" y="-40.64039408866995"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="zJz-PH-98F">
@@ -133,9 +185,12 @@
             <point key="canvasLocation" x="1681" y="531"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_large_alt.png" width="1722" height="660"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mhQ-hY-bkb"/>
-        <segue reference="vI8-ki-mIF"/>
-        <segue reference="z3K-N7-uSu"/>
+        <segue reference="YOD-PB-Scx"/>
+        <segue reference="gTy-ZD-Bdv"/>
+        <segue reference="Gtt-f9-sz9"/>
     </inferredMetricsTieBreakers>
 </document>
