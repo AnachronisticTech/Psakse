@@ -31,42 +31,42 @@ class Deck {
     var cardQuantities = Array(repeating: 2, count: 17)
     
     var arr = [Card]()
-    //        var numberSymbols: Int
-    //        var numberColors: Int
+//    var numberSymbols: Int
+//    var numberColors: Int
     
     init() {
-        //        init(numberSymbols: Int, numberColors: Int) {
-        //            self.numberSymbols = numberSymbols
-        //            self.numberColors = numberColors
+//    init(numberSymbols: Int, numberColors: Int) {
+//        self.numberSymbols = numberSymbols
+//        self.numberColors = numberColors
     }
     
     func populateDeck() {
-        //            let symbolsToRemove = 4 - numberSymbols
-        //            let colorsToRemove = 4 - numberColors
-        
-        //            if symbolsToRemove != 0 {
-        //                var last = 4
-        //                while last > 0 {
-        //                    let rand = (Int)(arc4random_uniform(UInt32(last)))
-        //                    self.symbols.swapAt(last, rand)
-        //                    last -= 1
-        //                }
-        //                for _ in 0...symbolsToRemove {
-        //                    self.symbols.removeLast()
-        //                }
-        //            }
-        //
-        //            if colorsToRemove != 0 {
-        //                var last = 4
-        //                while last > 0 {
-        //                    let rand = (Int)(arc4random_uniform(UInt32(last)))
-        //                    self.colors.swapAt(last, rand)
-        //                    last -= 1
-        //                }
-        //                for _ in 0...colorsToRemove {
-        //                    self.colors.removeLast()
-        //                }
-        //            }
+//        let symbolsToRemove = 4 - numberSymbols
+//        let colorsToRemove = 4 - numberColors
+//
+//        if symbolsToRemove != 0 {
+//            var last = 4
+//            while last > 0 {
+//                let rand = (Int)(arc4random_uniform(UInt32(last)))
+//                self.symbols.swapAt(last, rand)
+//                last -= 1
+//            }
+//            for _ in 0...symbolsToRemove {
+//                self.symbols.removeLast()
+//            }
+//        }
+//
+//        if colorsToRemove != 0 {
+//            var last = 4
+//            while last > 0 {
+//                let rand = (Int)(arc4random_uniform(UInt32(last)))
+//                self.colors.swapAt(last, rand)
+//                last -= 1
+//            }
+//            for _ in 0...colorsToRemove {
+//                self.colors.removeLast()
+//            }
+//        }
         
         for symbol in Symbols.allCases {
             for color in Colors.allCases {
@@ -74,14 +74,12 @@ class Deck {
                 self.arr.append(Card.Normal(symbol, color))
             }
         }
-        //            print("\(self.arr.count) cards added to the deck")
     }
     
     func addWildCards(count: Int)  {
         for _ in 0..<count {
             self.arr.append(Card.Wild)
         }
-        //            print("\(count) wildcards added to the deck")
     }
     
     func removeCards(gridSize: Int, wildcards: Int) {
@@ -90,7 +88,6 @@ class Deck {
             let card = self.arr.removeLast()
             updateQuantities(card: card)
         }
-        //            print("\(self.arr.count) cards remaining in the deck")
     }
     
     func updateQuantities(card: Card) {
@@ -112,54 +109,23 @@ class Deck {
     }
     
     func stringToCard(col: String, sym: String) -> Card {
-        var card: Card
-        switch col {
-        case "g":
+        func symbol(_ sym: String) -> Symbols {
             switch sym {
-            case "p":
-                card = .Normal(.Psi, .Green)
-            case "a":
-                card = .Normal(.A, .Green)
-            case "x":
-                card = .Normal(.Xi, .Green)
-            default:
-                card = .Normal(.E, .Green)
-            }
-        case "y":
-            switch sym {
-            case "p":
-                card = .Normal(.Psi, .Yellow)
-            case "a":
-                card = .Normal(.A, .Yellow)
-            case "x":
-                card = .Normal(.Xi, .Yellow)
-            default:
-                card = .Normal(.E, .Yellow)
-            }
-        case "p":
-            switch sym {
-            case "p":
-                card = .Normal(.Psi, .Purple)
-            case "a":
-                card = .Normal(.A, .Purple)
-            case "x":
-                card = .Normal(.Xi, .Purple)
-            default:
-                card = .Normal(.E, .Purple)
-            }
-        default:
-            switch sym {
-            case "p":
-                card = .Normal(.Psi, .Orange)
-            case "a":
-                card = .Normal(.A, .Orange)
-            case "x":
-                card = .Normal(.Xi, .Orange)
-            default:
-                card = .Normal(.E, .Orange)
+            case "p": return .Psi
+            case "a": return .A
+            case "x": return .Xi
+            default : return .E
             }
         }
-        return card
+        func color(_ col: String) -> Colors {
+            switch col {
+            case "g": return .Green
+            case "y": return .Yellow
+            case "p": return .Purple
+            default : return .Orange
+            }
+        }
+        return .Normal(symbol(sym), color(col))
     }
     
     func finalShuffle() {
@@ -169,6 +135,5 @@ class Deck {
             self.arr.swapAt(last, rand)
             last -= 1
         }
-        //            print("Deck prepared. \(self.arr.count) cards available.")
     }
 }
