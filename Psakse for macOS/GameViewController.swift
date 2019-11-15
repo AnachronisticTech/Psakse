@@ -91,16 +91,14 @@ class GameViewController: NSViewController {
         if let puzzle = override {
             var locked = puzzle.dropLast(17)
             for _ in 0..<3 {
-                let pos = Int(String(locked.removeFirst()) + String(locked.removeFirst()))
+                let pos = Int(String(locked.removeFirst()) + String(locked.removeFirst()))!
                 let col = String(locked.removeFirst())
                 let sym = String(locked.removeFirst())
                 let card = deck!.stringToCard(col: col, sym: sym)
-                let image = card.getFilename()
-                let bgcolor = card.getColor()
-                grid!.buttonGrid[pos!].setAttrs(image: NSImage(named: image), bgColor: bgcolor)
-                grid!.buttonGrid[pos!].setBorder(width: 3, color: .yellow)
-                grid!.buttonGrid[pos!].isEnabled = false
-                grid!.grid[pos!] = card
+                setCard(atLocation: pos, card: card)
+                grid!.buttonGrid[pos].setBorder(width: 3, color: .yellow)
+                grid!.buttonGrid[pos].isEnabled = false
+                grid!.grid[pos] = card
             }
             deck!.arr = deck!.createDeckFromString(string: String(puzzle.dropFirst(12)))
         } else {
