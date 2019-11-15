@@ -10,9 +10,26 @@ import AppKit
 import CoreGraphics
 
 class HomeViewController: NSViewController {
+    @IBOutlet weak var tutorialView: NSButton!
+    @IBOutlet weak var challengeView: NSButton!
+    @IBOutlet weak var randomView: NSButton!
     
-    var width = 0
-    var height = 0
+    func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
+        let layer = CALayer()
+        layer.backgroundColor = color.getColor().cgColor
+        let text = CATextLayer()
+        text.string = title
+        text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)
+        let CGR = NSClickGestureRecognizer(target: self, action: action)
+        button.addGestureRecognizer(CGR)
+        text.foregroundColor = NSColor.darkGray.cgColor
+        text.fontSize = 16
+        text.alignmentMode = .center
+        layer.addSublayer(text)
+        layer.cornerRadius = button.frame.height / 2
+        button.layer = layer
+        button.setBorder(width: 3, color: .darkGray)
+    }
     
     @objc func goToGame() {
         performSegue(withIdentifier: "ToGame", sender: self)
@@ -24,66 +41,21 @@ class HomeViewController: NSViewController {
         self.view.window?.windowController?.close()
     }
     
-    func createMenu() {
-        let options = ["Tutorial", "Challenge Mode", "Random Puzzle"]
-        for i in 0..<options.count {
-            let x = (Int)(self.width / 2) - 100
-            let y = ((i + 3) * (Int)(self.height) / (options.count + 3)) - 30
-            let button = NSButton(frame: CGRect(x: x, y: y, width: 200, height: 60))
-            let layer = CALayer()
-            switch i {
-            case 0:
-                layer.backgroundColor = Colors.Green.getColor().cgColor
-                button.action = #selector(comingSoon)
-                break
-            case 1:
-                layer.backgroundColor = Colors.Yellow.getColor().cgColor
-                button.action = #selector(goToPuzzleSelect)
-                break
-            case 2:
-                layer.backgroundColor = Colors.Purple.getColor().cgColor
-                button.action = #selector(goToGame)
-            default:
-                break
-            }
-            layer.cornerRadius = 30
-            let text = CATextLayer()
-            text.string = options[i]
-            text.frame = CGRect(x: 0, y: button.bounds.height / 3.2, width: button.bounds.width, height: button.bounds.height / 2)
-            text.foregroundColor = NSColor.darkGray.cgColor
-            text.fontSize = 16
-            text.alignmentMode = .center
-            layer.addSublayer(text)
-            button.layer = layer
-            button.setBorder(width: 3, color: .darkGray)
-            self.view.addSubview(button)
-        }
-        let width = (Int)(self.width) - 60
-        let y = ((Int)(self.height) / (options.count + 3)) - 30
-        let logo = NSImageView(frame: CGRect(x: 30, y: y, width: width, height: 150))
-        logo.image = NSImage(named: "logo_large_alt.png")
-        logo.imageScaling = .scaleProportionallyUpOrDown
-        self.view.addSubview(logo)
-    }
-    
     @objc func comingSoon() {
-//        let alert = UIAlertController(title: nil, message: "This feature is coming soon!", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Yay!", style: .cancel, handler: nil))
-//        self.present(alert, animated: true)
+        let alertView = NSAlert()
+        alertView.alertStyle = .warning
+        alertView.messageText = "This feature is coming soon!"
+        alertView.addButton(withTitle: "Yay")
+        alertView.runModal()
     }
     
     override func viewDidLoad() {
-        let width = 500
-        let height = 750
-        self.view = FlippedView()
-        self.view.window?.setFrame(NSRect(x: 0, y: 0, width: width, height: height), display: true)
         let layer = CALayer()
         layer.backgroundColor = NSColor.white.cgColor
         self.view.layer = layer
-        self.view.setFrameSize(NSSize(width: width, height: height))
-        self.width = width
-        self.height = height
-        createMenu()
+        setupButtonView(button: tutorialView, title: "Tutorial", color: .Green, action: #selector(comingSoon))
+        setupButtonView(button: challengeView, title: "Challenge Mode", color: .Yellow, action: #selector(goToPuzzleSelect))
+        setupButtonView(button: randomView, title: "Random Puzzle", color: .Purple, action: #selector(goToGame))
     }
     
 }

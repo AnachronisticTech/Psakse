@@ -780,7 +780,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="838" y="422"/>
+            <point key="canvasLocation" x="796" y="975"/>
         </scene>
         <!--Select-->
         <scene sceneID="1RU-dK-yrl">
@@ -788,7 +788,7 @@
                 <customObject id="frT-Vb-xZ5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Select" showSeguePresentationStyle="single" id="H4Y-vq-2ls" customClass="SelectViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vzm-0H-3kw">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                     <connections>
@@ -797,7 +797,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="74" y="1526"/>
+            <point key="canvasLocation" x="74" y="1731"/>
         </scene>
         <!--Home-->
         <scene sceneID="fb5-y7-mhw">
@@ -805,21 +805,76 @@
                 <customObject id="gay-TA-BZw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Home" showSeguePresentationStyle="single" id="40q-VO-Cru" customClass="HomeViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="SYk-3c-lSi">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="696"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ES2-q5-455">
+                                <rect key="frame" x="41" y="518" width="359" height="138"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="359" id="Xjq-nw-n45"/>
+                                    <constraint firstAttribute="width" secondItem="ES2-q5-455" secondAttribute="height" multiplier="1722:660" id="s49-fO-6yt"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_large_alt" id="Ism-25-2w2"/>
+                            </imageView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="rg2-3U-n9G">
+                                <rect key="frame" x="60" y="60" width="320" height="338"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="D8b-UR-7fW" customClass="NSButton">
+                                        <rect key="frame" x="0.0" y="263" width="320" height="67"/>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="XAW-jm-EUE" customClass="NSButton">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="68"/>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="gto-Ae-Vpy" customClass="NSButton">
+                                        <rect key="frame" x="0.0" y="8" width="320" height="68"/>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XAW-jm-EUE" firstAttribute="centerY" secondItem="rg2-3U-n9G" secondAttribute="centerY" id="5u7-Lc-QGs"/>
+                                    <constraint firstAttribute="trailing" secondItem="D8b-UR-7fW" secondAttribute="trailing" id="CW8-Qw-94C"/>
+                                    <constraint firstAttribute="trailing" secondItem="gto-Ae-Vpy" secondAttribute="trailing" id="Lbl-YA-oWe"/>
+                                    <constraint firstItem="D8b-UR-7fW" firstAttribute="height" secondItem="XAW-jm-EUE" secondAttribute="height" id="RXO-hi-59I"/>
+                                    <constraint firstItem="XAW-jm-EUE" firstAttribute="centerX" secondItem="rg2-3U-n9G" secondAttribute="centerX" id="TN5-YT-Tn5"/>
+                                    <constraint firstAttribute="bottom" secondItem="gto-Ae-Vpy" secondAttribute="bottom" constant="8" id="e9e-v2-WQt"/>
+                                    <constraint firstItem="D8b-UR-7fW" firstAttribute="top" secondItem="rg2-3U-n9G" secondAttribute="top" constant="8" id="fhq-6a-OHt"/>
+                                    <constraint firstItem="XAW-jm-EUE" firstAttribute="leading" secondItem="rg2-3U-n9G" secondAttribute="leading" id="gTt-Tv-UOe"/>
+                                    <constraint firstItem="gto-Ae-Vpy" firstAttribute="height" secondItem="XAW-jm-EUE" secondAttribute="height" id="hJn-Oo-p7S"/>
+                                    <constraint firstAttribute="trailing" secondItem="XAW-jm-EUE" secondAttribute="trailing" id="jYR-Rg-W3m"/>
+                                    <constraint firstItem="XAW-jm-EUE" firstAttribute="height" secondItem="rg2-3U-n9G" secondAttribute="height" multiplier="0.2" id="mgj-1U-AZH"/>
+                                    <constraint firstItem="gto-Ae-Vpy" firstAttribute="leading" secondItem="rg2-3U-n9G" secondAttribute="leading" id="ota-89-515"/>
+                                    <constraint firstItem="D8b-UR-7fW" firstAttribute="leading" secondItem="rg2-3U-n9G" secondAttribute="leading" id="qNG-Ku-c13"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rg2-3U-n9G" firstAttribute="top" secondItem="ES2-q5-455" secondAttribute="bottom" constant="120" id="U44-CF-dBw"/>
+                            <constraint firstAttribute="trailing" secondItem="rg2-3U-n9G" secondAttribute="trailing" constant="60" id="cxV-iJ-Unf"/>
+                            <constraint firstAttribute="bottom" secondItem="rg2-3U-n9G" secondAttribute="bottom" constant="60" id="fG1-3B-a5k"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ES2-q5-455" secondAttribute="trailing" constant="40" id="h9R-m8-ti8"/>
+                            <constraint firstItem="rg2-3U-n9G" firstAttribute="leading" secondItem="SYk-3c-lSi" secondAttribute="leading" constant="60" id="iae-IY-vQU"/>
+                            <constraint firstItem="ES2-q5-455" firstAttribute="centerX" secondItem="SYk-3c-lSi" secondAttribute="centerX" id="naI-6o-o8t"/>
+                            <constraint firstItem="ES2-q5-455" firstAttribute="top" secondItem="SYk-3c-lSi" secondAttribute="top" constant="40" id="qMB-KP-JAY"/>
+                            <constraint firstItem="ES2-q5-455" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SYk-3c-lSi" secondAttribute="leading" constant="40" id="x4f-5T-XzT"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="challengeView" destination="XAW-jm-EUE" id="BcN-1U-vjD"/>
+                        <outlet property="randomView" destination="gto-Ae-Vpy" id="BNU-0P-sZ2"/>
+                        <outlet property="tutorialView" destination="D8b-UR-7fW" id="24l-Zm-CQk"/>
                         <segue destination="2mv-do-k8B" kind="show" identifier="ToGame" id="muG-2U-3bb"/>
                         <segue destination="H4Y-vq-2ls" kind="show" identifier="ToPuzzleSelect" id="fKA-Yf-VHe"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-64" y="961"/>
+            <point key="canvasLocation" x="74" y="975"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_large_alt" width="1722" height="660"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uVH-lz-uJo"/>
-        <segue reference="K2m-u3-jpH"/>
-        <segue reference="0qp-cD-w45"/>
+        <segue reference="0gH-2e-5FJ"/>
+        <segue reference="fKA-Yf-VHe"/>
+        <segue reference="muG-2U-3bb"/>
     </inferredMetricsTieBreakers>
 </document>
