@@ -172,17 +172,52 @@
                     <view key="view" contentMode="scaleToFill" id="nen-ZM-Awm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-MG-jDw">
+                                <rect key="frame" x="16" y="103" width="343" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="V53-Dg-gnY"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dip-xe-YUc">
+                                <rect key="frame" x="129" y="64" width="117" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cej-XE-f4H">
+                                <rect key="frame" x="60" y="563" width="255" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="v8C-kN-Kay"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="213-5m-90A" firstAttribute="trailing" secondItem="cej-XE-f4H" secondAttribute="trailing" constant="60" id="8Ud-1a-IQS"/>
+                            <constraint firstItem="Yaj-MG-jDw" firstAttribute="leading" secondItem="213-5m-90A" secondAttribute="leading" constant="16" id="AQz-fN-8bU"/>
+                            <constraint firstItem="dip-xe-YUc" firstAttribute="centerX" secondItem="nen-ZM-Awm" secondAttribute="centerX" id="EU4-Eb-vMV"/>
+                            <constraint firstItem="213-5m-90A" firstAttribute="trailing" secondItem="Yaj-MG-jDw" secondAttribute="trailing" constant="16" id="GP7-ji-dn6"/>
+                            <constraint firstItem="Yaj-MG-jDw" firstAttribute="top" secondItem="dip-xe-YUc" secondAttribute="bottom" constant="10" id="PsM-yc-mFh"/>
+                            <constraint firstItem="cej-XE-f4H" firstAttribute="centerX" secondItem="nen-ZM-Awm" secondAttribute="centerX" id="byp-zd-3eW"/>
+                            <constraint firstItem="cej-XE-f4H" firstAttribute="top" secondItem="Yaj-MG-jDw" secondAttribute="bottom" constant="60" id="wlf-d5-BxE"/>
+                            <constraint firstItem="cej-XE-f4H" firstAttribute="leading" secondItem="213-5m-90A" secondAttribute="leading" constant="60" id="xpN-Xn-9IS"/>
+                            <constraint firstItem="dip-xe-YUc" firstAttribute="top" secondItem="213-5m-90A" secondAttribute="top" constant="20" id="zTX-4E-iSh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="213-5m-90A"/>
                     </view>
                     <connections>
+                        <outlet property="challengeView" destination="Yaj-MG-jDw" id="iNT-hZ-CWR"/>
+                        <outlet property="homeView" destination="cej-XE-f4H" id="5gO-fe-PRq"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToHome" id="Gtt-f9-sz9"/>
                         <segue destination="swd-rU-l3e" kind="show" identifier="ToScriptedPuzzle" id="vI8-ki-mIF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6Q-MF-K6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681" y="531"/>
+            <point key="canvasLocation" x="1680.8" y="530.54187192118229"/>
         </scene>
     </scenes>
     <resources>
@@ -190,7 +225,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YOD-PB-Scx"/>
-        <segue reference="gTy-ZD-Bdv"/>
+        <segue reference="vI8-ki-mIF"/>
         <segue reference="Gtt-f9-sz9"/>
     </inferredMetricsTieBreakers>
 </document>

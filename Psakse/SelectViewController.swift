@@ -11,9 +11,21 @@ import UIKit
 class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var puzzleSelected = -1
-    var table: UITableView? = nil
     var tableData = [Puzzle]()
-    var override: Bool = false
+    
+    @IBOutlet weak var challengeView: UITableView!
+    @IBOutlet weak var homeView: UIButton!
+    
+    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
+        button.backgroundColor = color.getColor()
+        button.adjustsImageWhenDisabled = false
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.setBorder(width: 3, color: .darkGray)
+        button.layer.cornerRadius = button.frame.height / 2
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -28,9 +40,7 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         puzzleSelected = indexPath.row
-        for _ in 0..<tableData.count {
-            performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
-        }
+        performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
     }
     
     @objc func goToHome() {
@@ -56,7 +66,7 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         return Int(lhs.numID)! < Int(rhs.numID)!
                     }
                     DispatchQueue.main.sync(execute: {
-                        self.table!.reloadData()
+                        self.challengeView.reloadData()
                     })
                 }
             }
@@ -67,36 +77,24 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         
         // Clear all stored data
-        //        let domain = Bundle.main.bundleIdentifier!
-        //        UserDefaults.standard.removePersistentDomain(forName: domain)
-        //        UserDefaults.standard.synchronize()
+        let debug = false
+        if debug {
+            let domain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
+        }
         
-        let x = (Int)(UIScreen.main.bounds.width / 2) - 100
-        let y = (Int)(UIScreen.main.bounds.height) - 200
-        let button = UIButton(frame: CGRect(x: x, y: y, width: 200, height: 60))
-        button.backgroundColor = Colors.Green.getColor()
-        button.adjustsImageWhenDisabled = false
-        button.setTitle("Home", for: .normal)
-        button.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setTitleColor(UIColor.darkGray, for: .normal)
-        button.setBorder(width: 3, color: .darkGray)
-        button.layer.cornerRadius = 30
-        self.view.addSubview(button)
+        setupButtonView(button: homeView, title: "Home", color: .Green, action: #selector(goToHome))
         
-        let width = (Int)(UIScreen.main.bounds.width) - 40
-        let height = (Int)(UIScreen.main.bounds.height) - 300
-        table = UITableView(frame: CGRect(x: 20, y: 60, width: width, height: height))
-        table!.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        table!.dataSource = self
-        table!.delegate = self
-        self.view.addSubview(table!)
+        challengeView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        challengeView.dataSource = self
+        challengeView.delegate = self
         getJson()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         puzzleSelected = -1
-        table?.reloadData()
+        challengeView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
