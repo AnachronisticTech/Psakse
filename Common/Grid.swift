@@ -59,7 +59,7 @@ class Grid {
     
     private func setHeight(_ gridUI: View, height: CGFloat) {
         gridUI.translatesAutoresizingMaskIntoConstraints = false
-        gridUI.heightAnchor.constraint(equalToConstant: CGFloat(height + (2 * tileMargin))).isActive = true
+        gridUI.heightAnchor.constraint(equalToConstant: CGFloat(height + CGFloat(2 * tileMargin))).isActive = true
     }
     
     private func createButton(x: Int, y: Int, height: Int, tag: Int) -> Button {
