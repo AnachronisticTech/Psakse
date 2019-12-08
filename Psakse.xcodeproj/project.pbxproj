@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		91034F9523747F7900AFFFA3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9423747F7900AFFFA3 /* Extensions.swift */; };
 		91034FA6237481EB00AFFFA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91034F96237481EA00AFFFA3 /* Main.storyboard */; };
-		91034FA8237481EB00AFFFA3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91034F98237481EA00AFFFA3 /* Info.plist */; };
 		91034FAA237481EB00AFFFA3 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9A237481EA00AFFFA3 /* SelectViewController.swift */; };
 		91034FAB237481EB00AFFFA3 /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9B237481EA00AFFFA3 /* FlippedView.swift */; };
 		91034FAC237481EB00AFFFA3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91034F9C237481EA00AFFFA3 /* GameViewController.swift */; };
@@ -240,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Daniel Marriner";
 				TargetAttributes = {
 					91034F7E23747D1E00AFFFA3 = {
@@ -291,7 +290,6 @@
 				91034FC5237483DD00AFFFA3 /* none.png in Resources */,
 				91034FA6237481EB00AFFFA3 /* Main.storyboard in Resources */,
 				91034FBD2374833300AFFFA3 /* Assets.xcassets in Resources */,
-				91034FA8237481EB00AFFFA3 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = SDPTWQFVDC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Psakse for macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,6 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = SDPTWQFVDC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Psakse for macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
