@@ -99,11 +99,10 @@ class Deck {
     
     func createDeckFromString(string: String) -> [Card] {
         var str = string
-        var cards = allCards
         var deck = [Card]()
-        for i in 0..<cards.count {
+        for i in 0..<allCards.count {
             let quantity = Int(String(str.removeFirst()))
-            deck += Array.init(repeating: cards[i], count: quantity!)
+            deck += Array.init(repeating: allCards[i], count: quantity!)
         }
         return deck
     }
