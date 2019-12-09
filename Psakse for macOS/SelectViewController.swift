@@ -100,6 +100,13 @@ class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
             UserDefaults.standard.synchronize()
         }
         
+        let width = 500
+        let height = 750
+        self.view.window?.setFrame(NSRect(x: 0, y: 0, width: width, height: height), display: true)
+        let layer = CALayer()
+        layer.backgroundColor = NSColor.white.cgColor
+        self.view.layer = layer
+        
         setupButtonView(button: homeView, title: "Home", color: .Green, action: #selector(goToHome))
         
         challengeView.dataSource = self
