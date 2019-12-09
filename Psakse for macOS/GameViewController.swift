@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  GameViewController.swift
 //  Psakse
 //
 //  Created by Daniel Marriner on 24/12/2018.
 //  Copyright © 2018 Daniel Marriner. All rights reserved.
 //
 
-import UIKit
+import AppKit
 import CoreGraphics
 
-class GameViewController: UIViewController {
+class GameViewController: NSViewController {
     
     let gridSize = 5
     let wildcards = 2
@@ -23,28 +23,41 @@ class GameViewController: UIViewController {
     var puzzleID: String? = nil
     var override: String? = nil
     var puzzleSig: String = ""
-    let impact = UIImpactFeedbackGenerator()
     
-    @IBOutlet weak var mainGrid: UIView!
-    @IBOutlet weak var subGrid: UIView!
-    @IBOutlet weak var backView: UIButton!
-    @IBOutlet weak var newView: UIButton!
+    @IBOutlet weak var mainGrid: NSView!
+    @IBOutlet weak var subGrid: NSView!
+    @IBOutlet weak var backView: NSButton!
+    @IBOutlet weak var newView: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let width = 500
+        let height = 750
+        self.view.window?.setFrame(NSRect(x: 0, y: 0, width: width, height: height), display: true)
+        let layer = CALayer()
+        layer.backgroundColor = NSColor.white.cgColor
+        self.view.layer = layer
+        
         // Do any additional setup after loading the view, typically from a nib.
         resetGame()
     }
     
-    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
-        button.backgroundColor = color.getColor()
-        button.adjustsImageWhenDisabled = false
-        button.setTitle(title, for: .normal)
-        button.addTarget(self, action: action, for: .touchUpInside)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setTitleColor(UIColor.darkGray, for: .normal)
+    func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
+        let layer = CALayer()
+        layer.backgroundColor = color.getColor().cgColor
+        let text = CATextLayer()
+        text.string = title
+        text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)
+        let CGR = NSClickGestureRecognizer(target: self, action: action)
+        button.addGestureRecognizer(CGR)
+        text.foregroundColor = NSColor.darkGray.cgColor
+        text.fontSize = 16
+        text.alignmentMode = .center
+        layer.addSublayer(text)
+        layer.cornerRadius = 10
+        button.layer = layer
         button.setBorder(width: 3, color: .darkGray)
-        button.layer.cornerRadius = 10
     }
     
     func resetGame() {
@@ -56,8 +69,12 @@ class GameViewController: UIViewController {
         } else {
             // Create main and side grids with all buttons
             grid = Grid(gridSize: gridSize, mainGrid: mainGrid, subGrid: subGrid)
+            mainGrid.layer = CALayer()
+            mainGrid.layer?.backgroundColor = .black
+            subGrid.layer = CALayer()
+            subGrid.layer?.backgroundColor = .black
             for button in grid!.buttonGrid {
-                button.addTarget(self, action: #selector(select), for: .touchUpInside)
+                button.action = #selector(select(sender:))
             }
             
             // Create in game controls
@@ -108,8 +125,8 @@ class GameViewController: UIViewController {
             for i in randArray {
                 let image = deck!.arr[0].getFilename()
                 let bgcolor = deck!.arr[0].getColor()
-                grid!.buttonGrid[i].setAttrs(image: UIImage(named: image), bgColor: bgcolor)
-                grid!.buttonGrid[i].setBorder(width: 3, color: .yellow)
+                grid!.buttonGrid[i].setAttrs(image: NSImage(named: image), bgColor: bgcolor)
+                grid!.buttonGrid[i].setBorder(width: 5, color: .yellow)
                 grid!.buttonGrid[i].isEnabled = false
                 grid!.grid[i] = deck!.arr[0]
                 let card = deck!.arr.removeFirst()
@@ -155,7 +172,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    @objc func select(sender: UIButton!) {
+    @objc func select(sender: NSButton!) {
         if let currentActiveCard = activeCard {
             // if sender == gridSize^2 or sender == lastSelected
             // deselect
@@ -177,10 +194,11 @@ class GameViewController: UIViewController {
                         clearTile(position: lastSelected)
                     } else {
                         // Warn of tile move conflict
-                        let alert = UIAlertController(title: nil, message: "That tile can't be placed there.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                        impact.impactOccurred()
-                        self.present(alert, animated: true)
+                        let alertView = NSAlert()
+                        alertView.alertStyle = .warning
+                        alertView.messageText = "That tile can't be placed there"
+                        alertView.addButton(withTitle: "Ok")
+                        alertView.runModal()
                     }
                     deselect()
                     if deck!.arr.count == 0 {
@@ -198,12 +216,18 @@ class GameViewController: UIViewController {
                             for i in grid!.buttonGrid {
                                 i.isEnabled = false
                             }
-                            let alert = UIAlertController(title: "Puzzle complete!", message: "You solved the puzzle! Would you like to play again?", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Yes", style: .default) {action in
+                            let alertView = NSAlert()
+                            alertView.alertStyle = .warning
+                            alertView.messageText = "Puzzle complete!"
+                            alertView.informativeText = "You solved the puzzle! Would you like to play again?"
+                            alertView.addButton(withTitle: "Yes")
+                            alertView.addButton(withTitle: "No")
+                            let result = alertView.runModal()
+                            switch result {
+                            case NSApplication.ModalResponse.alertFirstButtonReturn:
                                 self.resetGame()
-                            })
-                            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-                            self.present(alert, animated: true)
+                            default: return
+                            }
                         }
                     }
                 } else {
@@ -216,10 +240,11 @@ class GameViewController: UIViewController {
                             setCard(atLocation: location, card: currentActiveCard)
                         } else {
                             // Warn of tile swap conflict
-                            let alert = UIAlertController(title: nil, message: "Those tiles can't be swapped.", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                            impact.impactOccurred()
-                            self.present(alert, animated: true)
+                            let alertView = NSAlert()
+                            alertView.alertStyle = .warning
+                            alertView.messageText = "Those tiles can't be swapped."
+                            alertView.addButton(withTitle: "Ok")
+                            alertView.runModal()
                         }
                     }
                     deselect()
@@ -247,7 +272,7 @@ class GameViewController: UIViewController {
     func setCard(atLocation location: Int, card: Card?) {
         if let card = card {
             grid?.grid[location] = card
-            grid?.buttonGrid[location].setAttrs(image: UIImage(named: card.getFilename()), bgColor: card.getColor())
+            grid?.buttonGrid[location].setAttrs(image: NSImage(named: card.getFilename()), bgColor: card.getColor())
             grid?.buttonGrid[location].setBorder(width: 0, color: .black)
         } else {
             grid?.grid[location] = nil
@@ -263,7 +288,7 @@ class GameViewController: UIViewController {
                 setCard(atLocation: (gridSize * gridSize), card: deck?.arr[0])
             } else {
                 grid!.grid[(gridSize * gridSize)] = nil
-                grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: UIImage(named: "none.png"), bgColor: .white)
+                grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: NSImage(named: "none.png"), bgColor: .white)
                 grid!.buttonGrid[(gridSize * gridSize)].isEnabled = false
             }
         } else {
@@ -339,41 +364,60 @@ class GameViewController: UIViewController {
         if gameComplete {
             resetGame()
         } else {
-            let alert = UIAlertController(title: "Puzzle not finished!", message: "Are you sure you want a new puzzle? All progress on this one will be lost.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default) {action in
+            let alertView = NSAlert()
+            alertView.alertStyle = .warning
+            alertView.messageText = "Puzzle not finished!"
+            alertView.informativeText = "Are you sure you want a new puzzle? All progress on this puzzle will be lost."
+            alertView.addButton(withTitle: "New Puzzle")
+            alertView.addButton(withTitle: "Stay")
+            let result = alertView.runModal()
+            switch result {
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
                 self.resetGame()
-            })
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            impact.impactOccurred()
-            self.present(alert, animated: true)
+            default: return
+            }
         }
     }
     
     @objc func goToHome() {
         if gameComplete {
             performSegue(withIdentifier: "ToHome", sender: self)
+            self.view.window?.windowController?.close()
         } else {
-            let alert = UIAlertController(title: "Puzzle not finished!", message: "Are you sure you want to quit? All progress on this puzzle will be lost.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default) {action in
-                self.performSegue(withIdentifier: "ToHome", sender: self)
-            })
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            impact.impactOccurred()
-            self.present(alert, animated: true)
+            let alertView = NSAlert()
+            alertView.alertStyle = .warning
+            alertView.messageText = "Puzzle not finished!"
+            alertView.informativeText = "Are you sure you want to quit? All progress on this puzzle will be lost."
+            alertView.addButton(withTitle: "Quit")
+            alertView.addButton(withTitle: "Stay")
+            let result = alertView.runModal()
+            switch result {
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
+                performSegue(withIdentifier: "ToHome", sender: self)
+                self.view.window?.windowController?.close()
+            default: return
+            }
         }
     }
     
     @objc func goToSelect() {
         if gameComplete {
             performSegue(withIdentifier: "ToSelect", sender: self)
+            self.view.window?.windowController?.close()
         } else {
-            let alert = UIAlertController(title: "Puzzle not finished!", message: "Are you sure you want to quit? All progress on this puzzle will be lost.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default) {action in
-                self.performSegue(withIdentifier: "ToSelect", sender: self)
-            })
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            impact.impactOccurred()
-            self.present(alert, animated: true)
+            let alertView = NSAlert()
+            alertView.alertStyle = .warning
+            alertView.messageText = "Puzzle not finished!"
+            alertView.informativeText = "Are you sure you want to quit? All progress on this puzzle will be lost."
+            alertView.addButton(withTitle: "Quit")
+            alertView.addButton(withTitle: "Stay")
+            let result = alertView.runModal()
+            switch result {
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
+                performSegue(withIdentifier: "ToSelect", sender: self)
+                self.view.window?.windowController?.close()
+            default: return
+            }
         }
     }
     

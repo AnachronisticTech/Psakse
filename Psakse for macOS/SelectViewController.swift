@@ -6,45 +6,61 @@
 //  Copyright © 2019 Daniel Marriner. All rights reserved.
 //
 
-import UIKit
+import AppKit
 
-class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     var puzzleSelected = -1
     var tableData = [Puzzle]()
+    @IBOutlet weak var challengeView: NSTableView!
+    @IBOutlet weak var homeView: NSButton!
     
-    @IBOutlet weak var challengeView: UITableView!
-    @IBOutlet weak var homeView: UIButton!
     
-    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
-        button.backgroundColor = color.getColor()
-        button.adjustsImageWhenDisabled = false
-        button.setTitle(title, for: .normal)
-        button.addTarget(self, action: action, for: .touchUpInside)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setTitleColor(UIColor.darkGray, for: .normal)
+    var table: NSTableView? = nil
+    var override: Bool = false
+    var width = 0
+    var height = 0
+    
+    func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
+        let layer = CALayer()
+        layer.backgroundColor = color.getColor().cgColor
+        let text = CATextLayer()
+        text.string = title
+        text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)
+        let CGR = NSClickGestureRecognizer(target: self, action: action)
+        button.addGestureRecognizer(CGR)
+        text.foregroundColor = NSColor.darkGray.cgColor
+        text.fontSize = 16
+        text.alignmentMode = .center
+        layer.addSublayer(text)
+        layer.cornerRadius = button.frame.height / 2
+        button.layer = layer
         button.setBorder(width: 3, color: .darkGray)
-        button.layer.cornerRadius = button.frame.height / 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return tableData.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-        let solved = UserDefaults.standard.bool(forKey: "\(tableData[indexPath.row].id)")
-        cell.textLabel?.text = "Puzzle \(indexPath.row + 1)" + (solved ? " - Solved" : "")
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell = challengeView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Cell"), owner: nil) as? NSTableCellView
+        let solved = UserDefaults.standard.bool(forKey: "\(tableData[row].id)")
+        cell?.textField?.stringValue = "Puzzle \(row + 1)" + (solved ? " - Solved" : "")
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        puzzleSelected = indexPath.row
+    @objc func doubleClick(_ sender: AnyObject) {
+        guard challengeView.selectedRow >= 0 else {
+            return
+        }
+        puzzleSelected = challengeView.selectedRow
         performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
+        self.view.window?.windowController?.close()
     }
     
     @objc func goToHome() {
         performSegue(withIdentifier: "ToHome", sender: self)
+        self.view.window?.windowController?.close()
     }
     
     struct Puzzle: Decodable {
@@ -84,22 +100,30 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
             UserDefaults.standard.synchronize()
         }
         
+        let width = 500
+        let height = 750
+        self.view.window?.setFrame(NSRect(x: 0, y: 0, width: width, height: height), display: true)
+        let layer = CALayer()
+        layer.backgroundColor = NSColor.white.cgColor
+        self.view.layer = layer
+        
         setupButtonView(button: homeView, title: "Home", color: .Green, action: #selector(goToHome))
         
-        challengeView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         challengeView.dataSource = self
         challengeView.delegate = self
+        challengeView.target = self
+        challengeView.doubleAction = #selector(doubleClick(_:))
         getJson()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear() {
         puzzleSelected = -1
         challengeView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToScriptedPuzzle" {
-            let destinationViewController = segue.destination as! GameViewController
+            let destinationViewController = segue.destinationController as! GameViewController
             let puzzle = tableData[puzzleSelected]
             destinationViewController.puzzleID = puzzle.id
             destinationViewController.override = puzzle.properties
