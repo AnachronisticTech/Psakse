@@ -325,3 +325,27 @@ extension GameViewController {
         }
     }
 }
+
+extension SelectViewController {
+    
+    func getJson() {
+        let x = URL(string: "https://anachronistic-tech.co.uk/projects/psakse/get_puzzles.php")!
+        let request = NSMutableURLRequest(url: x)
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            if error != nil {} else {
+                if let unwrappedData = data {
+                    let decoder = JSONDecoder()
+                    self.tableData = try! decoder.decode([Puzzle].self, from: unwrappedData)
+                    self.tableData.sort{ (lhs: Puzzle, rhs: Puzzle) -> Bool in
+                        return Int(lhs.numID)! < Int(rhs.numID)!
+                    }
+                    DispatchQueue.main.sync(execute: {
+                        self.challengeView.reloadData()
+                    })
+                }
+            }
+        }
+        task.resume()
+    }
+}
