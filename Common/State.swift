@@ -9,7 +9,6 @@
 import Foundation
 
 struct State {
-    let grid: String
-    let subGrid: String
-    let deck: String
+    let grid: [Card?]
+    let deck: [Card]
 }

@@ -37,6 +37,8 @@ extension GameViewController {
     func resetGame() {
         gameComplete = false
         deck = Deck()
+        state = []
+        fixedTiles = []
         if let grid = grid {
             // Reset all buttons in main and side grids
             grid.reset()
@@ -55,6 +57,8 @@ extension GameViewController {
                 setupButtonView(button: backView, title: "Home", color: .Orange, action: #selector(goToHome))
                 setupButtonView(button: newView, title: "New Game", color: .Purple, action: #selector(newGame))
             }
+            setupButtonView(button: undoView, title: "Undo", color: .Green, action: #selector(restoreState))
+            setupButtonView(button: resetView, title: "Reset", color: .Yellow, action: #selector(resetState))
         }
         
         // Create deck from override or procedurally
@@ -69,6 +73,7 @@ extension GameViewController {
                 grid!.buttonGrid[pos].setBorder(width: 3, color: .yellow)
                 grid!.buttonGrid[pos].isEnabled = false
                 grid!.grid[pos] = card
+                fixedTiles.append(pos)
             }
             deck!.arr = deck!.createDeckFromString(string: String(puzzle.dropFirst(12)))
         } else {
@@ -76,23 +81,22 @@ extension GameViewController {
             deck!.finalShuffle()
             deck!.removeCards(gridSize: gridSize, wildcards: wildcards)
             // three random starting cards section
-            var randArray = [Int]()
             for _ in 1...3 {
                 var randPosition = UInt32(gridSize * gridSize)
-                while randArray.contains(Int(randPosition)) ||
+                while fixedTiles.contains(Int(randPosition)) ||
                     randPosition == gridSize * gridSize ||
-                    randArray.contains(Int(randPosition) - 1) ||
-                    randArray.contains(Int(randPosition) + 1) ||
-                    randArray.contains(Int(randPosition) - gridSize) ||
-                    randArray.contains(Int(randPosition) + gridSize) {
+                    fixedTiles.contains(Int(randPosition) - 1) ||
+                    fixedTiles.contains(Int(randPosition) + 1) ||
+                    fixedTiles.contains(Int(randPosition) - gridSize) ||
+                    fixedTiles.contains(Int(randPosition) + gridSize) {
                         randPosition = arc4random_uniform(UInt32(gridSize * gridSize - 1))
                         if randPosition == 0 {
                             randPosition = 1
                         }
                 }
-                randArray.append(Int(randPosition))
+                fixedTiles.append(Int(randPosition))
             }
-            for i in randArray {
+            for i in fixedTiles {
                 let image = deck!.arr[0].getFilename()
                 let bgcolor = deck!.arr[0].getColor()
                 grid!.buttonGrid[i].setAttrs(image: Image(named: image), bgColor: bgcolor)
@@ -131,6 +135,7 @@ extension GameViewController {
                     // If location empty try move
                     if checker(position: location, card: currentActiveCard) || location > (gridSize * gridSize) {
                         // If no tile conflicts place card
+                        saveState()
                         setCard(atLocation: location, card: currentActiveCard)
                         // clear previous location
                         clearTile(position: lastSelected)
@@ -163,6 +168,7 @@ extension GameViewController {
                         // If last selected card was not from the deck
                         if (checker(position: lastSelected, card: grid!.grid[location]!) || lastSelected > (gridSize * gridSize)) && (checker(position: location, card: currentActiveCard) ||  location > (gridSize * gridSize)) {
                             // If cards won't conflict when swapped, swap cards
+                            saveState()
                             setCard(atLocation: lastSelected, card: grid?.grid[location])
                             setCard(atLocation: location, card: currentActiveCard)
                         } else {
@@ -284,18 +290,45 @@ extension GameViewController {
     }
         
     func saveState() {
-        var gridState = ""
-        grid?.grid.forEach {
-            if let card = $0 {
-                gridState += card.getID()
-            } else {
-                gridState += "__"
-            }
+        var gridState: [Card?] = []
+        grid?.grid.forEach { card in
+            gridState.append(card)
         }
-//        state.append(State(grid: <#T##String#>, subGrid: <#T##String#>, deck: <#T##String#>))
+        state.append(State(grid: gridState, deck: deck!.arr))
     }
     
-    func restoreState() {}
+    @objc func restoreState() {
+        let prevState = state.popLast()
+        if let currentState = prevState {
+            activeCard = nil
+            lastSelected = -1
+            for i in 0..<grid!.grid.count {
+                setCard(atLocation: i, card: currentState.grid[i])
+            }
+            deck?.arr = currentState.deck
+            grid!.buttonGrid[gridSize * gridSize].isEnabled = true
+            for i in fixedTiles {
+                grid?.buttonGrid[i].setBorder(width: 3, color: .yellow)
+            }
+        }
+    }
+    
+    @objc func resetState() {
+        if state.count >= 1 {
+            let currentState = state[0]
+            activeCard = nil
+            lastSelected = -1
+            for i in 0..<grid!.grid.count {
+                setCard(atLocation: i, card: currentState.grid[i])
+            }
+            deck?.arr = currentState.deck
+            grid!.buttonGrid[gridSize * gridSize].isEnabled = true
+            for i in fixedTiles {
+                grid?.buttonGrid[i].setBorder(width: 3, color: .yellow)
+            }
+            state = []
+        }
+    }
     
     func sendToServer(puzzle: String) {
         if let location = Bundle.main.url(forResource: "link", withExtension: "txt") {

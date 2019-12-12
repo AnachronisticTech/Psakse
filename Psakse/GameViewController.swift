@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
     var deck:Deck? = nil
     var activeCard:Card? = nil
     var lastSelected = -1
+    var fixedTiles: [Int] = []
     var state: [State] = []
     var gameComplete = false
     var puzzleID: String? = nil
@@ -30,6 +31,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var subGrid: UIView!
     @IBOutlet weak var backView: UIButton!
     @IBOutlet weak var newView: UIButton!
+    @IBOutlet weak var undoView: UIButton!
+    @IBOutlet weak var resetView: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
