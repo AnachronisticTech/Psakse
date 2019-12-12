@@ -57,8 +57,8 @@ extension GameViewController {
                 setupButtonView(button: backView, title: "Home", color: .Orange, action: #selector(goToHome))
                 setupButtonView(button: newView, title: "New Game", color: .Purple, action: #selector(newGame))
             }
-            setupButtonView(button: undoView, title: "Undo", color: .Green, action: #selector(restoreState))
-            setupButtonView(button: resetView, title: "Reset", color: .Yellow, action: #selector(resetState))
+            setupButtonView(button: undoView, title: "Undo", color: .Green, action: #selector(restoreGameState))
+            setupButtonView(button: resetView, title: "Reset", color: .Yellow, action: #selector(resetGameState))
         }
         
         // Create deck from override or procedurally
@@ -135,7 +135,7 @@ extension GameViewController {
                     // If location empty try move
                     if checker(position: location, card: currentActiveCard) || location > (gridSize * gridSize) {
                         // If no tile conflicts place card
-                        saveState()
+                        saveGameState()
                         setCard(atLocation: location, card: currentActiveCard)
                         // clear previous location
                         clearTile(position: lastSelected)
@@ -168,7 +168,7 @@ extension GameViewController {
                         // If last selected card was not from the deck
                         if (checker(position: lastSelected, card: grid!.grid[location]!) || lastSelected > (gridSize * gridSize)) && (checker(position: location, card: currentActiveCard) ||  location > (gridSize * gridSize)) {
                             // If cards won't conflict when swapped, swap cards
-                            saveState()
+                            saveGameState()
                             setCard(atLocation: lastSelected, card: grid?.grid[location])
                             setCard(atLocation: location, card: currentActiveCard)
                         } else {
@@ -289,7 +289,7 @@ extension GameViewController {
         return true
     }
         
-    func saveState() {
+    func saveGameState() {
         var gridState: [Card?] = []
         grid?.grid.forEach { card in
             gridState.append(card)
@@ -297,7 +297,7 @@ extension GameViewController {
         state.append(State(grid: gridState, deck: deck!.arr))
     }
     
-    @objc func restoreState() {
+    @objc func restoreGameState() {
         let prevState = state.popLast()
         if let currentState = prevState {
             activeCard = nil
@@ -313,7 +313,7 @@ extension GameViewController {
         }
     }
     
-    @objc func resetState() {
+    @objc func resetGameState() {
         if state.count >= 1 {
             let currentState = state[0]
             activeCard = nil

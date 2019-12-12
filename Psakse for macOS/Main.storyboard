@@ -708,24 +708,24 @@
                 <customObject id="T92-Km-iQa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="GameViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="HI4-BM-WQG">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="696"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="812"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-Db-bHD">
-                                <rect key="frame" x="20" y="166" width="400" height="90"/>
+                                <rect key="frame" x="20" y="279" width="400" height="93"/>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTB-KA-Asd" customClass="FlippedView" customModule="Psakse_for_macOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="276" width="400" height="400"/>
+                                <rect key="frame" x="20" y="392" width="400" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="4NO-Wv-XdM"/>
                                     <constraint firstAttribute="width" secondItem="WTB-KA-Asd" secondAttribute="height" multiplier="1:1" id="8BD-VC-6SB"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="HZr-5z-rm7">
-                                <rect key="frame" x="20" y="40" width="200" height="101"/>
+                                <rect key="frame" x="20" y="151" width="200" height="103"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="P7A-DH-G7s" customClass="NSButton">
-                                        <rect key="frame" x="85" y="0.0" width="100" height="101"/>
+                                        <rect key="frame" x="82" y="0.0" width="103" height="103"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="P7A-DH-G7s" secondAttribute="height" multiplier="1:1" id="tSA-hk-C14"/>
                                         </constraints>
@@ -738,10 +738,10 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ZGt-FV-DaQ">
-                                <rect key="frame" x="220" y="40" width="200" height="101"/>
+                                <rect key="frame" x="220" y="151" width="200" height="103"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="nAe-5X-IaV" customClass="NSButton">
-                                        <rect key="frame" x="15" y="0.0" width="101" height="101"/>
+                                        <rect key="frame" x="15" y="0.0" width="103" height="103"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nAe-5X-IaV" secondAttribute="height" multiplier="1:1" id="NUL-hu-PFi"/>
                                         </constraints>
@@ -753,43 +753,85 @@
                                     <constraint firstItem="nAe-5X-IaV" firstAttribute="height" secondItem="ZGt-FV-DaQ" secondAttribute="height" id="rft-K2-Ixp"/>
                                 </constraints>
                             </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="OwL-5X-Pp5">
+                                <rect key="frame" x="20" y="40" width="200" height="103"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="FwZ-RA-MNp" customClass="NSButton">
+                                        <rect key="frame" x="82" y="0.0" width="103" height="103"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FwZ-RA-MNp" secondAttribute="height" multiplier="1:1" id="R40-jV-Lwn"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FwZ-RA-MNp" secondAttribute="trailing" constant="15" id="5Si-1g-x78"/>
+                                    <constraint firstItem="FwZ-RA-MNp" firstAttribute="height" secondItem="OwL-5X-Pp5" secondAttribute="height" id="YUq-de-aKB"/>
+                                    <constraint firstItem="FwZ-RA-MNp" firstAttribute="top" secondItem="OwL-5X-Pp5" secondAttribute="top" id="oO9-TG-Mua"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="WOE-1a-etL">
+                                <rect key="frame" x="220" y="40" width="200" height="103"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="oLc-lm-1i6" customClass="NSButton">
+                                        <rect key="frame" x="15" y="0.0" width="103" height="103"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="oLc-lm-1i6" secondAttribute="height" multiplier="1:1" id="c7Z-xL-iaa"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oLc-lm-1i6" firstAttribute="height" secondItem="WOE-1a-etL" secondAttribute="height" id="bn6-gm-vcx"/>
+                                    <constraint firstItem="oLc-lm-1i6" firstAttribute="top" secondItem="WOE-1a-etL" secondAttribute="top" id="rub-uy-lBM"/>
+                                    <constraint firstItem="oLc-lm-1i6" firstAttribute="leading" secondItem="WOE-1a-etL" secondAttribute="leading" constant="15" id="vSQ-jb-eoq"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="HZr-5z-rm7" secondAttribute="bottom" constant="40" id="3h7-0y-PKu"/>
+                            <constraint firstItem="OwL-5X-Pp5" firstAttribute="width" secondItem="WOE-1a-etL" secondAttribute="width" id="0Rl-MM-U3G"/>
                             <constraint firstAttribute="trailing" secondItem="WTB-KA-Asd" secondAttribute="trailing" constant="20" id="8cu-81-vGe"/>
                             <constraint firstItem="HZr-5z-rm7" firstAttribute="top" secondItem="PK5-Db-bHD" secondAttribute="bottom" constant="25" id="9Xj-LJ-LbT"/>
                             <constraint firstItem="WTB-KA-Asd" firstAttribute="top" secondItem="HI4-BM-WQG" secondAttribute="top" constant="20" id="ATI-Cw-411"/>
                             <constraint firstItem="PK5-Db-bHD" firstAttribute="top" secondItem="WTB-KA-Asd" secondAttribute="bottom" constant="20" id="D1Z-yX-B4U"/>
+                            <constraint firstItem="WOE-1a-etL" firstAttribute="leading" secondItem="OwL-5X-Pp5" secondAttribute="trailing" id="HYz-Xr-9Mp"/>
+                            <constraint firstAttribute="bottom" secondItem="WOE-1a-etL" secondAttribute="bottom" constant="40" id="Hx5-eJ-coV"/>
                             <constraint firstItem="ZGt-FV-DaQ" firstAttribute="height" secondItem="PK5-Db-bHD" secondAttribute="height" constant="10" id="N8F-We-N7Y"/>
                             <constraint firstItem="ZGt-FV-DaQ" firstAttribute="top" secondItem="PK5-Db-bHD" secondAttribute="bottom" constant="25" id="NLd-Rb-ttA"/>
                             <constraint firstItem="WTB-KA-Asd" firstAttribute="leading" secondItem="HI4-BM-WQG" secondAttribute="leading" constant="20" id="PcO-oK-Tqo"/>
+                            <constraint firstItem="OwL-5X-Pp5" firstAttribute="leading" secondItem="HI4-BM-WQG" secondAttribute="leading" constant="20" id="Si8-Qb-Bd1"/>
                             <constraint firstItem="PK5-Db-bHD" firstAttribute="width" secondItem="WTB-KA-Asd" secondAttribute="width" id="bGa-am-Q6R"/>
                             <constraint firstItem="ZGt-FV-DaQ" firstAttribute="leading" secondItem="HZr-5z-rm7" secondAttribute="trailing" id="fsi-MD-saN"/>
+                            <constraint firstItem="OwL-5X-Pp5" firstAttribute="height" secondItem="HZr-5z-rm7" secondAttribute="height" id="g3s-a0-3VG"/>
                             <constraint firstItem="HZr-5z-rm7" firstAttribute="leading" secondItem="HI4-BM-WQG" secondAttribute="leading" constant="20" id="i5V-Cy-Bnr"/>
                             <constraint firstItem="HZr-5z-rm7" firstAttribute="height" secondItem="PK5-Db-bHD" secondAttribute="height" constant="10" id="l7m-NS-pWt"/>
+                            <constraint firstItem="WOE-1a-etL" firstAttribute="height" secondItem="ZGt-FV-DaQ" secondAttribute="height" id="lwc-Oh-Nui"/>
+                            <constraint firstItem="WOE-1a-etL" firstAttribute="top" secondItem="ZGt-FV-DaQ" secondAttribute="bottom" constant="8" id="mAl-sp-YyB"/>
+                            <constraint firstItem="OwL-5X-Pp5" firstAttribute="top" secondItem="HZr-5z-rm7" secondAttribute="bottom" constant="8" id="olH-oj-3Nd"/>
                             <constraint firstAttribute="trailing" secondItem="ZGt-FV-DaQ" secondAttribute="trailing" constant="20" id="qVX-Pb-M6w"/>
                             <constraint firstItem="HZr-5z-rm7" firstAttribute="width" secondItem="ZGt-FV-DaQ" secondAttribute="width" id="rzW-wt-yjC"/>
+                            <constraint firstAttribute="trailing" secondItem="WOE-1a-etL" secondAttribute="trailing" constant="20" id="wr9-2J-HKM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backView" destination="P7A-DH-G7s" id="zjb-4s-geo"/>
                         <outlet property="mainGrid" destination="WTB-KA-Asd" id="SY1-wE-htM"/>
                         <outlet property="newView" destination="nAe-5X-IaV" id="Nju-u8-wvO"/>
+                        <outlet property="resetView" destination="oLc-lm-1i6" id="dAx-i0-Hnc"/>
                         <outlet property="subGrid" destination="PK5-Db-bHD" id="g0R-S3-OfG"/>
+                        <outlet property="undoView" destination="FwZ-RA-MNp" id="uRH-Wd-q8U"/>
                         <segue destination="40q-VO-Cru" kind="show" identifier="ToHome" id="uVH-lz-uJo"/>
                         <segue destination="H4Y-vq-2ls" kind="show" identifier="ToSelect" id="K2m-u3-jpH"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1089" y="975"/>
+            <point key="canvasLocation" x="1089" y="1033"/>
         </scene>
         <!--Select-->
         <scene sceneID="1RU-dK-yrl">
             <objects>
                 <customObject id="frT-Vb-xZ5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Select" showSeguePresentationStyle="single" id="H4Y-vq-2ls" customClass="SelectViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="vzm-0H-3kw">
-                        <rect key="frame" x="0.0" y="0.0" width="482" height="696"/>
+                    <view key="view" misplaced="YES" id="vzm-0H-3kw">
+                        <rect key="frame" x="0.0" y="0.0" width="482" height="685"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="jfp-sg-GeH" customClass="NSButton">
@@ -799,14 +841,14 @@
                                     <constraint firstAttribute="width" constant="200" id="phW-7z-u5I"/>
                                 </constraints>
                             </customView>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt9-7r-Yjx">
-                                <rect key="frame" x="40" y="150" width="402" height="506"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt9-7r-Yjx">
+                                <rect key="frame" x="40" y="150" width="402" height="484"/>
                                 <clipView key="contentView" id="TC9-kd-ZVk">
-                                    <rect key="frame" x="1" y="1" width="400" height="504"/>
+                                    <rect key="frame" x="1" y="1" width="400" height="482"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="Rb1-XD-Wdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="504"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="Rb1-XD-Wdt">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="482"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
