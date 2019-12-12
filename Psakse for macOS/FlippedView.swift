@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import AppKit
 
-class FlippedView: NSView {
+class FlippedView: View {
     override var isFlipped: Bool {
         get {
             return true
