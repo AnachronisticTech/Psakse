@@ -52,6 +52,8 @@
 		914F56F722CA8DAC0099A5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */; };
 		914F571622CA90130099A5F1 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */; };
 		917245E1230C9E2700FAAE4A /* link.txt in Resources */ = {isa = PBXBuildFile; fileRef = 917245E0230C9E2700FAAE4A /* link.txt */; };
+		91A8648D23A1C2BB0069CA95 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A8648C23A1C2BB0069CA95 /* State.swift */; };
+		91A8648E23A1C2BB0069CA95 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A8648C23A1C2BB0069CA95 /* State.swift */; };
 		91F7DE68237B6F0A0065B4B5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D822CA8CEA0099A5F1 /* Grid.swift */; };
 		91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,7 @@
 		914F56F622CA8DAC0099A5F1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		914F571522CA90130099A5F1 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		917245E0230C9E2700FAAE4A /* link.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = link.txt; sourceTree = "<group>"; };
+		91A8648C23A1C2BB0069CA95 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		91F9C6EE22CA8B54000A5F2F /* Psakse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psakse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91F9C6FD22CA8B58000A5F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 				914F56E322CA8D3E0099A5F1 /* Assets */,
 				914F56D522CA8CE90099A5F1 /* Deck.swift */,
 				914F56D822CA8CEA0099A5F1 /* Grid.swift */,
+				91A8648C23A1C2BB0069CA95 /* State.swift */,
 				914F56D922CA8CEA0099A5F1 /* Card.swift */,
 				914F56D222CA8CE90099A5F1 /* Symbols.swift */,
 				914F56D122CA8CE90099A5F1 /* Colors.swift */,
@@ -327,6 +331,7 @@
 				91034FBA2374828B00AFFFA3 /* link.txt in Sources */,
 				91034FB0237481EB00AFFFA3 /* AppDelegate.swift in Sources */,
 				91034FAC237481EB00AFFFA3 /* GameViewController.swift in Sources */,
+				91A8648E23A1C2BB0069CA95 /* State.swift in Sources */,
 				91F7DE68237B6F0A0065B4B5 /* Grid.swift in Sources */,
 				91034FAB237481EB00AFFFA3 /* FlippedView.swift in Sources */,
 				91034FB2237481EB00AFFFA3 /* AppKitExtensions.swift in Sources */,
@@ -351,6 +356,7 @@
 				914F56DD22CA8CEA0099A5F1 /* GameViewController.swift in Sources */,
 				91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */,
 				914F56E222CA8CEA0099A5F1 /* Card.swift in Sources */,
+				91A8648D23A1C2BB0069CA95 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

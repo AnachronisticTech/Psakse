@@ -19,6 +19,10 @@ public extension UIButton {
         self.isEnabled = true
     }
     
+    func setTarget(controller: UIViewController, _ action: Selector) {
+        self.addTarget(controller, action: action, for: .touchUpInside)
+    }
+    
     func setAttrs(image: UIImage?, bgColor: UIColor) {
         self.setImage(image, for: .normal)
         self.backgroundColor = bgColor

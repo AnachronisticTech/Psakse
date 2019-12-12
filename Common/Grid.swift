@@ -6,17 +6,8 @@
 //  Copyright © 2019 Daniel Marriner. All rights reserved.
 //
 
-#if os(macOS)
-import AppKit
-typealias View = NSView
-typealias Button = NSButton
-#elseif os(iOS)
-import UIKit
-typealias View = UIView
-typealias Button = UIButton
-#endif
-
 import Foundation
+import CoreGraphics
 
 class Grid {
     let gridSize: Int

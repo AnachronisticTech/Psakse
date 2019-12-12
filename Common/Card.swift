@@ -6,15 +6,6 @@
 //  Copyright © 2019 Daniel Marriner. All rights reserved.
 //
 
-// FIXES BUG WITH REDEFINING NSColor and UIColor
-#if os(macOS)
-    import AppKit
-    typealias Color = NSColor
-#elseif os(iOS)
-    import UIKit
-    typealias Color = UIColor
-#endif
-
 enum Card {
     
     case Wild

@@ -18,6 +18,10 @@ public extension NSButton {
         self.isEnabled = true
     }
     
+    func setTarget(controller: NSViewController, _ action: Selector) {
+        self.action = action
+    }
+    
     func setAttrs(image: NSImage?, bgColor: NSColor) {
         let layer = CALayer()
         layer.backgroundColor = bgColor.cgColor
