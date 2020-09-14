@@ -45,7 +45,7 @@ class GameViewController: NSViewController {
     
     func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
         let layer = CALayer()
-        layer.backgroundColor = color.getColor().cgColor
+        layer.backgroundColor = color.color.cgColor
         let text = CATextLayer()
         text.string = title
         text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)
@@ -123,15 +123,15 @@ class GameViewController: NSViewController {
                 randArray.append(Int(randPosition))
             }
             for i in randArray {
-                let image = deck!.arr[0].getFilename()
-                let bgcolor = deck!.arr[0].getColor()
+                let image = deck!.arr[0].asset
+                let bgcolor = deck!.arr[0].color
                 grid!.buttonGrid[i].setAttrs(image: NSImage(named: image), bgColor: bgcolor)
                 grid!.buttonGrid[i].setBorder(width: 5, color: .yellow)
                 grid!.buttonGrid[i].isEnabled = false
                 grid!.grid[i] = deck!.arr[0]
                 let card = deck!.arr.removeFirst()
                 deck!.updateQuantities(card: card)
-                puzzleSig += (i < 10 ? "0" : "") + String(i) + card.getID()
+                puzzleSig += (i < 10 ? "0" : "") + String(i) + card.id
             }
             puzzleSig += deck!.cardQuantities.contentsToString()
             //
@@ -272,7 +272,7 @@ class GameViewController: NSViewController {
     func setCard(atLocation location: Int, card: Card?) {
         if let card = card {
             grid?.grid[location] = card
-            grid?.buttonGrid[location].setAttrs(image: NSImage(named: card.getFilename()), bgColor: card.getColor())
+            grid?.buttonGrid[location].setAttrs(image: NSImage(named: card.asset), bgColor: card.color)
             grid?.buttonGrid[location].setBorder(width: 0, color: .black)
         } else {
             grid?.grid[location] = nil
@@ -288,7 +288,7 @@ class GameViewController: NSViewController {
                 setCard(atLocation: (gridSize * gridSize), card: deck?.arr[0])
             } else {
                 grid!.grid[(gridSize * gridSize)] = nil
-                grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: NSImage(named: "none.png"), bgColor: .white)
+                grid!.buttonGrid[(gridSize * gridSize)].setAttrs(image: NSImage(named: "none"), bgColor: .white)
                 grid!.buttonGrid[(gridSize * gridSize)].isEnabled = false
             }
         } else {

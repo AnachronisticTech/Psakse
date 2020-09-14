@@ -23,7 +23,7 @@ class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     
     func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
         let layer = CALayer()
-        layer.backgroundColor = color.getColor().cgColor
+        layer.backgroundColor = color.color.cgColor
         let text = CATextLayer()
         text.string = title
         text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)

@@ -15,55 +15,48 @@
     typealias Color = UIColor
 #endif
 
-enum Card {
-    
+enum Card: Equatable {
     case Wild
-    case Normal(Symbols, Colors)
+    case Normal(GameSymbol, GameColor)
     
     func matches(other: Card) -> Bool {
         switch (self, other) {
-        case (.Wild, _), (_, .Wild):
-            return true
-        case (.Normal(let sym1, let col1), .Normal(let sym2, let col2)):
-            return sym1 == sym2 || col1 == col2
+            case (.Wild, _), (_, .Wild):
+                return true
+            case (.Normal(let sym1, let col1), .Normal(let sym2, let col2)):
+                return sym1 == sym2 || col1 == col2
         }
     }
     
-    func getColor() -> Color {
+    var color: Color {
         switch self {
-        case .Wild:
-            return Color(red: 255/255, green: 180/255, blue: 188/255, alpha: 1)
-        case .Normal(_, let color):
-            return color.getColor()
+            case .Wild: return Color(named: "pink")!
+            case .Normal(_, let color): return color.color
         }
     }
     
-    func getFilename() -> String {
+    var asset: String {
         switch self {
-        case .Wild:
-            return "dot.png"
-        case .Normal(let symbol, _):
-            return symbol.getFilename()
+            case .Wild: return "dot"
+            case .Normal(let symbol, _): return symbol.asset
         }
     }
     
-    func equals(other: Card) -> Bool {
-        switch (self, other) {
-        case (.Wild, .Wild):
-            return true
-        case (.Normal(let sym1, let col1), .Normal(let sym2, let col2)):
-            return sym1 == sym2 && col1 == col2
-        default:
-            return false
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        switch (lhs, rhs) {
+            case (.Wild, .Wild):
+                return true
+            case (.Normal(let sym1, let col1), .Normal(let sym2, let col2)):
+                return sym1 == sym2 && col1 == col2
+            default:
+                return false
         }
     }
     
-    func getID() -> String {
+    var id: String {
         switch self {
-        case .Wild:
-            return ""
-        case .Normal(let sym, let col):
-            return col.getID() + sym.getID()
+            case .Wild: return ""
+            case .Normal(let sym, let col): return col.id + sym.id
         }
     }
 }

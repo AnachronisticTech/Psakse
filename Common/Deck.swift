@@ -68,8 +68,8 @@ class Deck {
 //            }
 //        }
         
-        for symbol in Symbols.allCases {
-            for color in Colors.allCases {
+        for symbol in GameSymbol.allCases {
+            for color in GameColor.allCases {
                 self.arr.append(Card.Normal(symbol, color))
                 self.arr.append(Card.Normal(symbol, color))
             }
@@ -91,9 +91,7 @@ class Deck {
     }
     
     func updateQuantities(card: Card) {
-        let index = allCards.firstIndex(where: {(tmp: Card) in
-            return tmp.equals(other: card)
-        })
+        let index = allCards.firstIndex { $0 == card }
         cardQuantities[index!] -= 1
     }
     
@@ -108,7 +106,7 @@ class Deck {
     }
     
     func stringToCard(col: String, sym: String) -> Card {
-        func symbol(_ sym: String) -> Symbols {
+        func symbol(_ sym: String) -> GameSymbol {
             switch sym {
             case "p": return .Psi
             case "a": return .A
@@ -116,7 +114,7 @@ class Deck {
             default : return .E
             }
         }
-        func color(_ col: String) -> Colors {
+        func color(_ col: String) -> GameColor {
             switch col {
             case "g": return .Green
             case "y": return .Yellow
@@ -130,7 +128,7 @@ class Deck {
     func finalShuffle() {
         var last = self.arr.count - 1
         while last > 0 {
-            let rand = (Int)(arc4random_uniform(UInt32(last)))
+            let rand = Int.random(in: 0..<last)
             self.arr.swapAt(last, rand)
             last -= 1
         }

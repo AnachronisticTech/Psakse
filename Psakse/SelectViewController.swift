@@ -16,8 +16,8 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var challengeView: UITableView!
     @IBOutlet weak var homeView: UIButton!
     
-    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
-        button.backgroundColor = color.getColor()
+    func setupButtonView(button: UIButton, title: String, color: GameColor, action: Selector) {
+        button.backgroundColor = color.color
         button.adjustsImageWhenDisabled = false
         button.setTitle(title, for: .normal)
         button.addTarget(self, action: action, for: .touchUpInside)
