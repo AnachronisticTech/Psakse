@@ -24,6 +24,9 @@
 		91034FBA2374828B00AFFFA3 /* link.txt in Sources */ = {isa = PBXBuildFile; fileRef = 917245E0230C9E2700FAAE4A /* link.txt */; };
 		91034FBC2374833300AFFFA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91034FBB2374833300AFFFA3 /* Assets.xcassets */; };
 		91034FBD2374833300AFFFA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91034FBB2374833300AFFFA3 /* Assets.xcassets */; };
+		914D28FA250FA63C0092C38D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28F9250FA63C0092C38D /* Game.swift */; };
+		914D28FB250FA63C0092C38D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28F9250FA63C0092C38D /* Game.swift */; };
+		914D28FD250FF1900092C38D /* NGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28FC250FF1900092C38D /* NGameViewController.swift */; };
 		914F56DA22CA8CEA0099A5F1 /* GameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D122CA8CE90099A5F1 /* GameColor.swift */; };
 		914F56DB22CA8CEA0099A5F1 /* GameSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D222CA8CE90099A5F1 /* GameSymbol.swift */; };
 		914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D322CA8CE90099A5F1 /* SelectViewController.swift */; };
@@ -54,6 +57,8 @@
 		91034FA5237481EB00AFFFA3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		91034FBB2374833300AFFFA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Psakse for macOS.entitlements"; sourceTree = "<group>"; };
+		914D28F9250FA63C0092C38D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		914D28FC250FF1900092C38D /* NGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGameViewController.swift; sourceTree = "<group>"; };
 		914F56D122CA8CE90099A5F1 /* GameColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColor.swift; sourceTree = "<group>"; };
 		914F56D222CA8CE90099A5F1 /* GameSymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSymbol.swift; sourceTree = "<group>"; };
 		914F56D322CA8CE90099A5F1 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 			children = (
 				91034FBB2374833300AFFFA3 /* Assets.xcassets */,
 				914F56D522CA8CE90099A5F1 /* Deck.swift */,
+				914D28F9250FA63C0092C38D /* Game.swift */,
 				914F56D822CA8CEA0099A5F1 /* Grid.swift */,
 				914F56D922CA8CEA0099A5F1 /* Card.swift */,
 				914F56D222CA8CE90099A5F1 /* GameSymbol.swift */,
@@ -145,6 +151,7 @@
 			children = (
 				91F9C6F122CA8B54000A5F2F /* AppDelegate.swift */,
 				914F56D422CA8CE90099A5F1 /* GameViewController.swift */,
+				914D28FC250FF1900092C38D /* NGameViewController.swift */,
 				914F56D622CA8CE90099A5F1 /* HomeViewController.swift */,
 				914F56D322CA8CE90099A5F1 /* SelectViewController.swift */,
 				914F56D722CA8CEA0099A5F1 /* UIKitExtensions.swift */,
@@ -264,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91034FB52374828B00AFFFA3 /* Deck.swift in Sources */,
+				914D28FB250FA63C0092C38D /* Game.swift in Sources */,
 				91034FB62374828B00AFFFA3 /* Card.swift in Sources */,
 				91034FB72374828B00AFFFA3 /* GameSymbol.swift in Sources */,
 				91034FB82374828B00AFFFA3 /* GameColor.swift in Sources */,
@@ -290,7 +298,9 @@
 				914F56E122CA8CEA0099A5F1 /* Grid.swift in Sources */,
 				914F56DF22CA8CEA0099A5F1 /* HomeViewController.swift in Sources */,
 				914F56DB22CA8CEA0099A5F1 /* GameSymbol.swift in Sources */,
+				914D28FD250FF1900092C38D /* NGameViewController.swift in Sources */,
 				91034F9523747F7900AFFFA3 /* Extensions.swift in Sources */,
+				914D28FA250FA63C0092C38D /* Game.swift in Sources */,
 				914F56DA22CA8CEA0099A5F1 /* GameColor.swift in Sources */,
 				914F56DD22CA8CEA0099A5F1 /* GameViewController.swift in Sources */,
 				91F9C6F222CA8B54000A5F2F /* AppDelegate.swift in Sources */,

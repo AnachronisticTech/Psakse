@@ -83,7 +83,7 @@
         <!--Game View Controller-->
         <scene sceneID="zJz-PH-98F">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="swd-rU-l3e" customClass="GameViewController" customModule="Psakse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="swd-rU-l3e" customClass="NGameViewController" customModule="Psakse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4w0-cJ-J2B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,10 +153,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="prt-Kg-ucU"/>
                     <connections>
-                        <outlet property="backView" destination="W9f-93-hAb" id="kst-G2-hfw"/>
-                        <outlet property="mainGrid" destination="640-ij-XCu" id="Nj2-fM-1jK"/>
-                        <outlet property="newView" destination="xMY-ye-lEq" id="AeK-9N-BJb"/>
-                        <outlet property="subGrid" destination="crk-HZ-Wav" id="AOd-h3-9i7"/>
+                        <outlet property="backView" destination="W9f-93-hAb" id="v2x-Cu-gVm"/>
+                        <outlet property="mainGrid" destination="640-ij-XCu" id="pn5-zX-UXC"/>
+                        <outlet property="newView" destination="xMY-ye-lEq" id="ROo-hM-CFV"/>
+                        <outlet property="subGrid" destination="crk-HZ-Wav" id="ao4-Ck-KZr"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToHome" id="z3K-N7-uSu"/>
                         <segue destination="hUZ-VG-IMd" kind="show" identifier="ToSelect" id="mhQ-hY-bkb"/>
                     </connections>
@@ -220,9 +220,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YOD-PB-Scx"/>
+        <segue reference="mhQ-hY-bkb"/>
         <segue reference="gTy-ZD-Bdv"/>
-        <segue reference="Gtt-f9-sz9"/>
+        <segue reference="z3K-N7-uSu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="title" width="1722" height="660"/>
