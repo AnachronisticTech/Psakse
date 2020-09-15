@@ -17,15 +17,10 @@ class NGameViewController: UIViewController {
 
     let impact = UIImpactFeedbackGenerator()
 
-    @objc func select(sender: UIButton!) {
-        let index = sender.tag == -2 ? -2 : sender.tag - 1
-        guard !game.fixedLocations.contains(index) else { return }
-        game.selectCard(at: index)
-    }
-
     let gridsize = 5
     var game: Game!
     var grid: NGrid!
+    var puzzleID: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +28,16 @@ class NGameViewController: UIViewController {
         for button in grid.buttons {
             button.addTarget(self, action: #selector(select), for: .touchUpInside)
         }
+        
+        // Create in game controls
+        if let _ = puzzleID {
+            setupButtonView(button: backView, title: "Back", color: .Orange, action: #selector(goToSelect))
+            setupButtonView(button: newView, title: "Reset", color: .Purple, action: #selector(newGame))
+        } else {
+            setupButtonView(button: backView, title: "Home", color: .Orange, action: #selector(goToHome))
+            setupButtonView(button: newView, title: "New Game", color: .Purple, action: #selector(newGame))
+        }
+        
         reset()
     }
     
@@ -74,6 +79,84 @@ class NGameViewController: UIViewController {
             }
         }
     }
+    
+    func setupButtonView(button: UIButton, title: String, color: GameColor, action: Selector) {
+        button.backgroundColor = color.color
+        button.adjustsImageWhenDisabled = false
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.setBorder(width: 3, color: .darkGray)
+        button.layer.cornerRadius = 10
+    }
+}
+
+extension NGameViewController {
+    @objc func select(sender: UIButton!) {
+        let index = sender.tag == -2 ? -2 : sender.tag - 1
+        guard !game.fixedLocations.contains(index) else { return }
+        game.selectCard(at: index)
+    }
+    
+    @objc func newGame() {
+        guard !game.isComplete else {
+            reset()
+            return
+        }
+        let alert = UIAlertController(
+            title: "Puzzle not finished!",
+            message: "Are you sure you want a new puzzle? All progress on this one will be lost.",
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(title: "Yes", style: .default) { _ in self.reset()
+            }
+        )
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        impact.impactOccurred()
+        self.present(alert, animated: true)
+    }
+    
+    @objc func goToHome() {
+        guard !game.isComplete else {
+            performSegue(withIdentifier: "ToHome", sender: self)
+            return
+        }
+        let alert = UIAlertController(
+            title: "Puzzle not finished!",
+            message: "Are you sure you want to quit? All progress on this puzzle will be lost.",
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(title: "Yes", style: .default) { _ in
+            self.performSegue(withIdentifier: "ToHome", sender: self)
+            }
+        )
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        impact.impactOccurred()
+        self.present(alert, animated: true)
+    }
+    
+    @objc func goToSelect() {
+        guard !game.isComplete else {
+            performSegue(withIdentifier: "ToSelect", sender: self)
+            return
+        }
+        let alert = UIAlertController(
+            title: "Puzzle not finished!",
+            message: "Are you sure you want to quit? All progress on this puzzle will be lost.",
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(title: "Yes", style: .default) { _ in
+            self.performSegue(withIdentifier: "ToSelect", sender: self)
+            }
+        )
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        impact.impactOccurred()
+        self.present(alert, animated: true)
+    }
 }
 
 extension NGameViewController: GameObserver {
@@ -94,8 +177,6 @@ extension NGameViewController: GameObserver {
                     bgColor: .white
                 )
             }
-        } else {
-            print("couldn't find deck button")
         }
     }
 
