@@ -27,6 +27,7 @@
 		914D28FA250FA63C0092C38D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28F9250FA63C0092C38D /* Game.swift */; };
 		914D28FB250FA63C0092C38D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28F9250FA63C0092C38D /* Game.swift */; };
 		914D28FD250FF1900092C38D /* NGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28FC250FF1900092C38D /* NGameViewController.swift */; };
+		914D28FF2510B7A60092C38D /* NGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D28FE2510B7A60092C38D /* NGameViewController.swift */; };
 		914F56DA22CA8CEA0099A5F1 /* GameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D122CA8CE90099A5F1 /* GameColor.swift */; };
 		914F56DB22CA8CEA0099A5F1 /* GameSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D222CA8CE90099A5F1 /* GameSymbol.swift */; };
 		914F56DC22CA8CEA0099A5F1 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F56D322CA8CE90099A5F1 /* SelectViewController.swift */; };
@@ -59,6 +60,7 @@
 		91034FC823748ABC00AFFFA3 /* Psakse for macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Psakse for macOS.entitlements"; sourceTree = "<group>"; };
 		914D28F9250FA63C0092C38D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		914D28FC250FF1900092C38D /* NGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGameViewController.swift; sourceTree = "<group>"; };
+		914D28FE2510B7A60092C38D /* NGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGameViewController.swift; sourceTree = "<group>"; };
 		914F56D122CA8CE90099A5F1 /* GameColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColor.swift; sourceTree = "<group>"; };
 		914F56D222CA8CE90099A5F1 /* GameSymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSymbol.swift; sourceTree = "<group>"; };
 		914F56D322CA8CE90099A5F1 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				91034FA0237481EA00AFFFA3 /* AppDelegate.swift */,
 				91034F9F237481EA00AFFFA3 /* WindowController.swift */,
 				91034F9C237481EA00AFFFA3 /* GameViewController.swift */,
+				914D28FE2510B7A60092C38D /* NGameViewController.swift */,
 				91034FA5237481EB00AFFFA3 /* HomeViewController.swift */,
 				91034F9A237481EA00AFFFA3 /* SelectViewController.swift */,
 				91034FA3237481EB00AFFFA3 /* AppKitExtensions.swift */,
@@ -281,6 +284,7 @@
 				91034FAC237481EB00AFFFA3 /* GameViewController.swift in Sources */,
 				91F7DE68237B6F0A0065B4B5 /* Grid.swift in Sources */,
 				91034FAB237481EB00AFFFA3 /* FlippedView.swift in Sources */,
+				914D28FF2510B7A60092C38D /* NGameViewController.swift in Sources */,
 				91034FB2237481EB00AFFFA3 /* AppKitExtensions.swift in Sources */,
 				91034FAF237481EB00AFFFA3 /* WindowController.swift in Sources */,
 				91034FAA237481EB00AFFFA3 /* SelectViewController.swift in Sources */,

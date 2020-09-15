@@ -706,7 +706,7 @@
         <scene sceneID="fkq-wq-wu1">
             <objects>
                 <customObject id="T92-Km-iQa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="GameViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="NGameViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="HI4-BM-WQG">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="696"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -956,7 +956,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uVH-lz-uJo"/>
-        <segue reference="fKA-Yf-VHe"/>
+        <segue reference="K2m-u3-jpH"/>
         <segue reference="muG-2U-3bb"/>
     </inferredMetricsTieBreakers>
     <resources>
