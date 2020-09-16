@@ -14,9 +14,9 @@ class HomeViewController: NSViewController {
     @IBOutlet weak var challengeView: NSButton!
     @IBOutlet weak var randomView: NSButton!
     
-    func setupButtonView(button: NSButton, title: String, color: Colors, action: Selector) {
+    func setupButtonView(button: NSButton, title: String, color: GameColor, action: Selector) {
         let layer = CALayer()
-        layer.backgroundColor = color.getColor().cgColor
+        layer.backgroundColor = color.color.cgColor
         let text = CATextLayer()
         text.string = title
         text.frame = CGRect(x: 0, y: button.bounds.height / 2.7, width: button.bounds.width, height: button.bounds.height)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_large_alt.png" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-4m-HyW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-4m-HyW">
                                 <rect key="frame" x="25" y="124" width="325" height="124.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QQW-4m-HyW" secondAttribute="height" multiplier="1722:660" id="i1o-um-UuF"/>
@@ -153,10 +153,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="prt-Kg-ucU"/>
                     <connections>
-                        <outlet property="backView" destination="W9f-93-hAb" id="kst-G2-hfw"/>
-                        <outlet property="mainGrid" destination="640-ij-XCu" id="Nj2-fM-1jK"/>
-                        <outlet property="newView" destination="xMY-ye-lEq" id="AeK-9N-BJb"/>
-                        <outlet property="subGrid" destination="crk-HZ-Wav" id="AOd-h3-9i7"/>
+                        <outlet property="backView" destination="W9f-93-hAb" id="v2x-Cu-gVm"/>
+                        <outlet property="mainGrid" destination="640-ij-XCu" id="pn5-zX-UXC"/>
+                        <outlet property="newView" destination="xMY-ye-lEq" id="ROo-hM-CFV"/>
+                        <outlet property="subGrid" destination="crk-HZ-Wav" id="ao4-Ck-KZr"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToHome" id="z3K-N7-uSu"/>
                         <segue destination="hUZ-VG-IMd" kind="show" identifier="ToSelect" id="mhQ-hY-bkb"/>
                     </connections>
@@ -174,11 +174,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-MG-jDw">
-                                <rect key="frame" x="16" y="102.66666666666669" width="343" height="515.33333333333326"/>
+                                <rect key="frame" x="16" y="103" width="343" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dip-xe-YUc">
-                                <rect key="frame" x="129" y="63.999999999999993" width="117" height="28.666666666666664"/>
+                                <rect key="frame" x="129" y="64" width="117" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -219,12 +219,12 @@
             <point key="canvasLocation" x="1680.8" y="530.54187192118229"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo_large_alt.png" width="1722" height="660"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mhQ-hY-bkb"/>
-        <segue reference="vI8-ki-mIF"/>
-        <segue reference="Gtt-f9-sz9"/>
+        <segue reference="gTy-ZD-Bdv"/>
+        <segue reference="z3K-N7-uSu"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="title" width="1722" height="660"/>
+    </resources>
 </document>

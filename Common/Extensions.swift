@@ -17,3 +17,21 @@ public extension Array where Element == Int {
         return tmp
     }
 }
+
+public extension Array where Element == String {
+    func contentsToString() -> String {
+        var tmp = ""
+        for i in self {
+            tmp += i
+        }
+        return tmp
+    }
+}
+
+public extension Int {
+    func twoDigitPad() -> String {
+        guard self < 10 else { return "\(self)" }
+        guard self > -10 else { return "\(self)" }
+        return "\(self < 0 ? "-" : "")0\(String(self).replacingOccurrences(of: "-", with: ""))"
+    }
+}

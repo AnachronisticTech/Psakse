@@ -19,40 +19,39 @@ typealias Button = UIButton
 import Foundation
 
 class Grid {
-    let gridSize: Int
+    let gridsize: Int
     let tileMargin = 5
-    var grid:[Card?] = Array(repeating: nil, count:30)
-    var buttonGrid = [Button]()
+    var buttons = [Button]()
     
-    init(gridSize: Int, mainGrid: View, subGrid: View) {
-        self.gridSize = gridSize
-        self.grid = Array(repeating: nil, count: (gridSize * gridSize) + gridSize)
+    init(_ gridSize: Int = 5, mainGrid: View, subGrid: View) {
+        self.gridsize = gridSize
         drawMainGrid(gridUI: mainGrid)
         drawSubGrid(gridUI: subGrid)
     }
     
     private func drawMainGrid(gridUI: View) {
         let gridHeight = Int(gridUI.frame.width)
-        let tileHeight = (gridHeight - ((gridSize - 1) * tileMargin)) / gridSize
-        for i in 0..<(gridSize * gridSize) {
-            let gridX = i % gridSize
-            let gridY = Int(i / gridSize)
+        let tileHeight = (gridHeight - ((gridsize - 1) * tileMargin)) / gridsize
+        for i in 0..<(gridsize ^^ 2) {
+            let gridX = i % gridsize
+            let gridY = Int(i / gridsize)
             let x = gridX * (tileHeight + tileMargin)
             let y = gridY * (tileHeight + tileMargin)
-            let button = createButton(x: x, y: y, height: tileHeight, tag: i)
-            buttonGrid.append(button)
+            let button = createButton(x: x, y: y, height: tileHeight, tag: i+1)
+            buttons.append(button)
             gridUI.addSubview(button)
         }
     }
     private func drawSubGrid(gridUI: View) {
         let gridWidth = Int(gridUI.frame.width)
-        let tileHeight = (gridWidth - ((gridSize - 1) * tileMargin)) / gridSize
+        let tileHeight = (gridWidth - ((gridsize - 1) * tileMargin)) / gridsize
         setHeight(gridUI, height: CGFloat(tileHeight))
         for i in 0..<5 {
-            let gridX = i % gridSize
+            let gridX = i % gridsize
             let x = gridX * (tileHeight + tileMargin)
-            let button = createButton(x: x, y: tileMargin, height: tileHeight, tag: i + (gridSize * gridSize))
-            buttonGrid.append(button)
+            let tag = i == 0 ? -2 : i + (gridsize ^^ 2)
+            let button = createButton(x: x, y: tileMargin, height: tileHeight, tag: tag)
+            buttons.append(button)
             gridUI.addSubview(button)
         }
     }
@@ -71,9 +70,8 @@ class Grid {
     }
     
     func reset() {
-        for i in 0..<buttonGrid.count {
-            grid[i] = nil
-            buttonGrid[i].reset()
+        for i in 0..<buttons.count {
+            buttons[i].reset()
         }
     }
 }

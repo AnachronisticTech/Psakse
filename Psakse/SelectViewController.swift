@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SelectViewController: UIViewController, UITableViewDataSource {
     
     var puzzleSelected = -1
     var tableData = [Puzzle]()
@@ -16,8 +16,8 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var challengeView: UITableView!
     @IBOutlet weak var homeView: UIButton!
     
-    func setupButtonView(button: UIButton, title: String, color: Colors, action: Selector) {
-        button.backgroundColor = color.getColor()
+    func setupButtonView(button: UIButton, title: String, color: GameColor, action: Selector) {
+        button.backgroundColor = color.color
         button.adjustsImageWhenDisabled = false
         button.setTitle(title, for: .normal)
         button.addTarget(self, action: action, for: .touchUpInside)
@@ -27,51 +27,8 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.layer.cornerRadius = button.frame.height / 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-        let solved = UserDefaults.standard.bool(forKey: "\(tableData[indexPath.row].id)")
-        cell.textLabel?.text = "Puzzle \(indexPath.row + 1)" + (solved ? " - Solved" : "")
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        puzzleSelected = indexPath.row
-        performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
-    }
-    
     @objc func goToHome() {
         performSegue(withIdentifier: "ToHome", sender: self)
-    }
-    
-    struct Puzzle: Decodable {
-        var numID: String
-        var id: String
-        var properties: String
-    }
-    
-    func getJson() {
-        let x = URL(string: "https://anachronistic-tech.co.uk/projects/psakse/get_puzzles.php")!
-        let request = NSMutableURLRequest(url: x)
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            data, response, error in
-            if error != nil {} else {
-                if let unwrappedData = data {
-                    let decoder = JSONDecoder()
-                    self.tableData = try! decoder.decode([Puzzle].self, from: unwrappedData)
-                    self.tableData.sort{ (lhs: Puzzle, rhs: Puzzle) -> Bool in
-                        return Int(lhs.numID)! < Int(rhs.numID)!
-                    }
-                    DispatchQueue.main.sync(execute: {
-                        self.challengeView.reloadData()
-                    })
-                }
-            }
-        }
-        task.resume()
     }
     
     override func viewDidLoad() {
@@ -89,7 +46,13 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
         challengeView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         challengeView.dataSource = self
         challengeView.delegate = self
-        getJson()
+//        getJson()
+        Puzzle.fetchAll { puzzles in
+            self.tableData = puzzles
+//            DispatchQueue.main.sync {
+            self.challengeView.reloadData()
+//            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,10 +63,25 @@ class SelectViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToScriptedPuzzle" {
             let destinationViewController = segue.destination as! GameViewController
-            let puzzle = tableData[puzzleSelected]
-            destinationViewController.puzzleID = puzzle.id
-            destinationViewController.override = puzzle.properties
+            destinationViewController.puzzle = tableData[puzzleSelected]
         }
     }
+}
+
+extension SelectViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+        let solved = UserDefaults.standard.bool(forKey: "\(tableData[indexPath.row].id)")
+        cell.textLabel?.text = "Puzzle \(indexPath.row + 1)" + (solved ? " - Solved" : "")
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        puzzleSelected = indexPath.row
+        performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
+    }
 }

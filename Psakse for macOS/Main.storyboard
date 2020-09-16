@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -788,8 +788,8 @@
             <objects>
                 <customObject id="frT-Vb-xZ5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Select" showSeguePresentationStyle="single" id="H4Y-vq-2ls" customClass="SelectViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="vzm-0H-3kw">
-                        <rect key="frame" x="0.0" y="0.0" width="482" height="696"/>
+                    <view key="view" misplaced="YES" id="vzm-0H-3kw">
+                        <rect key="frame" x="0.0" y="0.0" width="482" height="685"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="jfp-sg-GeH" customClass="NSButton">
@@ -799,14 +799,14 @@
                                     <constraint firstAttribute="width" constant="200" id="phW-7z-u5I"/>
                                 </constraints>
                             </customView>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt9-7r-Yjx">
-                                <rect key="frame" x="40" y="150" width="402" height="506"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt9-7r-Yjx">
+                                <rect key="frame" x="40" y="150" width="402" height="484"/>
                                 <clipView key="contentView" id="TC9-kd-ZVk">
-                                    <rect key="frame" x="1" y="1" width="400" height="504"/>
+                                    <rect key="frame" x="1" y="1" width="400" height="482"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="Rb1-XD-Wdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="504"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="Rb1-XD-Wdt">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="482"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -814,12 +814,11 @@
                                             <tableColumns>
                                                 <tableColumn width="397" minWidth="40" maxWidth="1000" id="V8T-bc-MdH">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
                                                     <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="jy8-FV-HBn">
-                                                        <font key="font" metaFont="system"/>
+                                                        <font key="font" metaFont="label" size="13"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -900,7 +899,7 @@
                                     <constraint firstAttribute="width" constant="359" id="Xjq-nw-n45"/>
                                     <constraint firstAttribute="width" secondItem="ES2-q5-455" secondAttribute="height" multiplier="1722:660" id="s49-fO-6yt"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_large_alt" id="Ism-25-2w2"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="title" id="Ism-25-2w2"/>
                             </imageView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="rg2-3U-n9G">
                                 <rect key="frame" x="60" y="60" width="320" height="338"/>
@@ -955,12 +954,12 @@
             <point key="canvasLocation" x="74" y="975"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo_large_alt" width="1722" height="660"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uVH-lz-uJo"/>
         <segue reference="K2m-u3-jpH"/>
-        <segue reference="0qp-cD-w45"/>
+        <segue reference="muG-2U-3bb"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="title" width="1722" height="660"/>
+    </resources>
 </document>
