@@ -15,7 +15,7 @@
     typealias Color = UIColor
 #endif
 
-enum Card: Equatable {
+enum Card: Equatable, Hashable {
     case Wild
     case Normal(GameSymbol, GameColor)
     

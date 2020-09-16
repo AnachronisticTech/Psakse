@@ -1,5 +1,5 @@
 //
-//  NGameViewController.swift
+//  GameViewController.swift
 //  Psakse
 //
 //  Created by Daniel Marriner on 14/09/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NGameViewController: UIViewController {
+class GameViewController: UIViewController {
     
     @IBOutlet weak var mainGrid: UIView!
     @IBOutlet weak var subGrid: UIView!
@@ -20,7 +20,7 @@ class NGameViewController: UIViewController {
     let gridsize = 5
     var game: Game!
     var grid: NGrid!
-    var puzzleID: String? = nil
+    var puzzle: Puzzle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class NGameViewController: UIViewController {
         }
         
         // Create in game controls
-        if let _ = puzzleID {
+        if let _ = puzzle {
             setupButtonView(button: backView, title: "Back", color: .Orange, action: #selector(goToSelect))
             setupButtonView(button: newView, title: "Reset", color: .Purple, action: #selector(newGame))
         } else {
@@ -44,7 +44,11 @@ class NGameViewController: UIViewController {
     func reset() {
         // remove observer?
         grid.reset()
-        game = Game()
+        if let puzzle = puzzle {
+            game = Game(with: puzzle)
+        } else {
+            game = Game()
+        }
         game.addObserver(self)
         drawBoard()
     }
@@ -92,7 +96,7 @@ class NGameViewController: UIViewController {
     }
 }
 
-extension NGameViewController {
+extension GameViewController {
     @objc func select(sender: UIButton!) {
         let index = sender.tag == -2 ? -2 : sender.tag - 1
         guard !game.fixedLocations.contains(index) else { return }
@@ -159,7 +163,7 @@ extension NGameViewController {
     }
 }
 
-extension NGameViewController: GameObserver {
+extension GameViewController: GameObserver {
     func gameDeckDidChange(_ game: Game) {
         if let deckButton = view.viewWithTag(-2) as? UIButton {
             if let card = game.deck.first {
@@ -199,6 +203,7 @@ extension NGameViewController: GameObserver {
     }
     
     func gameDidComplete(_ game: Game) {
+        print(game.generateProperties())
         let alert = UIAlertController(
             title: "Puzzle complete!",
             message: "You solved the puzzle! Would you like to play again?",

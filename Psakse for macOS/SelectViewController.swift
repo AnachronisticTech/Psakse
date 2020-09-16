@@ -8,7 +8,7 @@
 
 import AppKit
 
-class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class SelectViewController: NSViewController, NSTableViewDataSource {
     
     var puzzleSelected = -1
     var tableData = [Puzzle]()
@@ -38,56 +38,9 @@ class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         button.setBorder(width: 3, color: .darkGray)
     }
     
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return tableData.count
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cell = challengeView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Cell"), owner: nil) as? NSTableCellView
-        let solved = UserDefaults.standard.bool(forKey: "\(tableData[row].id)")
-        cell?.textField?.stringValue = "Puzzle \(row + 1)" + (solved ? " - Solved" : "")
-        return cell
-    }
-    
-    @objc func doubleClick(_ sender: AnyObject) {
-        guard challengeView.selectedRow >= 0 else {
-            return
-        }
-        puzzleSelected = challengeView.selectedRow
-        performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
-        self.view.window?.windowController?.close()
-    }
-    
     @objc func goToHome() {
         performSegue(withIdentifier: "ToHome", sender: self)
         self.view.window?.windowController?.close()
-    }
-    
-    struct Puzzle: Decodable {
-        var numID: String
-        var id: String
-        var properties: String
-    }
-    
-    func getJson() {
-        let x = URL(string: "https://anachronistic-tech.co.uk/projects/psakse/get_puzzles.php")!
-        let request = NSMutableURLRequest(url: x)
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            data, response, error in
-            if error != nil {} else {
-                if let unwrappedData = data {
-                    let decoder = JSONDecoder()
-                    self.tableData = try! decoder.decode([Puzzle].self, from: unwrappedData)
-                    self.tableData.sort{ (lhs: Puzzle, rhs: Puzzle) -> Bool in
-                        return Int(lhs.numID)! < Int(rhs.numID)!
-                    }
-                    DispatchQueue.main.sync(execute: {
-                        self.challengeView.reloadData()
-                    })
-                }
-            }
-        }
-        task.resume()
     }
     
     override func viewDidLoad() {
@@ -112,8 +65,14 @@ class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
         challengeView.dataSource = self
         challengeView.delegate = self
         challengeView.target = self
-        challengeView.doubleAction = #selector(doubleClick(_:))
-        getJson()
+        challengeView.doubleAction = #selector(doubleClick)
+//        getJson()
+        Puzzle.fetchAll { puzzles in
+            self.tableData = puzzles
+//            DispatchQueue.main.sync {
+            self.challengeView.reloadData()
+//            }
+        }
     }
     
     override func viewDidAppear() {
@@ -124,10 +83,29 @@ class SelectViewController: NSViewController, NSTableViewDelegate, NSTableViewDa
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToScriptedPuzzle" {
             let destinationViewController = segue.destinationController as! GameViewController
-            let puzzle = tableData[puzzleSelected]
-            destinationViewController.puzzleID = puzzle.id
-            destinationViewController.override = puzzle.properties
+            destinationViewController.puzzle = tableData[puzzleSelected]
         }
     }
+}
+
+extension SelectViewController: NSTableViewDelegate {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return tableData.count
+    }
     
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell = challengeView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Cell"), owner: nil) as? NSTableCellView
+        let solved = UserDefaults.standard.bool(forKey: "\(tableData[row].id)")
+        cell?.textField?.stringValue = "Puzzle \(row + 1)" + (solved ? " - Solved" : "")
+        return cell
+    }
+    
+    @objc func doubleClick(_ sender: AnyObject) {
+        guard challengeView.selectedRow >= 0 else {
+            return
+        }
+        puzzleSelected = challengeView.selectedRow
+        performSegue(withIdentifier: "ToScriptedPuzzle", sender: self)
+        self.view.window?.windowController?.close()
+    }
 }

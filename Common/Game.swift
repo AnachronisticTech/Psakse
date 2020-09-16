@@ -55,10 +55,13 @@ class Game {
         self.board = Array.init(repeating: nil, count: (gridsize ^^ 2) + 4)
         
         // generate deck
-        let tempDeck = Deck()
-        tempDeck.populateDeck()
-        tempDeck.finalShuffle()
-        tempDeck.removeCards(gridSize: gridsize, wildcards: 2)
+        var tempDeck = DeckBuilder()
+            .new()
+            .shuffle()
+            .remove(to: gridsize, withSpaceFor: 2)
+            .addWildcards(2)
+            .shuffle()
+            .build()
         
         for _ in 1...3 {
             var fixed = gridsize ^^ 2
@@ -71,17 +74,36 @@ class Game {
                     fixed = Int.random(in: 1..<(gridsize ^^ 2))
             }
             fixedLocations.append(fixed)
-            board[fixed] = tempDeck.arr.removeFirst()
+            while tempDeck[0] == .Wild { tempDeck.shuffle() }
+            board[fixed] = tempDeck.removeFirst()
         }
-        
-        tempDeck.addWildCards(count: 2)
-        tempDeck.finalShuffle()
-        self.deck = tempDeck.arr
+        tempDeck.shuffle()
+        self.deck = tempDeck
     }
     
-//    init(with puzzle: String) {
-//        self.gridsize = 5
-//    }
+    init(with puzzle: Puzzle) {
+        self.gridsize = 5
+        self.board = Array.init(repeating: nil, count: (gridsize ^^ 2) + 4)
+        
+        // generate deck
+        var tempDeck = DeckBuilder()
+            .createFrom(string: String(puzzle.properties.dropFirst(12)))
+            .addWildcards(2)
+            .shuffle()
+            .build()
+        
+        var locked = puzzle.properties.dropLast(17)
+        for _ in 0..<3 {
+            let fixed = Int(String(locked.removeFirst()) + String(locked.removeFirst()))!
+            let color = String(locked.removeFirst())
+            let symbol = String(locked.removeFirst())
+            let card = DeckBuilder.card(color, symbol)
+            fixedLocations.append(fixed)
+            board[fixed] = card
+        }
+        tempDeck.shuffle()
+        self.deck = tempDeck
+    }
     
     func checkBefore(placing card: Card, at position: Int) -> Bool {
         func isValid(placing: Card, at position: Int) -> Bool {
@@ -210,6 +232,19 @@ class Game {
                 lastSelected = index
             }
         }
+    }
+    
+    func generateProperties() -> String {
+        let fixedTiles = fixedLocations.map({ ($0).twoDigitPad() + board[$0]!.id }).contentsToString()
+        var cards = Array(repeating: 0, count: DeckBuilder.allCards.count)
+        for index in 0..<board.count {
+            guard let card = board[index], card != .Wild else { continue }
+            if fixedLocations.contains(index) { continue }
+            guard let i = DeckBuilder.allCards.firstIndex(of: card) else { continue }
+            cards[Int(i)] += 1
+        }
+        let remaining = cards.contentsToString()
+        return fixedTiles + remaining
     }
 
 }

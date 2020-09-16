@@ -706,7 +706,7 @@
         <scene sceneID="fkq-wq-wu1">
             <objects>
                 <customObject id="T92-Km-iQa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="NGameViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game" showSeguePresentationStyle="single" id="2mv-do-k8B" customClass="GameViewController" customModule="Psakse_for_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="HI4-BM-WQG">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="696"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -818,7 +818,7 @@
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
                                                     <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="jy8-FV-HBn">
-                                                        <font key="font" metaFont="system"/>
+                                                        <font key="font" metaFont="label" size="13"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
