@@ -10,21 +10,13 @@ import Foundation
 
 public extension Array where Element == Int {
     func contentsToString() -> String {
-        var tmp = ""
-        for i in self {
-            tmp += String(i)
-        }
-        return tmp
+        return self.map({ "\($0)" }).reduce("", +)
     }
 }
 
 public extension Array where Element == String {
     func contentsToString() -> String {
-        var tmp = ""
-        for i in self {
-            tmp += i
-        }
-        return tmp
+        return self.reduce("", +)
     }
 }
 
