@@ -33,16 +33,26 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "ToPuzzleSelect", sender: self)
     }
     
-    @objc func comingSoon() {
+    @objc func goToTutorial() {
+        performSegue(withIdentifier: "ToTutorial", sender: self)
+    }
+
+    func comingSoon() {
         let alert = UIAlertController(title: nil, message: "This feature is coming soon!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yay!", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     
     override func viewDidLoad() {
-        setupButtonView(button: tutorialView, title: "Tutorial", color: .Green, action: #selector(comingSoon))
+        setupButtonView(button: tutorialView, title: "Tutorial", color: .Green, action: #selector(goToTutorial))
         setupButtonView(button: challengeView, title: "Challenge Mode", color: .Yellow, action: #selector(goToPuzzleSelect))
         setupButtonView(button: randomView, title: "Random Puzzle", color: .Purple, action: #selector(goToGame))
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToTutorial" {
+            let destinationViewController = segue.destination as! GameViewController
+            destinationViewController.puzzle = Puzzle(numID: -1, id: "tutorial-1", properties: "201gp02ga00110000000000000")
+        }
+    }
 }

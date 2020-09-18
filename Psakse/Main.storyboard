@@ -74,6 +74,7 @@
                         <outlet property="tutorialView" destination="pfB-NM-st9" id="rf0-0w-Pxd"/>
                         <segue destination="swd-rU-l3e" kind="show" identifier="ToGame" id="gTy-ZD-Bdv"/>
                         <segue destination="hUZ-VG-IMd" kind="show" identifier="ToPuzzleSelect" id="YOD-PB-Scx"/>
+                        <segue destination="swd-rU-l3e" kind="show" identifier="ToTutorial" id="sdF-1v-pfv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -220,8 +221,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mhQ-hY-bkb"/>
-        <segue reference="gTy-ZD-Bdv"/>
+        <segue reference="YOD-PB-Scx"/>
+        <segue reference="sdF-1v-pfv"/>
         <segue reference="z3K-N7-uSu"/>
     </inferredMetricsTieBreakers>
     <resources>

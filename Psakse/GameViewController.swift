@@ -17,14 +17,14 @@ class GameViewController: UIViewController {
 
     let impact = UIImpactFeedbackGenerator()
 
-    let gridsize = 5
     var game: Game!
     var grid: Grid!
     var puzzle: Puzzle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        grid = Grid(mainGrid: mainGrid, subGrid: subGrid)
+        let gridsize = puzzle?.gameProperties().size ?? 5
+        grid = Grid(gridsize, mainGrid: mainGrid, subGrid: subGrid)
         for button in grid.buttons {
             button.addTarget(self, action: #selector(select), for: .touchUpInside)
         }

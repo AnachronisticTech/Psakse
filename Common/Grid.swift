@@ -44,10 +44,10 @@ class Grid {
     }
     private func drawSubGrid(gridUI: View) {
         let gridWidth = Int(gridUI.frame.width)
-        let tileHeight = (gridWidth - ((gridsize - 1) * tileMargin)) / gridsize
+        let tileHeight = (gridWidth - (4 * tileMargin)) / 5
         setHeight(gridUI, height: CGFloat(tileHeight))
         for i in 0..<5 {
-            let gridX = i % gridsize
+            let gridX = i % 5
             let x = gridX * (tileHeight + tileMargin)
             let tag = i == 0 ? -2 : i + (gridsize ^^ 2)
             let button = createButton(x: x, y: tileMargin, height: tileHeight, tag: tag)
