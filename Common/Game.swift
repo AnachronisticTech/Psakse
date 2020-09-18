@@ -82,18 +82,20 @@ class Game {
     }
     
     init(with puzzle: Puzzle) {
-        self.gridsize = 5
+        let properties = puzzle.gameProperties()
+
+        self.gridsize = properties.size
         self.board = Array.init(repeating: nil, count: (gridsize ^^ 2) + 4)
         
         // generate deck
         var tempDeck = DeckBuilder()
-            .createFrom(string: String(puzzle.properties.dropFirst(12)))
-            .addWildcards(2)
+            .createFrom(string: properties.deck)
+            .addWildcards(properties.wild)
             .shuffle()
             .build()
-        
-        var locked = puzzle.properties.dropLast(17)
-        for _ in 0..<3 {
+
+        for i in 0..<properties.fixed.count {
+            var locked = properties.fixed[i]
             let fixed = Int(String(locked.removeFirst()) + String(locked.removeFirst()))!
             let color = String(locked.removeFirst())
             let symbol = String(locked.removeFirst())
