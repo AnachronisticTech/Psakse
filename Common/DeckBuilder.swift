@@ -97,6 +97,7 @@ class DeckBuilder {
                     deck.removeLast(quantity)
                 case .removeSize(let size, let wild):
                     let total = deck.count - (size ^^ 2) + wild
+                    guard total >= 0 else { break }
                     deck.removeLast(total)
             }
         }

@@ -18,14 +18,14 @@ class GameViewController: UIViewController {
     let impact = UIImpactFeedbackGenerator()
 
     var game: Game!
-    var grid: Grid!
+    var grid: Grid<UIButton>!
     var puzzle: Puzzle?
+    var gridsize = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gridsize = puzzle?.gameProperties().size ?? 5
-        grid = Grid(gridsize, mainGrid: mainGrid, subGrid: subGrid)
-        for button in grid.buttons {
+        grid = Grid(puzzle?.gameProperties().size ?? gridsize, mainGrid: mainGrid, subGrid: subGrid)
+        for button in grid.tiles {
             button.addTarget(self, action: #selector(select), for: .touchUpInside)
         }
         
@@ -43,11 +43,13 @@ class GameViewController: UIViewController {
     
     func reset() {
         // remove observer?
-        grid.reset()
+        grid.reset { button in
+            button.reset()
+        }
         if let puzzle = puzzle {
             game = Game(with: puzzle)
         } else {
-            game = Game()
+            game = Game(gridsize)
         }
         game.addObserver(self)
         drawBoard()

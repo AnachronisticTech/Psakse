@@ -9,23 +9,22 @@
 #if os(macOS)
 import AppKit
 typealias View = NSView
-typealias Button = NSButton
 #elseif os(iOS)
 import UIKit
 typealias View = UIView
-typealias Button = UIButton
 #endif
 
 import Foundation
 
-class Grid {
+class Grid<T: View> {
     let gridsize: Int
     let tileMargin = 5
-    var buttons = [Button]()
+    var tiles = [T]()
     
-    init(_ gridSize: Int = 5, mainGrid: View, subGrid: View) {
+    init(_ gridSize: Int = 5, mainGrid: View, subGrid: View? = nil) {
         self.gridsize = gridSize
         drawMainGrid(gridUI: mainGrid)
+        guard let subGrid = subGrid else { return }
         drawSubGrid(gridUI: subGrid)
     }
     
@@ -37,41 +36,39 @@ class Grid {
             let gridY = Int(i / gridsize)
             let x = gridX * (tileHeight + tileMargin)
             let y = gridY * (tileHeight + tileMargin)
-            let button = createButton(x: x, y: y, height: tileHeight, tag: i+1)
-            buttons.append(button)
+            let button = createTile(x: x, y: y, size: tileHeight, tag: i+1)
+            tiles.append(button)
             gridUI.addSubview(button)
         }
     }
     private func drawSubGrid(gridUI: View) {
         let gridWidth = Int(gridUI.frame.width)
         let tileHeight = (gridWidth - (4 * tileMargin)) / 5
-        setHeight(gridUI, height: CGFloat(tileHeight))
+        setHeight(of: gridUI, to: CGFloat(tileHeight))
         for i in 0..<5 {
             let gridX = i % 5
             let x = gridX * (tileHeight + tileMargin)
             let tag = i == 0 ? -2 : i + (gridsize ^^ 2)
-            let button = createButton(x: x, y: tileMargin, height: tileHeight, tag: tag)
-            buttons.append(button)
+            let button = createTile(x: x, y: tileMargin, size: tileHeight, tag: tag)
+            tiles.append(button)
             gridUI.addSubview(button)
         }
     }
     
-    private func setHeight(_ gridUI: View, height: CGFloat) {
+    private func setHeight(of gridUI: View, to height: CGFloat) {
         gridUI.translatesAutoresizingMaskIntoConstraints = false
         gridUI.heightAnchor.constraint(equalToConstant: CGFloat(height + CGFloat(2 * tileMargin))).isActive = true
     }
     
-    private func createButton(x: Int, y: Int, height: Int, tag: Int) -> Button {
-        let button = Button(frame: CGRect(x: x, y: y, width: height, height: height))
-        button.tag = tag
-        button.reset()
-        
-        return button
+    private func createTile(x: Int, y: Int, size: Int, tag: Int) -> T {
+        let tile = T(frame: CGRect(x: x, y: y, width: size, height: size))
+        tile.tag = tag
+        return tile
     }
-    
-    func reset() {
-        for i in 0..<buttons.count {
-            buttons[i].reset()
+
+    func reset(_ handler: (T) -> Void) {
+        for i in 0..<tiles.count {
+            handler(tiles[i])
         }
     }
 }
